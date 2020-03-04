@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="faceit.LoginPage"
+             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
+             BackgroundImageSource="blur.jpeg">
+    <AbsoluteLayout>        
+        <BoxView BackgroundColor="White"
+                 AbsoluteLayout.LayoutFlags="All"
+                 AbsoluteLayout.LayoutBounds="0.5,0.95,0.9,0.53"
+                 CornerRadius="31"
+                 Opacity="0.7"/>
+        <BoxView BackgroundColor="#004080"
+                 AbsoluteLayout.LayoutFlags="All"
+                 AbsoluteLayout.LayoutBounds="0.5,0.08,0.9,0.4"
+                 CornerRadius="31"
+                 Opacity="0.93"/>
+        <Image Source="logo.png"
+               AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0.5,0.1,0.6,0.4"/>
+        <Entry AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0.7,0.5,0.7,0.1"
+               Placeholder="E-mail">
+            <Entry.Behaviors>
+                <behaviorPack:EmailValidationBehavior />
+            </Entry.Behaviors>
+        </Entry>
+        <Image Source="arroba.png"
+               AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0.1,0.5,0.1,0.1"/>
+        <Entry AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0.7,0.63,0.7,0.1"
+               Placeholder="Senha"
+               TextColor="Black"
+               IsPassword="True">
+            <Entry.Behaviors>
+                <behaviorPack:PasswordValidationBehavior />
+            </Entry.Behaviors>
+        </Entry>
+        <Image Source="trava.png"
+               AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0.1,0.64,0.1,0.1"/>
+        
+        <Label AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="1,0.74,0.45,0.1"
+               Text="Esqueceu a Senha?"
+               FontSize="16"
+               TextColor="#004080">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="EsqueceuASenha_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+        
+        <Button BackgroundColor="#004080"
+                Text="Login"
+                TextColor="White"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0.5,0.78,0.7,0.07" CornerRadius="7"/>
+        <Label Text="OU"
+               AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0.5,0.84,0.1,0.05"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontSize="16"
+               TextColor="#004080"/>
+        <Button BackgroundColor="Red"
+                Text="Login com Google"
+                TextColor="White"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0.5,0.92,0.7,0.07" CornerRadius="7"/>
+        <Label Text="Cadastre-se"
+               AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0.5,0.972,0.5,0.05"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontSize="16"
+               TextColor="#004080">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Cadastro_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+    </AbsoluteLayout>
+</ContentPage>
