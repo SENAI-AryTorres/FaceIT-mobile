@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.SettingsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="White" Spacing="0">
+
+                <!--  Header label for account setting  -->
+                <Label
+                    Margin="16,0,0,0"   
+                    FontSize="12"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    LineHeight="{OnPlatform Default=-1,
+                                            Android=1.25}"
+                    Text="Configurações"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+
+                <Frame
+                    CornerRadius="15">
+                    <!--<Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="TapGestureRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>-->
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Grid.Column="0"
+                            Margin="16,0,0,0"
+                            Source="configuracoes.png"
+                            WidthRequest="25"
+                            HeightRequest="25"
+                            HorizontalOptions="Start"
+                            >
+                        </Image>
+
+                        <Label Text="Configurações"
+                               VerticalTextAlignment="Center">
+                        </Label>
+
+                        <Image
+                            Grid.Column="0"
+                            Margin="16,0,0,0"
+                            Source="proximo.png"
+                            WidthRequest="25"
+                            HeightRequest="25"
+                            HorizontalOptions="EndAndExpand"
+                            />
+
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="0,15,0,15"
+                    CornerRadius="15">
+                    <!--<Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="TapGestureRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>-->
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Grid.Column="0"
+                            Margin="16,0,0,0"
+                            Source="account.png"
+                            WidthRequest="25"
+                            HeightRequest="25"
+                            HorizontalOptions="Start"
+                            >
+                        </Image>
+
+                        <Label Text="Editar Perfil"
+                               VerticalTextAlignment="Center">
+                        </Label>
+
+                        <Image
+                            Grid.Column="0"
+                            Margin="16,0,0,0"
+                            Source="proximo.png"
+                            WidthRequest="25"
+                            HeightRequest="25"
+                            HorizontalOptions="EndAndExpand"
+                            />
+
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
