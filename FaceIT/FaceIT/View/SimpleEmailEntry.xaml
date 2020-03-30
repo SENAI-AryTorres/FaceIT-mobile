@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="FaceIT.Views.Forms.SimpleEmailEntry"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms">
+
+
+    <ContentView.Content>
+        <StackLayout>
+            <border:SfBorder
+                
+                BackgroundColor="Gray">
+                <!--BorderColor="{Binding Path=IsFocused, Source={x:Reference EmailEntry}, Converter={x:StaticResource ErrorValidationColorConverter}, ConverterParameter={x:Reference EmailEntry}}"
+                Style="{StaticResource SfBorderStyle}">-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--<Entry
+                        x:Name="EmailEntry"
+                        Placeholder="Email"
+                        PlaceholderColor="{DynamicResource Gray-700}"
+                        Style="{StaticResource EntryStyle}"
+                        Text="{Binding Email}"
+                        TextColor="{DynamicResource Gray-900}" />-->
+
+                    <Entry
+                        x:Name="EmailEntry"
+                        Placeholder="Email"
+                        PlaceholderColor="LightGray"                        
+                        Text="Email"
+                        TextColor="DimGray" />
+
+                    <!--<Label
+                        Margin="15,0"
+                        FontFamily="{StaticResource FontIcons}"
+                        FontSize="18"
+                        HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        IsVisible="{Binding Path=IsVisible, Source={x:Reference ValidationLabel}}"
+                        Text="&#xe707;"
+                        TextColor="{DynamicResource Red}"
+                        VerticalOptions="Center" />-->
+
+                    <Label
+                        Margin="15,0"
+                        FontFamily="{StaticResource FontIcons}"
+                        FontSize="18"
+                        HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        IsVisible="True"
+                        Text="&#xe707;"
+                        TextColor="Red"
+                        VerticalOptions="Center" />
+                </Grid>
+            </border:SfBorder>
+
+            <!--<Label
+                x:Name="ValidationLabel"
+                Margin="15,-5,0,0"
+                FontSize="12"
+                IsVisible="{Binding Path=IsFocused, Source={x:Reference EmailEntry}, Converter={StaticResource StringToBooleanConverter}, ConverterParameter={x:Reference EmailEntry}}"
+                Text="Please enter the valid e-mail"
+                TextColor="{DynamicResource Red}"
+                VerticalOptions="FillAndExpand" />-->
+
+            <Label
+                x:Name="ValidationLabel"
+                Margin="15,-5,0,0"
+                FontSize="12"
+                IsVisible="True"
+                Text="Please enter the valid e-mail"
+                TextColor="Red"
+                VerticalOptions="FillAndExpand" />
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
