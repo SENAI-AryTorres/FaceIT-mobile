@@ -69,7 +69,7 @@ namespace FaceIT.View
                             var MyPos = new Pin()
                             {
                                 Position = new Position(pos.Latitude, pos.Longitude),
-                                Label = "Minha Posição"
+                                Label = "Minha Posição."
                             };
 
                             mapa = new Map(MapSpan.FromCenterAndRadius(new Position(pos.Latitude, pos.Longitude), Distance.FromMeters(100)));
