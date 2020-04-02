@@ -4,6 +4,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.OS;
 using Plugin.Media;
+using Plugin.Permissions;
 
 namespace FaceIT.Droid
 {
@@ -22,6 +23,7 @@ namespace FaceIT.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamarin.FormsMaps.Init(this, savedInstanceState);
             LoadApplication(new App());
 
             Window.SetStatusBarColor(Android.Graphics.Color.Rgb(0, 64, 128));
@@ -29,8 +31,7 @@ namespace FaceIT.Droid
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }

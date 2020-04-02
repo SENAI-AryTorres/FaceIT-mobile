@@ -12,18 +12,21 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.0-beta" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.55" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="Xam.Plugin.Media" Version="4.0.0.9" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.36-beta" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.1.0.36-beta" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.1.0.36-beta" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.1.0.36-beta" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.36-beta" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.36-beta" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0-preview.1.20120.5" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.6.2-beta" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.494-pre2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
     <PackageReference Include="Xamarin.Forms.BehaviorValidationPack" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.6.0.494-pre2" />
   </ItemGroup>
 
   <ItemGroup>
