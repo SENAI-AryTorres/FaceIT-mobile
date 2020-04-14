@@ -83,5 +83,11 @@ namespace FaceIT.View
                 await DisplayAlert("Permissão Negada", "Dê Permissão de camera para o Dispositivo.\nError:" + ex.Message, "OK");
             }
         }
+        
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SkillPageCadastro());
+        }
+        
     }
 }

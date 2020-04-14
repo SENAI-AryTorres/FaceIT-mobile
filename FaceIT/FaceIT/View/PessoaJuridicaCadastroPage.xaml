@@ -8,22 +8,17 @@
              mc:Ignorable="d"
              x:Class="FaceIT.View.PessoaJuridicaCadastroPage">
     <ContentPage.Content>
-        <ScrollView>
-
+        <ScrollView>  
             <StackLayout>
                 <StackLayout
                     Spacing="18"
                     Margin="20,0"
-                    VerticalOptions="Center">
-
-
-                    <Label
-                        FontSize="20"
-                        HorizontalOptions="Center"
-                        Text="Cadastro de Pessoa Jurídica"
-                        TextColor="#004080" 
-                        />
-
+                    VerticalOptions="Center"> 
+                    <Label FontSize="20"
+                           HorizontalOptions="Center"
+                           Text="Cadastro de Pessoa Jurídica"
+                           TextColor="#004080" 
+                        />     
                     <border:SfBorder CornerRadius="5"
                                      HorizontalOptions="Center"
                                      VerticalOptions="Center"
@@ -39,17 +34,15 @@
                     <Button x:Name="btnFoto" Text="Escolher Foto"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
-                            BackgroundColor="#1fada6"></Button>
-
-                    <!--  Label to display the description of this page  -->
+                            BackgroundColor="#1fada6"
+                            FontSize="10">                          
+                    </Button>
                     <Label
                         Margin="0,-1,0,-2"
                         HorizontalTextAlignment="Center"
                         Text="Dados de Login"
                         TextColor="#1fada6"
                         FontAttributes="Bold"/>
-
-                    <!--  Entry to get username from user  -->
                     <border:SfBorder
                         CornerRadius="15"
                         BackgroundColor="Transparent"
@@ -61,8 +54,7 @@
                                 <behaviorPack:EmailValidationBehavior/>
                             </Entry.Behaviors>
                         </Entry>
-                    </border:SfBorder>
-
+                    </border:SfBorder> 
                     <border:SfBorder
                         CornerRadius="15"
                         BackgroundColor="Transparent"
@@ -294,11 +286,13 @@
                     </StackLayout>
                     <StackLayout Padding="20" Orientation="Horizontal"
                                  HorizontalOptions="Center">
-                        <Button Text="CADASTRAR"
-                                BackgroundColor="#1fada6"/>
-
-                        <Button Text="CANCELAR"
-                                BackgroundColor="Gray"/>
+                        <Button Text="Próximo"
+                                BackgroundColor="#1fada6"
+                                Clicked="Button_Clicked"
+                                FontSize="12"/>      
+                        <Button Text="Cancela"
+                                BackgroundColor="Gray"
+                                FontSize="12"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

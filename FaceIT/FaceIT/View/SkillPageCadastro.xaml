@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local1="clr-namespace:FaceIT.ViewModels"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.SkillPageCadastro">
+    <ContentPage.BindingContext>
+        <local1:SkillViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            <Label FontSize="20"
+                   HorizontalOptions="Center"
+                   Text="Cadastro de Habilidades"
+                   TextColor="#004080" />
+            <Button Text="Escolha seu Documento(Currículo ou Carta de Apresentação)"
+                    Clicked="Button_Clicked" 
+                    HorizontalOptions="Center"  
+                    VerticalOptions="Center"
+                    BackgroundColor="#1fada6"
+                    FontSize="09"
+                    WidthRequest="150"
+                    HeightRequest="65"/>
+            <Label Text="Arquivo: " x:Name="lbl"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#004080"/>
+            <Label HorizontalTextAlignment="Center"
+                   Text="Linguagens de Programação"
+                   TextColor="#1fada6"
+                   FontAttributes="Bold"/>
+            <syncfusion:SfListView ItemsSource="{Binding SkillsLP}"
+                          VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand"
+                          IsScrollingEnabled="False">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Color="#1fada6"
+                                          Grid.Row="0"
+                                          Grid.Column="0"
+                                          VerticalOptions="CenterAndExpand"
+                                          HeightRequest="40"/>
+                                <Label Text="{Binding Descricao}"
+                                       TextColor="Black"
+                                       FontSize="18"
+                                       VerticalTextAlignment="Center"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+
+            <Label HorizontalTextAlignment="Center"
+                   Text="FrameWorks"
+                   TextColor="#1fada6"
+                   FontAttributes="Bold"/>
+            
+            <syncfusion:SfListView ItemsSource="{Binding SkillsFW}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsScrollingEnabled="False"
+                                   IsScrollBarVisible="False">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Color="#1fada6"
+                                          Grid.Row="0"
+                                          Grid.Column="0"
+                                          VerticalOptions="CenterAndExpand"
+                                          HeightRequest="40"/>
+                                <Label Text="{Binding Descricao}"
+                                       TextColor="Black"
+                                       FontSize="18"
+                                       VerticalTextAlignment="Center"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+
+            <Label HorizontalTextAlignment="Center"
+                   Text="Plataforma"
+                   TextColor="#1fada6"
+                   FontAttributes="Bold"/>
+
+            <syncfusion:SfListView ItemsSource="{Binding SkillsPF}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsScrollingEnabled="False"
+                                   IsScrollBarVisible="False">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Color="#1fada6"
+                                          Grid.Row="0"
+                                          Grid.Column="0"
+                                          VerticalOptions="CenterAndExpand"
+                                          HeightRequest="40"/>
+                                <Label Text="{Binding Descricao}"
+                                       TextColor="Black"
+                                       FontSize="18"
+                                       VerticalTextAlignment="Center"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+
+            <Label HorizontalTextAlignment="Center"
+                   Text="Versionamento"
+                   TextColor="#1fada6"
+                   FontAttributes="Bold"/>
+
+            <syncfusion:SfListView ItemsSource="{Binding SkillsCV}"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      IsScrollingEnabled="False"
+                      IsScrollBarVisible="False">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Color="#1fada6"
+                                          Grid.Row="0"
+                                          Grid.Column="0"
+                                          VerticalOptions="CenterAndExpand"
+                                          HeightRequest="40"/>
+                                <Label Text="{Binding Descricao}"
+                                       TextColor="Black"
+                                       FontSize="18"
+                                       VerticalTextAlignment="Center"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+            <Label HorizontalTextAlignment="Center"
+               Text="IDE'S"
+               TextColor="#1fada6"
+               FontAttributes="Bold"/>
+
+            <syncfusion:SfListView ItemsSource="{Binding SkillsIDE}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsScrollingEnabled="False"
+                                   IsScrollBarVisible="False">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Color="#1fada6"
+                                          Grid.Row="0"
+                                          Grid.Column="0"
+                                          VerticalOptions="CenterAndExpand"
+                                          HeightRequest="40"/>
+                                <Label Text="{Binding Descricao}"
+                                       TextColor="Black"
+                                       FontSize="18"
+                                       VerticalTextAlignment="Center"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+           <Label HorizontalTextAlignment="Center"
+                  Text="Banco de Dados"
+                  TextColor="#1fada6"
+                  FontAttributes="Bold"/>
+
+            <syncfusion:SfListView ItemsSource="{Binding SkillsBD}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsScrollingEnabled="False"
+                                   IsScrollBarVisible="False">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Color="#1fada6"
+                                          Grid.Row="0"
+                                          Grid.Column="0"
+                                          VerticalOptions="CenterAndExpand"
+                                          HeightRequest="40"/>
+                                <Label Text="{Binding Descricao}"
+                                       TextColor="Black"
+                                       FontSize="18"
+                                       VerticalTextAlignment="Center"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+
+            <Label HorizontalTextAlignment="Center"
+               Text="Idioma"
+               TextColor="#1fada6"
+               FontAttributes="Bold"/>
+
+            <syncfusion:SfListView ItemsSource="{Binding SkillsIdioma}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsScrollingEnabled="False"
+                                   IsScrollBarVisible="False">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Color="#1fada6"
+                                          Grid.Row="0"
+                                          Grid.Column="0"
+                                          VerticalOptions="CenterAndExpand"
+                                          HeightRequest="40"/>
+                                <Label Text="{Binding Descricao}"
+                                       TextColor="Black"
+                                       FontSize="18"
+                                       VerticalTextAlignment="Center"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+                <Button Text="Concluir Login"
+                        Clicked="Button_Clicked_1"
+                        BackgroundColor="#1fada6"
+                        Margin="60,0,60,10"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

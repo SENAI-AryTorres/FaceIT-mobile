@@ -11,19 +11,16 @@
              x:Class="FaceIT.View.PessoaFisicaCadastroPage">
     <ContentPage.Content>
         <ScrollView>
-
             <StackLayout>
                 <StackLayout
                     Spacing="18"
                     Margin="20,0"
                     VerticalOptions="Center">
-
-                    <!--  Label to display the title of this page  -->
                     <Label
                         FontSize="20"
                         HorizontalOptions="Center"
                         Text="Cadastro de Pessoa Física"
-                        TextColor="#004080" />  
+                        TextColor="#004080" />
                     <border:SfBorder CornerRadius="5"
                                      HorizontalOptions="Center"
                                      VerticalOptions="Center"
@@ -39,7 +36,8 @@
                     <Button x:Name="btnFoto" Text="Escolher Foto"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
-                            BackgroundColor="#1fada6">
+                            BackgroundColor="#1fada6"
+                            FontSize="10">
                     </Button>
                     <Label
                         Margin="0,-1,0,-2"
@@ -283,10 +281,13 @@
                     </StackLayout>     
                     <StackLayout Padding="20" Orientation="Horizontal"
                                  HorizontalOptions="Center">
-                        <Button Text="CADASTRAR"
-                                BackgroundColor="#1fada6"/>  
-                        <Button Text="CANCELAR"
-                                BackgroundColor="Gray"/>
+                        <Button Text="Próximo"
+                                BackgroundColor="#1fada6"
+                                Clicked="Button_Clicked"
+                                FontSize="12"/>  
+                        <Button Text="Cancela"
+                                BackgroundColor="Gray"
+                                FontSize="12"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

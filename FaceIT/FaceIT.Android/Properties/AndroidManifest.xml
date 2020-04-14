@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.faceit" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
+	<uses-sdk android:minSdkVersion="27" android:targetSdkVersion="27" />
 	<application>
-    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDFApjSWTXT1qkt07YPjB9OPXSGitM_XAM" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDFApjSWTXT1qkt07YPjB9OPXSGitM_XAM" />
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>
@@ -15,4 +15,6 @@
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

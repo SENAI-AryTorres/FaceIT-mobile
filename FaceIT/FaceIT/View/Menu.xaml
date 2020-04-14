@@ -3,6 +3,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
                   mc:Ignorable="d"
                   x:Class="FaceIT.View.Menu"
                   NavigationPage.HasNavigationBar="False">
@@ -12,84 +13,75 @@
                      BackgroundColor="Transparent"
                      BackgroundImageSource="degradeazul.jpg">
             <ContentPage.Content>
-                <StackLayout>
-                    <Grid >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="200" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Grid>
-                            <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                <Frame CornerRadius="100" 
-                                       HeightRequest="115"
-                                       WidthRequest="115"
-                                       HorizontalOptions="Center"
-                                       Padding="0"
-                                       IsClippedToBounds="True">
-                                    <Image Source="account.png" 
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="GoToProfilePage" />
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                </Frame>
-
-                                <Label 
-                                    Text="Nome Teste" TextColor="White" FontSize="Large">
-                                </Label>
-                            </StackLayout>
-                        </Grid>
-                    </Grid>
-
-
-                    <TableView Intent="Menu">
-                        <TableSection>
-                            <ViewCell Tapped="GoToMatchPopUp">
-                                <StackLayout Padding="15,10">
-                                    <Label Text="Match" VerticalTextAlignment="Center"
-                                           TextColor="White"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-
-                        <TableSection>
-                            <ViewCell Tapped="GoToRankingPopUp">
-                                <StackLayout Padding="15,10">
-                                    <Label Text="Ranking" VerticalTextAlignment="Center"
-                                           TextColor="White"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-
-                        <TableSection>
-                            <ViewCell Tapped="GoToFaqPage">
-                                <StackLayout Padding="15,10">
-                                    <Label Text="FAQ" VerticalTextAlignment="Center"
-                                           TextColor="White"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-
-
-                        <TableSection>
-                            <ViewCell Tapped="GoToSettingsPage">
-                                <StackLayout Padding="15,10" VerticalOptions="End">
-                                    <Label Text="Configuração" VerticalTextAlignment="Center"
-                                           TextColor="White"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-
-                        <TableSection>
-                            <ViewCell Tapped="Sair">
-                                <StackLayout Padding="15,10">
-                                    <Label Text="Sair" VerticalTextAlignment="Center"
-                                           TextColor="White"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                    </TableView>                    
+                <StackLayout>   
+                    <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">  
+                        <Frame
+                                BorderColor="Black"
+                                CornerRadius="12"
+                                HorizontalOptions="CenterAndExpand"
+                                BackgroundColor="Transparent">
+                            <Image
+                                    HeightRequest="100"
+                                    WidthRequest="100"
+                                    Source="account.png"
+                                    HorizontalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GoToProfilePage"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+                        <Label 
+                            Text="Nome Teste" 
+                            TextColor="White" 
+                            FontSize="Large"
+                            HorizontalTextAlignment="Center">
+                        </Label>
+                        <TableView Intent="Menu" 
+                                   HorizontalOptions="FillAndExpand"
+                                   HasUnevenRows="True">
+                            <TableSection>
+                                <ViewCell Tapped="GoToMatchPopUp">
+                                    <StackLayout Padding="15,10">
+                                        <Label Text="Match" VerticalTextAlignment="Center"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection>
+                                <ViewCell Tapped="GoToRankingPopUp">
+                                    <StackLayout Padding="15,10">
+                                        <Label Text="Ranking" VerticalTextAlignment="Center"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection>
+                                <ViewCell Tapped="GoToFaqPage">
+                                    <StackLayout Padding="15,10">
+                                        <Label Text="FAQ" VerticalTextAlignment="Center"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                            
+                            <TableSection>
+                                <ViewCell Tapped="GoToSettingsPage">
+                                    <StackLayout Padding="15,10" VerticalOptions="End">
+                                        <Label Text="Configuração" VerticalTextAlignment="Center"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>  
+                            <TableSection>
+                                <ViewCell Tapped="Sair">
+                                    <StackLayout Padding="15,10">
+                                        <Label Text="Sair" VerticalTextAlignment="Center"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                        </TableView>                    
+                    </StackLayout> 
                 </StackLayout>
             </ContentPage.Content>
         </ContentPage>
