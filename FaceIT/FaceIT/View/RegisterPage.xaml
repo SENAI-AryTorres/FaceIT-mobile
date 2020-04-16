@@ -4,23 +4,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-    mc:Ignorable="d"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
              x:Class="FaceIT.Page.RegisterPage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Transparent">
-
+        <StackLayout BackgroundColor="Transparent"> 
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="CenterAndExpand"
                          Opacity=".9"
-                         Margin="20,0,20,0">
-                
+                         Margin="20,0,20,0">                
             <border:SfBorder BorderColor="Black"
                              Padding="40"
                              CornerRadius="50"
                              BackgroundColor="LightGray">
-            <StackLayout>
-
+            <StackLayout>     
                 <Image Source="close.png" 
                        HeightRequest="20"
                        WidthRequest="20"
@@ -30,14 +27,12 @@
                             <TapGestureRecognizer Tapped="CloseRegisterPage">
                             </TapGestureRecognizer>
                         </Image.GestureRecognizers>
-                </Image>
-
+                </Image> 
                 <Label Text="Você é?"
                        FontSize="25"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
-                       TextColor="Black"/>
-
+                       TextColor="Black"/> 
                 <Button BackgroundColor="#004080"
                         CornerRadius="7"
                         Text="Pessoa Jurídica"
@@ -45,87 +40,23 @@
                         FontSize="11"
                         FontAttributes="Bold"
                         Clicked="ToPessoaJuridicaPage"
-                        />
-
+                        />  
                 <Label HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"
                        Text="OU"
                        TextColor="Black"
                        FontSize="11"
-                       FontAttributes="Bold"/>
-
+                       FontAttributes="Bold"/> 
                 <Button BackgroundColor="#004080"
                         CornerRadius="7"
                         Text="Pessoa Física"
                         TextColor="White"
                         FontSize="11"
                         FontAttributes="Bold"
-                        Clicked="ToPessoaFisicaPage"/>
-
-                </StackLayout>
-
+                        Clicked="ToPessoaFisicaPage"/> 
+                </StackLayout>   
             </border:SfBorder>
             </StackLayout>
-        </StackLayout>
-        <!--<AbsoluteLayout>
-            <Button AbsoluteLayout.LayoutFlags="All"
-                    AbsoluteLayout.LayoutBounds="1,1,1,1" 
-                    BackgroundColor="Transparent"
-                    Clicked="CloseRegisterPage"/>
-            
-            <BoxView AbsoluteLayout.LayoutFlags="All"
-                     AbsoluteLayout.LayoutBounds="0.5,0.5,0.7,0.3"
-                     BackgroundColor="White"
-                     CornerRadius="30"/>
-
-            <Image Source="close.png"
-                   AbsoluteLayout.LayoutFlags="All"
-                   AbsoluteLayout.LayoutBounds="0.75,0.38,0.03,0.03"/>
-            
-            <Button AbsoluteLayout.LayoutFlags="All"
-                    AbsoluteLayout.LayoutBounds="0.76,0.38,0.15,0.06" 
-                    BackgroundColor="Transparent"
-                    Clicked="CloseRegisterPage"/>
-
-            <Label AbsoluteLayout.LayoutFlags="All"
-                   AbsoluteLayout.LayoutBounds="0.5,0.4,0.7,0.05" 
-                   BackgroundColor="Transparent"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Center"
-                   Text="Você é?"
-                   TextColor="Black"
-                   FontSize="14"
-                   FontAttributes="Bold"/>
-
-            <Button AbsoluteLayout.LayoutFlags="All"
-                    AbsoluteLayout.LayoutBounds="0.5,0.48,0.5,0.05" 
-                    BackgroundColor="#004080"
-                    CornerRadius="7"
-                    Text="Pessoa Física"
-                    TextColor="White"
-                    FontSize="11"
-                    FontAttributes="Bold"
-                    Clicked="ToPessoaFisicaPage"/>
-
-            <Label AbsoluteLayout.LayoutFlags="All"
-                   AbsoluteLayout.LayoutBounds="0.5,0.53,0.5,0.05"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   Text="OU"
-                   TextColor="#004080"
-                   FontSize="11"
-                   FontAttributes="Bold"/>
-
-            <Button AbsoluteLayout.LayoutFlags="All"
-                    AbsoluteLayout.LayoutBounds="0.5,0.585,0.5,0.05" 
-                    BackgroundColor="#004080"
-                    CornerRadius="7"
-                    Text="Pessoa Jurídica"
-                    TextColor="White"
-                    FontSize="11"
-                    FontAttributes="Bold"
-                    Clicked="ToPessoaJuridicaPage"
-                    />
-        </AbsoluteLayout>-->
+        </StackLayout>  
     </ContentPage.Content>
 </pages:PopupPage>

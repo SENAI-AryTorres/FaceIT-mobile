@@ -18,21 +18,21 @@ namespace FaceIT.View
             InitializeComponent();
             Detail = new NavigationPage(new MenuDetail());
         }
-        private void GoToProfilePage(object sender, System.EventArgs e)
+        private async void GoToProfilePage(object sender, System.EventArgs e)
         {
-            Detail.Navigation.PushAsync(new ProfilePage());
+            await Detail.Navigation.PushAsync(new ProfilePage());
             IsPresented = false;
         }
 
-        private void GoToSettingsPage(object sender, System.EventArgs e)
+        private async void GoToSettingsPage(object sender, System.EventArgs e)
         {
-            Detail.Navigation.PushAsync(new SettingsPage());
+            await Detail.Navigation.PushAsync(new SettingsPage());
             IsPresented = false;
         }
 
         private void GoToRankingPopUp(object sender, System.EventArgs e)
         {
-            //Detail.Navigation.PushAsync(new RankingPage());
+            Detail.Navigation.PushAsync(new RankingPage());
             IsPresented = false;
         }
 
@@ -42,9 +42,9 @@ namespace FaceIT.View
             IsPresented = false;
         }
 
-        private void GoToFaqPage(object sender, System.EventArgs e)
+        private async void GoToFaqPage(object sender, System.EventArgs e)
         {
-            Detail.Navigation.PushAsync(new FaqPage());
+            await Detail.Navigation.PushAsync(new FaqPage());
             IsPresented = false;
         }
 

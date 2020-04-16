@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.RankingPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True">
+    <border:SfBorder BorderColor="Black"
+                     CornerRadius="20"
+                     BackgroundColor="White"
+                     Opacity="0.9"
+                     Margin="10">
+        <StackLayout>
+            <Label HorizontalTextAlignment="Center"
+                       Text="Top 5 linguagens de programação mais usadas no FaceIT"
+                       TextColor="#1fada6"
+                       FontAttributes="Bold"
+                       Padding="20,20,20,0" 
+                       VerticalTextAlignment="Center"
+                       VerticalOptions="Center"/>
+            <forms:ChartView x:Name="chart4"
+                             VerticalOptions="FillAndExpand"/>
+        </StackLayout>  
+    </border:SfBorder>
+</pages:PopupPage>

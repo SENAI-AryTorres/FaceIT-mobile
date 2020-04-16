@@ -26,6 +26,7 @@ namespace FaceIT.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Microcharts.Droid.Resource.String.library_name = global::FaceIT.Droid.Resource.String.library_name;
 			global::Plugin.Geolocator.Resource.Attribute.alpha = global::FaceIT.Droid.Resource.Attribute.alpha;
 			global::Plugin.Geolocator.Resource.Attribute.font = global::FaceIT.Droid.Resource.Attribute.font;
 			global::Plugin.Geolocator.Resource.Attribute.fontProviderAuthority = global::FaceIT.Droid.Resource.Attribute.fontProviderAuthority;
@@ -15925,32 +15926,35 @@ namespace FaceIT.Droid
 			// aapt resource value: 0x7F0D0042
 			public const int hide_bottom_view_on_scroll_behavior = 2131558466;
 			
+			// aapt resource value: 0x7F0D0043
+			public const int library_name = 2131558467;
+			
 			// aapt resource value: 0x7F0D0002
 			public const int Load_More = 2131558402;
 			
-			// aapt resource value: 0x7F0D0043
-			public const int mtrl_chip_close_icon_content_description = 2131558467;
-			
 			// aapt resource value: 0x7F0D0044
-			public const int password_toggle_content_description = 2131558468;
+			public const int mtrl_chip_close_icon_content_description = 2131558468;
 			
 			// aapt resource value: 0x7F0D0045
-			public const int path_password_eye = 2131558469;
+			public const int password_toggle_content_description = 2131558469;
 			
 			// aapt resource value: 0x7F0D0046
-			public const int path_password_eye_mask_strike_through = 2131558470;
+			public const int path_password_eye = 2131558470;
 			
 			// aapt resource value: 0x7F0D0047
-			public const int path_password_eye_mask_visible = 2131558471;
+			public const int path_password_eye_mask_strike_through = 2131558471;
 			
 			// aapt resource value: 0x7F0D0048
-			public const int path_password_strike_through = 2131558472;
+			public const int path_password_eye_mask_visible = 2131558472;
 			
 			// aapt resource value: 0x7F0D0049
-			public const int search_menu_title = 2131558473;
+			public const int path_password_strike_through = 2131558473;
 			
 			// aapt resource value: 0x7F0D004A
-			public const int status_bar_notification_info_overflow = 2131558474;
+			public const int search_menu_title = 2131558474;
+			
+			// aapt resource value: 0x7F0D004B
+			public const int status_bar_notification_info_overflow = 2131558475;
 			
 			static String()
 			{

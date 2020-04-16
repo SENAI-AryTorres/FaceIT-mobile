@@ -35,6 +35,7 @@ namespace FaceIT.View
         }
 
         //Metodo de permissao do GPS
+        [Obsolete]
         public async Task PermissaoGPSAsync()
         {
             try

@@ -18,7 +18,7 @@
 
                 <Frame
                     Grid.Row="0"
-                    Margin="16,16,16,32">
+                    Margin="16,16,16,16">
 
                     <Frame
                         BorderColor="Transparent"
