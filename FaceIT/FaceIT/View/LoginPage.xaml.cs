@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using FaceIT.Service;
+using faceitapi.Models.ViewModel;
+using Rg.Plugins.Popup.Services;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,6 +10,8 @@ namespace FaceIT.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        LoginService service = new LoginService();
+
         public LoginPage()
         {
             InitializeComponent();
@@ -27,7 +31,22 @@ namespace FaceIT.Page
 
         private async void NavegarParaMenuPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new View.Menu());
+            var loginRequest = new LoginGet()
+            {
+                Email = entry_email.Text,
+                Senha = entry_senha.Text,
+                GoogleId = null
+            };
+            var result = service.Logar(loginRequest);
+            if (await result)
+            {
+                await DisplayAlert("Olá", "Seja Bem-Vindo ao FaceIT", "Ok");
+                await Navigation.PushAsync(new View.Menu());
+            }
+            else
+            {
+                await DisplayAlert("Erro", "E-mail ou Senha Inexistente/Incorreto", "Ok");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FaceIT.ViewModels;
+﻿using FaceIT.Page;
+using FaceIT.ViewModels;
 using faceitapi.Models;
 using Plugin.FilePicker;
 using System;
@@ -18,6 +19,7 @@ namespace FaceIT.View
         public SkillPageCadastro()
         {
             InitializeComponent();
+            //BindingContext = new CadastroSkillViewModel();
         }
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -37,7 +39,8 @@ namespace FaceIT.View
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new View.Menu());
+            DisplayAlert("Bem-Vindo", "Cadastro Concluido com sucesso", "OK");
+            Navigation.PushAsync(new LoginPage());
         }
     }
 }

@@ -34,9 +34,9 @@
                    TextColor="#1fada6"
                    FontAttributes="Bold"/>
             <syncfusion:SfListView ItemsSource="{Binding SkillsLP}"
-                          VerticalOptions="FillAndExpand"
-                          HorizontalOptions="FillAndExpand"
-                          IsScrollingEnabled="False">
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsScrollingEnabled="False">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

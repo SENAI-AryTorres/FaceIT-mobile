@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="FaceIT.Page.LoginPage"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
+             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack" xmlns:ViewModels="clr-namespace:FaceIT.ViewModels"
              BackgroundImageSource="blur.jpeg">
     <ContentPage.Content>
         <StackLayout>
@@ -17,67 +17,62 @@
                     </StackLayout>
                     <StackLayout Padding="30">
                         <border:SfBorder
-                    CornerRadius="15"
-                    BackgroundColor="White"
-                    Opacity="0.8"
-                    Padding="20"
-                    BorderColor="Transparent">
+                                CornerRadius="15"
+                                BackgroundColor="White"
+                                Opacity="0.8"
+                                Padding="20"
+                                BorderColor="Transparent">
                             <StackLayout>
 
-                                <Entry 
-                               BackgroundColor="Transparent"
-                               Placeholder="E-mail"
-                               TextColor="Black"
-                               FontSize="14"
-                               FontAttributes="Bold">
+                                <Entry BackgroundColor="Transparent"
+                                       Placeholder="E-mail"
+                                       TextColor="Black"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       x:Name="entry_email">
                                     <Entry.Behaviors>
                                         <behaviorPack:EmailValidationBehavior />
                                     </Entry.Behaviors>
                                 </Entry>
                                 <Entry BackgroundColor="Transparent"
-                               Placeholder="Senha"
-                               TextColor="Black"
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               IsPassword="True">
+                                       Placeholder="Senha"
+                                       TextColor="Black"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       IsPassword="True"
+                                       x:Name="entry_senha">
                                 </Entry>
-
-
                                 <Button BackgroundColor="Transparent"
-                                Text="Esqueceu a Senha?"
-                                TextColor="#004080"
-                                FontSize="11"
-                                FontAttributes="Bold"
-                                Clicked="NavegarParaEsqueciSenha"/>
-
+                                        Text="Esqueceu a Senha?"
+                                        TextColor="#004080"
+                                        FontSize="11"
+                                        FontAttributes="Bold"
+                                        Clicked="NavegarParaEsqueciSenha"/>
                                 <Button BackgroundColor="#004080"
-                                CornerRadius="7"
-                                Text="Login"
-                                TextColor="White"
-                                FontSize="14"
-                                FontAttributes="Bold"
-                                Clicked="NavegarParaMenuPage"/>
-
+                                        CornerRadius="7"
+                                        Text="Login"
+                                        TextColor="White"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        Clicked="NavegarParaMenuPage"/>
                                 <Label HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"
-                               Text="OU"
-                               TextColor="#004080"
-                               FontSize="11"
-                               FontAttributes="Bold"/>
-
+                                       VerticalTextAlignment="Center"
+                                       Text="OU"
+                                       TextColor="#004080"
+                                       FontSize="11"
+                                       FontAttributes="Bold"/>
                                 <Button BackgroundColor="Red"
-                                CornerRadius="7"
-                                Text="Login com Google"
-                                TextColor="White"
-                                FontSize="14"
-                                FontAttributes="Bold"/>
-
+                                        CornerRadius="7"
+                                        Text="Login com Google"
+                                        TextColor="White"
+                                        FontSize="14"
+                                        FontAttributes="Bold"/>
                                 <Button BackgroundColor="Transparent"
-                                Text="Cadastre-se"
-                                TextColor="#004080"
-                                FontSize="11"
-                                FontAttributes="Bold"
-                                Clicked="NavegarRegisterPage"/>
+                                        Text="Cadastre-se"
+                                        TextColor="#004080"
+                                        FontSize="11"
+                                        FontAttributes="Bold"
+                                        Clicked="NavegarRegisterPage"/>
                             </StackLayout>
                         </border:SfBorder>
                     </StackLayout>

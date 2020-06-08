@@ -15,7 +15,7 @@ namespace FaceIT.Droid
 {
 	
 	
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
 	public partial class Resource
 	{
 		
@@ -14580,97 +14580,106 @@ namespace FaceIT.Droid
 			public const int dropdownbuttonimage = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int fechar = 2131165350;
+			public const int editar = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int google = 2131165351;
+			public const int editarperfil = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int googleg_disabled_color_18 = 2131165352;
+			public const int fechar = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int googleg_standard_color_18 = 2131165353;
+			public const int google = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int googleicon = 2131165354;
+			public const int googleg_disabled_color_18 = 2131165354;
 			
 			// aapt resource value: 0x7F0700AB
-			public const int ic_mtrl_chip_checked_black = 2131165355;
+			public const int googleg_standard_color_18 = 2131165355;
 			
 			// aapt resource value: 0x7F0700AC
-			public const int ic_mtrl_chip_checked_circle = 2131165356;
+			public const int googleicon = 2131165356;
 			
 			// aapt resource value: 0x7F0700AD
-			public const int ic_mtrl_chip_close_circle = 2131165357;
-			
-			// aapt resource value: 0x7F0700AF
-			public const int inputlayout_togglecollapseicon = 2131165359;
-			
-			// aapt resource value: 0x7F0700B0
-			public const int inputlayout_togglevisibleicon = 2131165360;
+			public const int ic_mtrl_chip_checked_black = 2131165357;
 			
 			// aapt resource value: 0x7F0700AE
-			public const int input_layout_drop_down_icon = 2131165358;
+			public const int ic_mtrl_chip_checked_circle = 2131165358;
+			
+			// aapt resource value: 0x7F0700AF
+			public const int ic_mtrl_chip_close_circle = 2131165359;
 			
 			// aapt resource value: 0x7F0700B1
-			public const int logo = 2131165361;
+			public const int inputlayout_togglecollapseicon = 2131165361;
 			
 			// aapt resource value: 0x7F0700B2
-			public const int mtrl_snackbar_background = 2131165362;
+			public const int inputlayout_togglevisibleicon = 2131165362;
+			
+			// aapt resource value: 0x7F0700B0
+			public const int input_layout_drop_down_icon = 2131165360;
 			
 			// aapt resource value: 0x7F0700B3
-			public const int mtrl_tabs_default_indicator = 2131165363;
+			public const int logo = 2131165363;
 			
 			// aapt resource value: 0x7F0700B4
-			public const int navigation_empty_icon = 2131165364;
+			public const int mtrl_snackbar_background = 2131165364;
 			
 			// aapt resource value: 0x7F0700B5
-			public const int notification_action_background = 2131165365;
+			public const int mtrl_tabs_default_indicator = 2131165365;
 			
 			// aapt resource value: 0x7F0700B6
-			public const int notification_bg = 2131165366;
+			public const int navigation_empty_icon = 2131165366;
 			
 			// aapt resource value: 0x7F0700B7
-			public const int notification_bg_low = 2131165367;
+			public const int notification_action_background = 2131165367;
 			
 			// aapt resource value: 0x7F0700B8
-			public const int notification_bg_low_normal = 2131165368;
+			public const int notification_bg = 2131165368;
 			
 			// aapt resource value: 0x7F0700B9
-			public const int notification_bg_low_pressed = 2131165369;
+			public const int notification_bg_low = 2131165369;
 			
 			// aapt resource value: 0x7F0700BA
-			public const int notification_bg_normal = 2131165370;
+			public const int notification_bg_low_normal = 2131165370;
 			
 			// aapt resource value: 0x7F0700BB
-			public const int notification_bg_normal_pressed = 2131165371;
+			public const int notification_bg_low_pressed = 2131165371;
 			
 			// aapt resource value: 0x7F0700BC
-			public const int notification_icon_background = 2131165372;
+			public const int notification_bg_normal = 2131165372;
 			
 			// aapt resource value: 0x7F0700BD
-			public const int notification_template_icon_bg = 2131165373;
+			public const int notification_bg_normal_pressed = 2131165373;
 			
 			// aapt resource value: 0x7F0700BE
-			public const int notification_template_icon_low_bg = 2131165374;
+			public const int notification_icon_background = 2131165374;
 			
 			// aapt resource value: 0x7F0700BF
-			public const int notification_tile_bg = 2131165375;
+			public const int notification_template_icon_bg = 2131165375;
 			
 			// aapt resource value: 0x7F0700C0
-			public const int notify_panel_notification_icon_bg = 2131165376;
+			public const int notification_template_icon_low_bg = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int tooltip_frame_dark = 2131165377;
+			public const int notification_tile_bg = 2131165377;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int tooltip_frame_light = 2131165378;
+			public const int notify_panel_notification_icon_bg = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int trabalhos = 2131165379;
+			public const int pergunta = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int trava = 2131165380;
+			public const int tooltip_frame_dark = 2131165380;
+			
+			// aapt resource value: 0x7F0700C5
+			public const int tooltip_frame_light = 2131165381;
+			
+			// aapt resource value: 0x7F0700C6
+			public const int trabalhos = 2131165382;
+			
+			// aapt resource value: 0x7F0700C7
+			public const int trava = 2131165383;
 			
 			static Drawable()
 			{

@@ -53,13 +53,6 @@ namespace FaceIT.View
                     Color = SKColor.Parse("#7AC5CD "),
                     TextColor = TextColor
                 },
-                new Microcharts.Entry(74.4f)
-                {
-                    Label = "PHP",
-                    ValueLabel = "69.4M",
-                    Color = SKColor.Parse("#53868B "),
-                    TextColor = TextColor
-                }
             };
 
             return new Chart[]
@@ -102,7 +95,7 @@ namespace FaceIT.View
         protected override void OnAppearing()
         {
             var charts = CreateXamarinSample();
-            chart4.Chart = charts[5];
+            chart4.Chart = charts[3];
 
         }
     }

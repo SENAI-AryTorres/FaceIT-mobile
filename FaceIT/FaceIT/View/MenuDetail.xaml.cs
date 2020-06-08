@@ -79,7 +79,7 @@ namespace FaceIT.View
                         }
 
                     }
-                }
+                }                
 
                 //Não aceita
                 else if (status != PermissionStatus.Unknown)
@@ -87,10 +87,51 @@ namespace FaceIT.View
                     await DisplayAlert("Location Denied", "Can not continue, try again.", "OK");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
         }
+
+        private bool isOpen = false;
+        private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
+        {
+            if (isOpen == false)
+            {
+                isOpen = true;
+                //Scale to smaller
+                await ((Frame)sender).ScaleTo(0.8, 50, Easing.Linear);
+                //Wait a moment
+                await Task.Delay(100);
+                //Scale to normal
+                await ((Frame)sender).ScaleTo(1, 50, Easing.Linear);
+
+                //Show FloatMenuItem1
+                FloatMenuItem1.IsVisible = true;
+                await FloatMenuItem1.TranslateTo(0, 0, 100);
+                await FloatMenuItem1.TranslateTo(0, -20, 100);
+                await FloatMenuItem1.TranslateTo(0, 0, 200);
+
+
+            }
+            else
+            {
+                isOpen = false;
+                //Scale to smaller
+                await ((Frame)sender).ScaleTo(0.8, 50, Easing.Linear);
+                //Wait a moment
+                await Task.Delay(100);
+                //Scale to normal
+                await ((Frame)sender).ScaleTo(1, 50, Easing.Linear);
+
+                //Hide FloatMenuItem1
+                await FloatMenuItem1.TranslateTo(0, 0, 100);
+                await FloatMenuItem1.TranslateTo(0, -20, 100);
+                await FloatMenuItem1.TranslateTo(0, 0, 200);
+                FloatMenuItem1.IsVisible = false;
+            }
+
+        }
+
     }
 }

@@ -20,7 +20,7 @@ namespace FaceIT.View
         }
         private async void GoToProfilePage(object sender, System.EventArgs e)
         {
-            await Detail.Navigation.PushAsync(new ProfilePage());
+            await Detail.Navigation.PushAsync(new TestePage());
             IsPresented = false;
         }
 
@@ -48,13 +48,5 @@ namespace FaceIT.View
             IsPresented = false;
         }
 
-        private async void Sair(object sender, EventArgs e)
-        {
-            var choice = await DisplayAlert("", "Deseja Realmente Sair", "Sim", "Não");
-            if (choice)
-            {
-                await Navigation.PushAsync(new LoginPage());
-            }
-        }
     }
 }

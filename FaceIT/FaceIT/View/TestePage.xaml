@@ -6,20 +6,188 @@
              mc:Ignorable="d"
              x:Class="FaceIT.View.TestePage">
     <ContentPage.Content>
-        <ListView x:Name="listaProdutos" BackgroundColor="Aqua" SeparatorColor="Blue">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>                        
-                        <StackLayout Padding="10,10" Orientation="Vertical">
-                            <Label Text="{Binding IDPessoa}" />
-                            <Label Text="{Binding Tipo}" />
-                            <Label Text="{Binding Email}" />
-                            <Label Text="{Binding Senha}" />
-                            <Label Text="{Binding Excluido}" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ScrollView>
+            <StackLayout BackgroundColor="#ededed">
+                <StackLayout HorizontalOptions="Center"
+                             Margin="0,30,0,0">
+                    <Frame CornerRadius="130"
+                           Padding="0">
+                        <Image Source="account.jpg"
+                               HeightRequest="160"
+                               WidthRequest="160"
+                               Aspect="Fill"/>
+                    </Frame>
+                    <Label Text="Nome Teste" 
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="25"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           BackgroundColor="Transparent"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="20,25,20,0"
+                             HeightRequest="150">
+
+                    <StackLayout HorizontalOptions="StartAndExpand">
+                        <Frame CornerRadius="130"
+                               Padding="0"
+                               BackgroundColor="#ededed"
+                               HeightRequest="80"
+                               WidthRequest="80"
+                               BorderColor="Transparent"
+                               HasShadow="True">
+                            <Image Source="configuracoes.png"
+                                   HeightRequest="50"
+                                   WidthRequest="50">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GoToSettingsPage"/>
+                                </Image.GestureRecognizers>                                
+                            </Image>
+                        </Frame>
+                        <Label Text="Configurações"
+                               TextColor="#838383"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="EndAndExpand">
+                        <Frame CornerRadius="80"
+                               Padding="0"
+                               BackgroundColor="#004080"
+                               WidthRequest="80"
+                               HeightRequest="80"
+                               BorderColor="Transparent"
+                               HasShadow="True">
+                            <StackLayout HorizontalOptions="Center"
+                                         VerticalOptions="Center">
+                                <Image Source="editar.png"
+                                       WidthRequest="50"
+                                       HeightRequest="50">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToEditProfile"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </Frame>
+                        <Label Text="Edital Perfil"
+                               TextColor="#838383"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <Frame CornerRadius="130"
+                               Padding="0"
+                               BackgroundColor="#ededed"
+                               HeightRequest="80"
+                               WidthRequest="80"
+                               BorderColor="Transparent"
+                               HasShadow="True">
+                            <Image Source="pergunta.png"                               
+                                   HeightRequest="50"
+                                   WidthRequest="50"
+                                   Aspect="AspectFill">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GoToFaqPage"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+                        <Label Text="Faq"
+                               TextColor="#838383"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0">
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                               UWP='0,0,0,4'}"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Linguagens"
+                           TextColor="Black" />
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                     UWP='0,0,0,4'}"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="C#, Java Script"
+                           TextColor="Gray" />
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                               UWP='0,0,0,4'}"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="FrameWorks"
+                           TextColor="Black" />
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                               UWP='0,0,0,4'}"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Vue.js,EntityFrameWork"
+                           TextColor="Gray" />
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                               UWP='0,0,0,4'}"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="IDE's"
+                           TextColor="Black" />
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                               UWP='0,0,0,4'}"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Visual Studio"
+                           TextColor="Gray" />
+
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                               UWP='0,0,0,4'}"
+                           FontSize="Body"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Banco de Dados"
+                           TextColor="Black" />
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                               UWP='0,0,0,4'}"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="SQL Server"
+                           TextColor="Gray" />
+
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                               UWP='0,0,0,4'}"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Versionamento"
+                           TextColor="Black" />
+                    <Label Margin="{OnPlatform Default='16,0,0,4',
+                                                UWP='0,0,0,4'}"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Start"
+                            Text="SQL Server"
+                            TextColor="Gray" />
+                </StackLayout>
+
+                <Button x:Name="ToClose"
+                        Text="Sair"
+                        Clicked="Sair"
+                        TextColor="#da3437"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        BackgroundColor="White" 
+                        CornerRadius="28"
+                        VerticalOptions="EndAndExpand"
+                        Margin="45,20"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -55,31 +55,6 @@
                                     </StackLayout>
                                 </ViewCell>
                             </TableSection>
-                            <TableSection>
-                                <ViewCell Tapped="GoToFaqPage">
-                                    <StackLayout Padding="15,10">
-                                        <Label Text="FAQ" VerticalTextAlignment="Center"
-                                               TextColor="White"/>
-                                    </StackLayout>
-                                </ViewCell>
-                            </TableSection>
-                            
-                            <TableSection>
-                                <ViewCell Tapped="GoToSettingsPage">
-                                    <StackLayout Padding="15,10" VerticalOptions="End">
-                                        <Label Text="Configuração" VerticalTextAlignment="Center"
-                                               TextColor="White"/>
-                                    </StackLayout>
-                                </ViewCell>
-                            </TableSection>  
-                            <TableSection>
-                                <ViewCell Tapped="Sair">
-                                    <StackLayout Padding="15,10">
-                                        <Label Text="Sair" VerticalTextAlignment="Center"
-                                               TextColor="White"/>
-                                    </StackLayout>
-                                </ViewCell>
-                            </TableSection>
                         </TableView>                    
                     </StackLayout> 
                 </StackLayout>

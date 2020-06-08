@@ -1,4 +1,5 @@
 ﻿using faceitapi.Models;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace FaceIT.ViewModels
@@ -7,15 +8,6 @@ namespace FaceIT.ViewModels
     {
         //private Skill _oldProduct;
         public ObservableCollection<Skill> SkillsLP { get; set; }
-        public ObservableCollection<Skill> SkillsFW { get; set; }
-        public ObservableCollection<Skill> SkillsPF { get; set; }
-        public ObservableCollection<Skill> SkillsCV { get; set; }
-        public ObservableCollection<Skill> SkillsIDE { get; set; }
-        public ObservableCollection<Skill> SkillsBD { get; set; }
-        public ObservableCollection<Skill> SkillsIdioma { get; set; }
-
-
-
         public SkillViewModel()
         {
             SkillsLP = new ObservableCollection<Skill>
@@ -28,10 +20,6 @@ namespace FaceIT.ViewModels
                 new Skill {IDSkill = 6,IDTipoSkill = 1,Descricao = "Python"},
                 new Skill {IDSkill = 7,IDTipoSkill = 1,Descricao = "Ruby"},
                 new Skill {IDSkill = 8,IDTipoSkill = 1,Descricao = "SQL"},
-            };
-
-            SkillsFW = new ObservableCollection<Skill>
-            {
                 new Skill {IDSkill = 9, IDTipoSkill = 2, Descricao = "ASP.NET"},
                 new Skill {IDSkill = 10,IDTipoSkill = 2,Descricao = "Angular" },
                 new Skill {IDSkill = 11,IDTipoSkill = 2,Descricao = "Cassandra" },
@@ -49,35 +37,20 @@ namespace FaceIT.ViewModels
                 new Skill {IDSkill = 23,IDTipoSkill = 2,Descricao = "Spring"},
                 new Skill {IDSkill = 24,IDTipoSkill = 2,Descricao = "Vue"},
                 new Skill {IDSkill = 25,IDTipoSkill = 2,Descricao = "jQuery"},
-            };
-            SkillsPF = new ObservableCollection<Skill>
-            {
                 new Skill {IDSkill = 26, IDTipoSkill = 3, Descricao = "Desktop"},
                 new Skill {IDSkill = 27,IDTipoSkill = 3,Descricao = "Mobile"},
                 new Skill {IDSkill = 28,IDTipoSkill = 3,Descricao = "Web"},
-            };
-
-            SkillsCV = new ObservableCollection<Skill>
-            {
                 new Skill {IDSkill = 29, IDTipoSkill = 4, Descricao = "CVS"},
                 new Skill {IDSkill = 30,IDTipoSkill = 4,Descricao = "Git"},
                 new Skill {IDSkill = 31,IDTipoSkill = 4,Descricao = "Mercurial"},
                 new Skill {IDSkill = 32,IDTipoSkill = 4,Descricao = "Subversion"},
                 new Skill {IDSkill = 33,IDTipoSkill = 4,Descricao = "TFS"},
-            };
-
-            SkillsIDE = new ObservableCollection<Skill>
-            {
                 new Skill {IDSkill = 34, IDTipoSkill = 5, Descricao = "Eclipse"},
                 new Skill {IDSkill = 35,IDTipoSkill = 5,Descricao = "JetBrains"},
                 new Skill {IDSkill = 36,IDTipoSkill = 5,Descricao = "MySql WorkBench"},
                 new Skill {IDSkill = 37,IDTipoSkill = 5,Descricao = "NetBeans"},
                 new Skill {IDSkill = 38,IDTipoSkill = 5,Descricao = "SSMS"},
                 new Skill {IDSkill = 39,IDTipoSkill = 5,Descricao = "VisualStudio"},
-            };
-
-            SkillsBD = new ObservableCollection<Skill>
-            {
                 new Skill {IDSkill = 40, IDTipoSkill = 6, Descricao = "MariaDB"},
                 new Skill {IDSkill = 41,IDTipoSkill = 6,Descricao = "MongoDB"},
                 new Skill {IDSkill = 42,IDTipoSkill = 6,Descricao = "MySQL"},
@@ -85,17 +58,11 @@ namespace FaceIT.ViewModels
                 new Skill {IDSkill = 44,IDTipoSkill = 6,Descricao = "PostgreSQL"},
                 new Skill {IDSkill = 45,IDTipoSkill = 6,Descricao = "SQL Server"},
                 new Skill {IDSkill = 46,IDTipoSkill = 6,Descricao = "SQLite"},
-            };
-
-            SkillsIdioma = new ObservableCollection<Skill>
-            {
                 new Skill {IDSkill = 47, IDTipoSkill = 7, Descricao = "Espanhol"},
                 new Skill {IDSkill = 48,IDTipoSkill = 7,Descricao = "Francês"},
                 new Skill {IDSkill = 49,IDTipoSkill = 7,Descricao = "Inglês"},
                 new Skill {IDSkill = 50,IDTipoSkill = 7,Descricao = "Português"},
             };
-
-
         }
     }
 }

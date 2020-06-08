@@ -4,9 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
+             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack" xmlns:local1="clr-namespace:FaceIT.ViewModels"
              mc:Ignorable="d"
              x:Class="FaceIT.View.PessoaJuridicaCadastroPage">
+    <ContentPage.BindingContext>
+        <local1:SkillViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView>  
             <StackLayout>
@@ -49,7 +52,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="E-mail"
-                            TextColor="#004080">
+                            TextColor="#004080"
+                            x:Name="email_entry">
                             <Entry.Behaviors>
                                 <behaviorPack:EmailValidationBehavior/>
                             </Entry.Behaviors>
@@ -62,7 +66,8 @@
                         <Entry
                             Placeholder="Senha"
                             TextColor="#004080"
-                            IsPassword="True">
+                            IsPassword="True"
+                            x:Name="senha_entry">
                             <Entry.Behaviors>
                                 <behaviorPack:PasswordValidationBehavior></behaviorPack:PasswordValidationBehavior>
                             </Entry.Behaviors>
@@ -75,7 +80,8 @@
                         <Entry
                             Placeholder="Confirmar Senha"
                             TextColor="#004080"
-                            IsPassword="True">
+                            IsPassword="True"
+                            x:Name="confirmarsenha_entry">
                             <Entry.Behaviors>
                                 <behaviorPack:PasswordValidationBehavior/>
                             </Entry.Behaviors>
@@ -93,7 +99,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="CNPJ"
-                            TextColor="#004080">
+                            TextColor="#004080"
+                            x:Name="cnpj_entry">
                             <Entry.Behaviors>
                                 <behaviorPack:CNPJValidationBehavior/>
                                 <behaviorPack:MaskedBehavior Mask="XX.XXX.XXX/XXXX-XX"/>
@@ -106,7 +113,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="Razão Social"
-                            TextColor="#004080" />
+                            TextColor="#004080"
+                            x:Name="rsocial_entry"/>
                     </border:SfBorder> 
                     <border:SfBorder
                         CornerRadius="15"
@@ -114,7 +122,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="Inscrição Estadual"
-                            TextColor="#004080">
+                            TextColor="#004080"
+                            x:Name="Iestadual_entry">
                         </Entry>
                     </border:SfBorder> 
                     <border:SfBorder
@@ -123,7 +132,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="Nome Fantasia"
-                            TextColor="#004080">
+                            TextColor="#004080"
+                            x:Name="Nfantasia_entry">
                         </Entry>
                     </border:SfBorder>
                     <Label
@@ -138,7 +148,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="CEP"
-                            TextColor="#004080">
+                            TextColor="#004080"
+                            x:Name="cep_entry">
                             <Entry.Behaviors>
                                 <behaviorPack:CEPValidationBehavior/>
                                 <behaviorPack:MaskedBehavior Mask="XXXXX-XXX"/>
@@ -154,18 +165,20 @@
                             VerticalOptions="StartAndExpand">
                             <Entry
                                 Placeholder="País"
-                                TextColor="#004080">
+                                TextColor="#004080"
+                                x:Name="pais_entry">
                             </Entry>
                         </border:SfBorder>
                         <border:SfBorder
-                        CornerRadius="15"
-                        BackgroundColor="Transparent"
-                        BorderColor="#1fada6"
-                        HorizontalOptions="End"
-                        VerticalOptions="End">
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6"
+                            HorizontalOptions="End"
+                            VerticalOptions="End">
                             <Entry
-                            Placeholder="UF"
-                            TextColor="#004080">
+                                Placeholder="UF"
+                                TextColor="#004080"
+                                x:Name="uf_entry">
                                 <Entry.Behaviors>
                                     <behaviorPack:MaskedBehavior Mask="XX"/>
                                 </Entry.Behaviors>
@@ -178,7 +191,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="Munícipio"
-                            TextColor="#004080">
+                            TextColor="#004080"
+                            x:Name="municipio_entry">
                         </Entry>
                     </border:SfBorder>
 
@@ -188,7 +202,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="Logradouro"
-                            TextColor="#004080">
+                            TextColor="#004080"
+                            x:Name="logradouro_entry">
                         </Entry>
                     </border:SfBorder>
                     <border:SfBorder
@@ -197,7 +212,8 @@
                         BorderColor="#1fada6">
                         <Entry
                             Placeholder="Bairro"
-                            TextColor="#004080">
+                            TextColor="#004080"
+                            x:Name="bairro_entry">
                         </Entry>
                     </border:SfBorder>
                     <StackLayout Orientation="Horizontal">
@@ -207,18 +223,20 @@
                             BorderColor="#1fada6">
                             <Entry
                                 Placeholder="Número"
-                                TextColor="#004080">
+                                TextColor="#004080"
+                                x:Name="numero_entry">
                             </Entry>
                         </border:SfBorder>
                         <border:SfBorder
-                        CornerRadius="15"
-                        BackgroundColor="Transparent"
-                        BorderColor="#1fada6"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
                             <Entry
-                            Placeholder="Complemento"
-                            TextColor="#004080">
+                                Placeholder="Complemento"
+                                TextColor="#004080"
+                                x:Name="complemento_entry">
                             </Entry>
                         </border:SfBorder>
                     </StackLayout>
@@ -235,7 +253,8 @@
                             BorderColor="#1fada6">
                             <Entry
                                 Placeholder="DDD"
-                                TextColor="#004080">
+                                TextColor="#004080"
+                                x:Name="dddtel_entry">
                                 <Entry.Behaviors>
                                     <behaviorPack:MaskedBehavior Mask="XX"/>
                                 </Entry.Behaviors>
@@ -249,7 +268,8 @@
                             VerticalOptions="CenterAndExpand">
                             <Entry
                                 Placeholder="Telefone"
-                                TextColor="#004080">
+                                TextColor="#004080"
+                                x:Name="telefone_entry">
                                 <Entry.Behaviors>
                                     <behaviorPack:MaskedBehavior Mask="XXXX-XXXX"/>
                                 </Entry.Behaviors>
@@ -263,7 +283,8 @@
                             BorderColor="#1fada6">
                             <Entry
                                 Placeholder="DDD"
-                                TextColor="#004080">
+                                TextColor="#004080"
+                                x:Name="dddcel_entry">
                                 <Entry.Behaviors>
                                     <behaviorPack:MaskedBehavior Mask="XX"/>
                                 </Entry.Behaviors>
@@ -277,23 +298,53 @@
                             VerticalOptions="CenterAndExpand">
                             <Entry
                                 Placeholder="Celular"
-                                TextColor="#004080">
+                                TextColor="#004080"
+                                x:Name="celular_entry">
                                 <Entry.Behaviors>
                                     <behaviorPack:MaskedBehavior Mask="XXXXX-XXXX"/>
                                 </Entry.Behaviors>
                             </Entry>
                         </border:SfBorder>
                     </StackLayout>
-                    <StackLayout Padding="20" Orientation="Horizontal"
+                    <Label Text="Selecione suas Habilidades : " 
+                           TextColor="#1fada6" 
+                           FontSize="Medium"
+                           Margin="0,-1,0,-2"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"/>
+                    <Label x:Name="currentSelectedItemLabel"/>
+                    <SearchBar x:Name="SkillsSearchBar" 
+                               TextChanged="SkillsSearchBar_TextChanged"/>
+                    <Button Text="Limpar suas Habilidades"
+                            x:Name="button_limpar"
+                            Clicked="button_limpar_Clicked"/>
+                </StackLayout>
+                <Label Text="Seleção anterior : "  TextColor="Red" FontSize="Medium" IsVisible="False"/>
+                <Label x:Name="previousSelectedItemLabel" IsVisible="False"/>
+                <CollectionView ItemsSource="{Binding SkillsLP}"
+                                SelectionMode="Multiple" 
+                                SelectionChanged="OnCollectionViewSelectionChanged"
+                                x:Name="ListaSkills"
+                                IsVisible="False">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Descricao}" 
+                                   WidthRequest="60"
+                                   HeightRequest="30"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="20"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout Padding="20" Orientation="Horizontal"
                                  HorizontalOptions="Center">
-                        <Button Text="Próximo"
+                    <Button Text="Próximo"
                                 BackgroundColor="#1fada6"
                                 Clicked="Button_Clicked"
-                                FontSize="12"/>      
-                        <Button Text="Cancela"
+                                FontSize="12"/>
+                    <Button Text="Cancela"
                                 BackgroundColor="Gray"
                                 FontSize="12"/>
-                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

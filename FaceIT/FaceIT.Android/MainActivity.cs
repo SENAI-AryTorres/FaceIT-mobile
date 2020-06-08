@@ -13,6 +13,9 @@ namespace FaceIT.Droid
     {
         protected async override void OnCreate(Bundle savedInstanceState)
         {
+
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjYzNjM1QDMxMzgyZTMxMmUzMEo1MFowbzcvOEIwV0dPWHU5WXJvRHJrZDZWMm9jWEE2TmRTZDBHVUYyMDQ9");
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
