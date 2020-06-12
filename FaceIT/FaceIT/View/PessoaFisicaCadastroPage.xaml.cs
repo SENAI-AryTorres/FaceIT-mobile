@@ -21,7 +21,11 @@ namespace FaceIT.View
     public partial class PessoaFisicaCadastroPage : ContentPage
     {
         private SkillViewModel skill = new SkillViewModel();
-        Cadastro_Pessoa_Fisica service = new Cadastro_Pessoa_Fisica();        
+        private Cadastro_Pessoa_Fisica service = new Cadastro_Pessoa_Fisica();
+
+        public static Imagem Imagem { get; set; } = new Imagem();
+        
+
         public PessoaFisicaCadastroPage()
         {
             InitializeComponent();
@@ -35,6 +39,7 @@ namespace FaceIT.View
             var faq = e.Item as Skill;
             var vm = BindingContext as SkillViewModel;
         }
+
         private async void btnFoto_Clicked(object sender, EventArgs e)
         {
             await CrossMedia.Current.Initialize();
@@ -50,102 +55,103 @@ namespace FaceIT.View
 
                         return;
                     }
-                    var file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions { PhotoSize = PhotoSize.Small });
+                    var imgAux = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions { PhotoSize = PhotoSize.Small });
 
-                    if (file == null)
+                    if (imgAux == null)
                         return;
-
                     imgCamera.Source = ImageSource.FromStream(() =>
                     {
-                        var stream = file.GetStream();
-                        file.Dispose();
+                        var stream = imgAux.GetStream();
                         return stream;
                     });
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        imgAux.GetStream().CopyTo(memoryStream);
+                        imgAux.Dispose();
+                        Imagem.Bytes = memoryStream.ToArray();
+                    }                    
                 }
                 else if (action == "Tirar Photo")
-                {                    
-
+                {
                     if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                     {
                         await DisplayAlert("Não encontrado a camera", "", "OK");
                         return;
                     }
-                    var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                    var imgAux = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                     {
                         SaveToAlbum = true,
                     });
-                    if (file == null)
+                    if (imgAux == null)
                         return;
+
                     imgCamera.Source = ImageSource.FromStream(() =>
                     {
-                        var stream = file.GetStream();
+                        var stream = imgAux.GetStream();
                         return stream;
-                    });                    
-                    await DisplayAlert("Foto Localizada", "Local: " + file.AlbumPath, "OK");
+                    });
+
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        imgAux.GetStream().CopyTo(memoryStream);
+                        //imgAux.Dispose();
+                        //Imagem.Nome = imgAux.AlbumPath;
+                        Imagem.Bytes = memoryStream.ToArray();
+                    }
+
+                    await DisplayAlert("Foto Localizada", "Local: " + imgAux.AlbumPath, "OK");
                 }
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Permissão Negada", "Dê Permissão de camera para o Dispositivo.\nError:" + ex.Message, "OK");
             }
-
         }
-        
+
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            Endereco endereco = new Endereco();
+            Pessoa pessoa = new Pessoa();
+            PessoaFisica pf = new PessoaFisica();
             string telefone = dddtel_entry.Text + telefone_entry.Text;
             string celular = dddcel_entry.Text + celular_entry.Text;
 
-            //pegar os dados das entry para as model
-            //Imagem imagem = new Imagem()
-            //{
-            //    Bytes = imgbyte,
-            //    Nome = imgname,
-            //};
+            endereco.CEP = cep_entry.Text;
+            endereco.Pais = pais_entry.Text;
+            endereco.UF = uf_entry.Text;
+            endereco.Municipio = municipio_entry.Text;
+            endereco.Logradouro = logradouro_entry.Text;
+            endereco.Bairro = bairro_entry.Text;
+            endereco.Numero = numero_entry.Text;
+            endereco.Complemento = complemento_entry.Text;            
 
-            PessoaFisica pf = new PessoaFisica()
+            pessoa.Tipo = "PF";
+            pessoa.Email = email_entry.Text;
+            pessoa.Senha = senha_entry.Text;
+            pessoa.Celular = celular;
+            pessoa.Telefone = telefone;
+            pessoa.Endereco = endereco;
+            pessoa.Imagem = Imagem;
+            pessoa.Role = "user";
+            //pessoa.Imagem.IDPessoaNavigation = pessoa;
+
+            pf.Nome = nome_entry.Text;
+            pf.CPF = cpf_entry.Text;
+            pf.RG = rg_entry.Text;
+            pf.IDPessoaNavigation = pessoa;
+
+            //endereco.IDPessoaNavigation = pessoa;            
+
+            var result = service.AddPessoaFisica(pf);
+            if (await result)
             {
-                Nome = nome_entry.Text,
-                CPF = cpf_entry.Text,
-                RG = rg_entry.Text,
-            };
-
-            Endereco endereco = new Endereco()
-            {
-                CEP = cep_entry.Text,
-                Pais = pais_entry.Text,
-                UF = uf_entry.Text,
-                Municipio = municipio_entry.Text,
-                Logradouro = logradouro_entry.Text,
-                Bairro = bairro_entry.Text,
-                Numero = numero_entry.Text,
-                Complemento = complemento_entry.Text,
-            };
-
-            Pessoa pessoa = new Pessoa()
-            {
-                Tipo = "pessoafisica",
-                Email = email_entry.Text,
-                Senha = senha_entry.Text,
-                Excluido = false,
-                Celular = celular,
-                Telefone = telefone,
-                Endereco = endereco,
-                PessoaFisica = pf,
-            };
-            //var skillpage = new SkillPageCadastro();
-            //skillpage.BindingContext = pessoa;
-            //await Navigation.PushAsync(skillpage);
-
-
-            //var result = service.AddPessoaFisica(pessoa);
-            //if (await result)
-            //{
-                //await Navigation.PushAsync(new SkillPageCadastro());
-            //}
-            //else
-            //    await DisplayAlert("Erro", "Cheque seus Dados", "OK");
+                await DisplayAlert("Olá", "Cadastrado com Sucesso", "OK");
+                await Navigation.PushAsync(new LoginPage());
+            }
+            else
+                await DisplayAlert("Erro", "Cheque seus Dados", "OK");
         }
+
         public static byte[] ReadFully(Stream input)
         {
             using (var ms = new MemoryStream())
@@ -155,12 +161,12 @@ namespace FaceIT.View
             }
         }
 
-        void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateSelectionData(e.PreviousSelection, e.CurrentSelection);
         }
 
-        void UpdateSelectionData(IEnumerable<object> previousSelectedItems, IEnumerable<object> currentSelectedItems)
+        private void UpdateSelectionData(IEnumerable<object> previousSelectedItems, IEnumerable<object> currentSelectedItems)
         {
             var anterior = ToList(previousSelectedItems);
             var atual = ToList(currentSelectedItems);
@@ -168,7 +174,7 @@ namespace FaceIT.View
             currentSelectedItemLabel.Text = string.IsNullOrWhiteSpace(atual) ? "[-]" : atual;
         }
 
-        static string ToList(IEnumerable<object> items)
+        private static string ToList(IEnumerable<object> items)
         {
             if (items == null)
             {
@@ -192,10 +198,40 @@ namespace FaceIT.View
             else
                 ListaSkills.IsVisible = false;
         }
+
         private void button_limpar_Clicked(object sender, EventArgs e)
         {
             currentSelectedItemLabel.Text = "";
-            ListaSkills.SelectedItems = null;   
+            ListaSkills.SelectedItems = null;
+        }
+
+
+        private void BuscarCEP(object sender, TextChangedEventArgs args)
+        {
+            string cep = cep_entry.Text.Trim();
+            if (cep.Length == 9)
+            {
+                try
+                {
+                    Endereco end = ViaCepService.BuscarEnderecoViaCep(cep);
+                    if (end != null)
+                    {
+                        resultado.Text = string.Format("Endereço: {0}, {1}, {2}", end.UF, end.Logradouro, end.Bairro);
+                    }
+                    else
+                    {
+                        DisplayAlert("ERRO", "O endereço não foi encontrado para o CEP informado: " + cep, "OK");
+                    }
+                    pais_entry.Text = "Brasil";
+                    uf_entry.Text = end.UF;
+                    logradouro_entry.Text = end.Logradouro;
+                    bairro_entry.Text = end.Bairro;
+                }
+                catch (Exception e)
+                {
+                    DisplayAlert("ERRO CRÍTICO", e.Message, "OK");
+                }
+            }            
         }
     }
 }

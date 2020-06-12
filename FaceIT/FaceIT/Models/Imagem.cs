@@ -17,5 +17,6 @@ namespace faceitapi.Models
         [ForeignKey(nameof(IDPessoa))]
         [InverseProperty(nameof(Pessoa.Imagem))]
         public virtual Pessoa IDPessoaNavigation { get; set; }
+
     }
 }

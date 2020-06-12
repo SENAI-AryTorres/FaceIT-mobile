@@ -28,6 +28,8 @@ namespace faceitapi.Models
         public string Celular { get; set; }
         [StringLength(14)]
         public string Telefone { get; set; }
+        [StringLength(10)]
+        public string Role { get; set; }
 
         [InverseProperty("IDPessoaNavigation")]
         public virtual Anexo Anexo { get; set; }

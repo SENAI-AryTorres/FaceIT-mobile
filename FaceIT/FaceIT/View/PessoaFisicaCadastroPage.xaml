@@ -148,13 +148,16 @@
                         <Entry
                             Placeholder="CEP"
                             TextColor="#004080"
-                            x:Name="cep_entry">
+                            x:Name="cep_entry"
+                            TextChanged="BuscarCEP">
                             <Entry.Behaviors>
                                 <behaviorPack:CEPValidationBehavior/>
                                 <behaviorPack:MaskedBehavior Mask="XXXXX-XXX"/>
                             </Entry.Behaviors>
                         </Entry>
-                    </border:SfBorder> 
+                    </border:SfBorder>
+                    <Label Text="" x:Name="resultado"
+                           IsVisible="False"/>
                     <StackLayout Orientation="Horizontal">
                         <border:SfBorder
                             CornerRadius="15"
@@ -326,11 +329,23 @@
                                 IsVisible="False">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding Descricao}" 
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Descricao}" 
                                    WidthRequest="60"
                                    HeightRequest="30"
                                    HorizontalTextAlignment="Center"
                                    FontSize="20"/>
+                                <Label Text="{Binding IDTipoSkill}" 
+                                   WidthRequest="60"
+                                   HeightRequest="30"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="20"/>
+                                <Label Text="{Binding IDSkill}" 
+                                   WidthRequest="60"
+                                   HeightRequest="30"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="20"/>
+                            </StackLayout>                            
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

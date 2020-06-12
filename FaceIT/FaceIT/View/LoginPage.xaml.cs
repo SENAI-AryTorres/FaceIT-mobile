@@ -1,7 +1,10 @@
 ﻿using FaceIT.Service;
+using faceitapi.Models;
 using faceitapi.Models.ViewModel;
+using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,12 +34,10 @@ namespace FaceIT.Page
 
         private async void NavegarParaMenuPage(object sender, EventArgs e)
         {
-            var loginRequest = new LoginGet()
-            {
-                Email = entry_email.Text,
-                Senha = entry_senha.Text,
-                GoogleId = null
-            };
+            var loginRequest = new LoginGet();
+            loginRequest.Email = entry_email.Text;
+            loginRequest.Senha = entry_senha.Text;
+            
             var result = service.Logar(loginRequest);
             if (await result)
             {

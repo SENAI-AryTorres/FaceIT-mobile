@@ -22,7 +22,7 @@ namespace FaceIT.View
         {
             InitializeComponent();
             CriarMapa();
-            PermissaoGPSAsync();
+            _ = PermissaoGPSAsync();
 
         }
 
