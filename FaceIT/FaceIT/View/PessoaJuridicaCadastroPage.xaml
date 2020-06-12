@@ -121,16 +121,6 @@
                         BackgroundColor="Transparent"
                         BorderColor="#1fada6">
                         <Entry
-                            Placeholder="Inscrição Estadual"
-                            TextColor="#004080"
-                            x:Name="Iestadual_entry">
-                        </Entry>
-                    </border:SfBorder> 
-                    <border:SfBorder
-                        CornerRadius="15"
-                        BackgroundColor="Transparent"
-                        BorderColor="#1fada6">
-                        <Entry
                             Placeholder="Nome Fantasia"
                             TextColor="#004080"
                             x:Name="Nfantasia_entry">
@@ -149,13 +139,16 @@
                         <Entry
                             Placeholder="CEP"
                             TextColor="#004080"
-                            x:Name="cep_entry">
+                            x:Name="cep_entry"
+                            TextChanged="BuscarCEP">
                             <Entry.Behaviors>
                                 <behaviorPack:CEPValidationBehavior/>
                                 <behaviorPack:MaskedBehavior Mask="XXXXX-XXX"/>
                             </Entry.Behaviors>
                         </Entry>
                     </border:SfBorder>
+                    <Label Text="" x:Name="resultado"
+                           IsVisible="False"/>
                     <StackLayout Orientation="Horizontal">
                         <border:SfBorder
                             CornerRadius="15"
