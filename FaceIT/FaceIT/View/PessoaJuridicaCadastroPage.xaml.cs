@@ -54,7 +54,11 @@ namespace FaceIT.View
 
                     if (imgAux == null)
                         return;
-
+                    imgCamera.Source = ImageSource.FromStream(() =>
+                    {
+                        var stream = imgAux.GetStream();
+                        return stream;
+                    });
                     using (var memoryStream = new MemoryStream())
                     {
                         imgAux.GetStream().CopyTo(memoryStream);
@@ -75,12 +79,16 @@ namespace FaceIT.View
                     });
                     if (imgAux == null)
                         return;
-
+                    imgCamera.Source = ImageSource.FromStream(() =>
+                    {
+                        var stream = imgAux.GetStream();
+                        return stream;
+                    });
                     using (var memoryStream = new MemoryStream())
                     {
                         imgAux.GetStream().CopyTo(memoryStream);
-                        imgAux.Dispose();
-                        Imagem.Nome = imgAux.AlbumPath;
+                        //imgAux.Dispose();
+                        //Imagem.Nome = imgAux.AlbumPath;
                         Imagem.Bytes = memoryStream.ToArray();
                     }
 
@@ -123,6 +131,7 @@ namespace FaceIT.View
             pj.RazaoSocial = rsocial_entry.Text;
             pj.NomeFantasia = Nfantasia_entry.Text;
             pj.IDPessoaNavigation = pessoa;
+            pj.IE = Iestadual_entry.Text;
 
             var result = service.AddPessoaJuridica(pj);
             if (await result)

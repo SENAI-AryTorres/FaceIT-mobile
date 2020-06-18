@@ -1,11 +1,16 @@
 ﻿using FaceIT.Service;
+using FaceIT.View;
 using faceitapi.Models;
 using faceitapi.Models.ViewModel;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
 
 namespace FaceIT.Page
@@ -38,11 +43,18 @@ namespace FaceIT.Page
             loginRequest.Email = entry_email.Text;
             loginRequest.Senha = entry_senha.Text;
             
-            var result = service.Logar(loginRequest);
-            if (await result)
+            var result = await service.Logar(loginRequest);
+            if (result != null)
             {
+                var pessoa = result.pessoa;
+                var token = result.token;
+
+          var pagina = new View.Menu(result.pessoa, token)
+                {
+                    BindingContext = result.pessoa
+                };
+                await Navigation.PushAsync(pagina);
                 await DisplayAlert("Olá", "Seja Bem-Vindo ao FaceIT", "Ok");
-                await Navigation.PushAsync(new View.Menu());
             }
             else
             {

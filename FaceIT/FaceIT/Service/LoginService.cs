@@ -13,7 +13,7 @@ namespace FaceIT.Service
 {
     public class LoginService
     {
-        public async Task<bool> Logar(LoginGet login)
+        public async Task<LoginRetun> Logar(LoginGet login)
         {
             try
             {
@@ -26,9 +26,10 @@ namespace FaceIT.Service
 
                 if (httpresponse.IsSuccessStatusCode)
                 {
-                    return true;
+                    var result = JsonConvert.DeserializeObject<LoginRetun>(await httpresponse.Content.ReadAsStringAsync());
+                    return result;
                 }
-                return false;
+                return null;
             }
             catch (Exception)
             {

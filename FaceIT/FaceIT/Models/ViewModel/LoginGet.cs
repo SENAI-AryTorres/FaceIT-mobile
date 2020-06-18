@@ -11,4 +11,10 @@ namespace faceitapi.Models.ViewModel
         public string Senha { get; set; }
         public int? GoogleId { get; set; }
     }
+
+    public class LoginRetun
+    {
+        public Pessoa pessoa { get; set; }
+        public Token token { get; set; }
+    }
 }

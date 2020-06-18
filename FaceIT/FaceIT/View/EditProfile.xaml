@@ -2,49 +2,184 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
              mc:Ignorable="d"
              x:Class="FaceIT.View.EditProfile"
-             >
+             Title="Editar Perfil">
   <ContentPage.Content>
-
-        <StackLayout>
-            <StackLayout Padding="5">
-                <Label Text="Dados de Cadastro"
-                       TextColor="#004080"/>
-                <Label Text="Altere seus dados no campo abaixo"
-                       TextColor="#1fada6"/>
-
-                <border:SfBorder CornerRadius="5">
-                    <Entry Placeholder="Nome"/>
-                </border:SfBorder>
-                <border:SfBorder CornerRadius="5">
-                    <Entry Placeholder="E-mail"/>
-                </border:SfBorder>
-                <border:SfBorder CornerRadius="5">
-                    <Entry Placeholder="CPF"/>
-                </border:SfBorder>
-                <border:SfBorder CornerRadius="5">
-                    <Entry Placeholder="RG"/>
-                </border:SfBorder>
-
+        <ScrollView>            
+            <StackLayout Padding="5" Spacing="5">
+                <StackLayout x:Name="data_conta_contato" Padding="5">
+                    <Label Text="Dados da sua Conta e Contato"
+                           TextColor="#004080"
+                           FontSize="20"/>
+                    <Label Text="Altere seus dados no campo abaixo"
+                           TextColor="#1fada6"
+                           FontSize="17"/>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <border:SfBorder.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </border:SfBorder.GestureRecognizers>
+                        <Entry Placeholder="E-mail"
+                               Text="{Binding Email}"
+                               IsEnabled="False"
+                               TextColor="Black"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Nova Senha"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Confirmar Nova Senha"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Telefone"
+                               Text="{Binding Telefone}">
+                            <Entry.Behaviors>
+                                <behaviorPack:CEPValidationBehavior/>
+                                <behaviorPack:MaskedBehavior Mask="(XX)XXXX-XXXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Celular"
+                               Text="{Binding Celular}">
+                            <Entry.Behaviors>
+                                <behaviorPack:CEPValidationBehavior/>
+                                <behaviorPack:MaskedBehavior Mask="(XX)XXXXX-XXXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </border:SfBorder>
+                </StackLayout>
+                <StackLayout Padding="5">
+                    <Label Text="Dados de Cadastro"
+                           TextColor="#004080"
+                           FontSize="20"/>
+                    <Label Text="Altere seus dados no campo abaixo"
+                           TextColor="#1fada6"
+                           FontSize="17"/>                    
+                    <StackLayout x:Name="pf_data">
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Nome"
+                                   x:Name="pf_nome"
+                                   Text="{Binding PessoaFisica.Nome}"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="CPF"
+                                   x:Name="pf_cpf"
+                                   Text="{Binding PessoaFisica.CPF}"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="RG"
+                                   x:Name="pf_rg"
+                                   Text="{Binding PessoaFisica.RG}"/>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <StackLayout x:Name="pj_data">
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Nome Fantasia"
+                                   x:Name="pj_nomef"
+                                   Text="{Binding PessoaJuridica.NomeFantasia}"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Razão Social"
+                                   x:Name="pj_razaosocial"
+                                   Text="{Binding PessoaJuridica.RazaoSocial}"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="CNPJ"
+                                   x:Name="pj_cnpj"
+                                   Text="{Binding PessoaJuridica.CNPJ}"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Inscrição Estadual"
+                                   x:Name="pj_Iestadual"
+                                   Text="{Binding PessoaJuridica.IE}"/>
+                        </border:SfBorder>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout x:Name="endereco_data" Padding="5" >
+                    <Label Text="Dados de Endereço"
+                           TextColor="#004080"
+                           FontSize="20"/>
+                    <Label Text="Altere seus dados no campo abaixo"
+                           TextColor="#1fada6"
+                           FontSize="17"/>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="CEP"
+                               Text="{Binding Endereco.CEP}"
+                               x:Name="cep_entry"
+                               TextChanged="BuscarCEP">
+                            <Entry.Behaviors>
+                                <behaviorPack:CEPValidationBehavior/>
+                                <behaviorPack:MaskedBehavior Mask="XXXXX-XXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </border:SfBorder>
+                    <Label Text="" x:Name="resultado"
+                           IsVisible="False"/>
+                    <StackLayout Orientation="Horizontal">
+                        <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6"
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="StartAndExpand">
+                            <Entry Placeholder="Pais"
+                                   Text="{Binding Endereco.Pais}"
+                                   x:Name="pais_entry"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="End">
+                            <Entry Placeholder="Uf"
+                                   Text="{Binding Endereco.UF}"
+                                   x:Name="uf_entry"/>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Municipio"
+                               Text="{Binding Endereco.Municipio}"
+                               x:Name="munic_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Endereço"
+                               Text="{Binding Endereco.Logradouro}"
+                               x:Name="logradouro_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Numero"
+                               Text="{Binding Endereco.Numero}"
+                               x:Name="numero_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Complemento"
+                               Text="{Binding Endereco.Complemento}"
+                               x:Name="comp_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Bairro"
+                               Text="{Binding Endereco.Bairro}"
+                               x:Name="bairro_entry"/>
+                    </border:SfBorder>
+                </StackLayout>
             </StackLayout>
-            <StackLayout Padding="5">
-                <Label Text="Dados de Endereço"
-                       TextColor="#004080"/>
-                <Label Text="Altere seus dados no campo abaixo"
-                       TextColor="#1fada6"/>
-                <border:SfBorder CornerRadius="5">
-                    <Entry Placeholder="CEP"/>
-                </border:SfBorder>
-                <border:SfBorder CornerRadius="5">
-                    <Entry Placeholder="Logradouro"/>
-                </border:SfBorder>
-                <border:SfBorder CornerRadius="5">
-                    <Entry Placeholder="Número"/>
-                </border:SfBorder>
-            </StackLayout>
-            
-        </StackLayout>
-  </ContentPage.Content>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

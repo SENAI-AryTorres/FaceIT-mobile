@@ -14,7 +14,7 @@
                      BackgroundImageSource="degradeazul.jpg">
             <ContentPage.Content>
                 <StackLayout>   
-                    <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">  
+                    <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Frame
                                 BorderColor="Black"
                                 CornerRadius="12"
@@ -23,7 +23,7 @@
                             <Image
                                     HeightRequest="100"
                                     WidthRequest="100"
-                                    Source="account.png"
+                                    Source="{Binding Imagem}"
                                     HorizontalOptions="CenterAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="GoToProfilePage"/>
@@ -31,11 +31,41 @@
                             </Image>
                         </Frame>
                         <Label 
-                            Text="Nome Teste" 
+                            Text="{Binding PessoaJuridica.NomeFantasia}" 
                             TextColor="White" 
                             FontSize="Large"
-                            HorizontalTextAlignment="Center">
+                            HorizontalTextAlignment="Center"
+                            x:Name="juridicanome_entry"
+                            IsVisible="False"
+                            >
                         </Label>
+                        <Label 
+                            Text="{Binding PessoaFisica.Nome}" 
+                            TextColor="White" 
+                            FontSize="Large"
+                            HorizontalTextAlignment="Center"
+                            x:Name="fisicanome_entry"
+                            IsVisible="False">
+                        </Label>
+                        <Label x:Name="_email" IsVisible="False" Text="{Binding Email}"></Label>
+                        <Label x:Name="_senha" IsVisible="False" Text="{Binding Senha}"></Label>
+                        <Label x:Name="_pjrs" IsVisible="False" Text="{Binding PessoaJuridica.RazaoSocial}"></Label>
+                        <Label x:Name="_pjcnpj" IsVisible="False" Text="{Binding PessoaJuridica.CNPJ}"></Label>
+                        <Label x:Name="_pjIE" IsVisible="False" Text="{Binding PessoaJuridica.IE}"></Label>
+                        <Label x:Name="_pfCPF" IsVisible="False" Text="{Binding PessoaFisica.CPF}"></Label>
+                        <Label x:Name="_pfRG" IsVisible="False" Text="{Binding PessoaFisica.RG}"></Label>
+                        <Label x:Name="_excluido" IsVisible="False" Text="{Binding Excluido}"></Label>
+                        <Label x:Name="_enderecocep" IsVisible="False" Text="{Binding Endereco.CEP}"></Label>
+                        <Label x:Name="_enderecopais" IsVisible="False" Text="{Binding Endereco.Pais}"></Label>
+                        <Label x:Name="_enderecouf" IsVisible="False" Text="{Binding Endereco.UF}"></Label>
+                        <Label x:Name="_enderecomunicipio" IsVisible="False" Text="{Binding Endereco.Municipio}"></Label>
+                        <Label x:Name="_enderecologradouro" IsVisible="False" Text="{Binding Endereco.Logradouro}"></Label>
+                        <Label x:Name="_endereconumero" IsVisible="False" Text="{Binding Endereco.Numero}"></Label>
+                        <Label x:Name="_enderecocomplemento" IsVisible="False" Text="{Binding Endereco.Complemento}"></Label>
+                        <Label x:Name="_enderecobairro" IsVisible="False" Text="{Binding Endereco.Bairro}"></Label>
+                        <Label x:Name="_tel" IsVisible="False" Text="{Binding Telefone}"></Label>
+                        <Label x:Name="_tipo" IsVisible="False" Text="{Binding Tipo}"></Label>
+                        <Label x:Name="_cel" IsVisible="False" Text="{Binding Celular}"></Label>
                         <TableView Intent="Menu" 
                                    HorizontalOptions="FillAndExpand"
                                    HasUnevenRows="True">

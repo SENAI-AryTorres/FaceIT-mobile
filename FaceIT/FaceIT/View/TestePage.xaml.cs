@@ -1,4 +1,5 @@
 ﻿using FaceIT.Page;
+using faceitapi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,20 @@ namespace FaceIT.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TestePage : ContentPage
     {
-        public TestePage()
+        public TestePage(Pessoa pessoa)
         {
             InitializeComponent();
+            if (pessoa.PessoaFisica.Nome == null)
+            {
+                juridiconome_entry.IsVisible = true;
+                fisicanome_entry.IsVisible = false;
+            }
+            else if (pessoa.PessoaJuridica.NomeFantasia == null)
+            {
+                fisicanome_entry.IsVisible = true;
+                juridiconome_entry.IsVisible = false;
+            }
         }
-
         private async void GoToSettingsPage(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new SettingsPage());
@@ -30,12 +40,55 @@ namespace FaceIT.View
 
         private async void GoToEditProfile(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new EditProfile());
+            var Endereco = new Endereco
+            {
+                CEP = _enderecocep.Text,
+                Pais = _enderecopais.Text,
+                UF = _enderecouf.Text,
+                Municipio = _enderecomunicipio.Text,
+                Logradouro = _enderecologradouro.Text,
+                Numero = _endereconumero.Text,
+                Complemento = _enderecocomplemento.Text,
+                Bairro = _enderecobairro.Text
+            };
+
+            var pf = new PessoaFisica()
+            {
+                CPF = _pfCPF.Text,
+                RG = _pfRG.Text,
+                Nome = fisicanome_entry.Text
+            };
+
+            var pj = new PessoaJuridica()
+            {
+                RazaoSocial = _pjrs.Text,
+                CNPJ = _pjcnpj.Text,
+                IE = _pjIE.Text,
+                NomeFantasia = juridiconome_entry.Text
+            };
+            var _Pessoa = new Pessoa()
+            {
+                Email = _email.Text,
+                Senha = _senha.Text,
+                PessoaJuridica = pj,
+                PessoaFisica = pf,
+                Excluido = false,
+                Endereco = Endereco,
+                Telefone = _tel.Text,
+                Celular = _cel.Text,
+                Tipo = _tipo.Text
+            };
+
+            var pagina = new EditProfile(_Pessoa)
+            {
+                BindingContext = _Pessoa
+            };
+            await Navigation.PushAsync(new EditProfile(_Pessoa));
         }
 
         private async void Sair(object sender, EventArgs e)
         {
-            var choice = await DisplayAlert("", "Deseja Realmente Sair", "Sim", "Não");
+            var choice = await DisplayAlert("", "Deseja Realmente Sair?", "Sim", "Não");
             if (choice)
             {
                 await Navigation.PushAsync(new LoginPage());

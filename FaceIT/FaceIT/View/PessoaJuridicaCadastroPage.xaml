@@ -100,7 +100,8 @@
                         <Entry
                             Placeholder="CNPJ"
                             TextColor="#004080"
-                            x:Name="cnpj_entry">
+                            x:Name="cnpj_entry"
+                            Keyboard="Numeric">
                             <Entry.Behaviors>
                                 <behaviorPack:CNPJValidationBehavior/>
                                 <behaviorPack:MaskedBehavior Mask="XX.XXX.XXX/XXXX-XX"/>
@@ -115,7 +116,21 @@
                             Placeholder="Razão Social"
                             TextColor="#004080"
                             x:Name="rsocial_entry"/>
-                    </border:SfBorder> 
+                    </border:SfBorder>
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6">
+                        <Entry
+                            Placeholder="Inscrição Estadual"
+                            TextColor="#004080"
+                            x:Name="Iestadual_entry"
+                            Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <behaviorPack:MaskedBehavior Mask="XXX.XXX.XXX.XXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </border:SfBorder>
                     <border:SfBorder
                         CornerRadius="15"
                         BackgroundColor="Transparent"
