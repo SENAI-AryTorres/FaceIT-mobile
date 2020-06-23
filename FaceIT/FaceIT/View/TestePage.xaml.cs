@@ -14,6 +14,7 @@ namespace FaceIT.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TestePage : ContentPage
     {
+        Pessoa _pessoa = new Pessoa();
         public TestePage(Pessoa pessoa)
         {
             InitializeComponent();
@@ -27,6 +28,16 @@ namespace FaceIT.View
                 fisicanome_entry.IsVisible = true;
                 juridiconome_entry.IsVisible = false;
             }
+            if (pessoa.Imagem != null)
+            {
+                img_entry.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(pessoa.Imagem.Bytes));
+            }
+            if (pessoa.Anexo != null)
+            {
+                _anexo.Text = pessoa.Anexo.Nome;
+            }
+            _pessoa.Imagem = pessoa.Imagem;
+            _pessoa.Anexo = pessoa.Anexo;
         }
         private async void GoToSettingsPage(object sender, System.EventArgs e)
         {
@@ -40,6 +51,12 @@ namespace FaceIT.View
 
         private async void GoToEditProfile(object sender, System.EventArgs e)
         {
+            var Anexo = new Anexo()
+            {
+                Bytes = _pessoa.Anexo.Bytes,
+                Nome = _pessoa.Anexo.Nome
+            };
+
             var Endereco = new Endereco
             {
                 CEP = _enderecocep.Text,
@@ -76,7 +93,8 @@ namespace FaceIT.View
                 Endereco = Endereco,
                 Telefone = _tel.Text,
                 Celular = _cel.Text,
-                Tipo = _tipo.Text
+                Tipo = _tipo.Text,
+                Anexo = Anexo
             };
 
             var pagina = new EditProfile(_Pessoa)

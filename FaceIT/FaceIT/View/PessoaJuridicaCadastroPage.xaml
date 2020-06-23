@@ -40,12 +40,26 @@
                             BackgroundColor="#1fada6"
                             FontSize="10">                          
                     </Button>
+
+                    <Button Text="Escolha seu Documento(Currículo ou Carta de Apresentação)"
+                            Clicked="Btn_addAnexo"
+                            HorizontalOptions="Center"  
+                            VerticalOptions="Center"
+                            BackgroundColor="#1fada6"
+                            FontSize="09"
+                            WidthRequest="150"
+                            HeightRequest="65"/>
+                    <Label Text="Arquivo: " x:Name="lbl"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#004080"/>
+
                     <Label
                         Margin="0,-1,0,-2"
                         HorizontalTextAlignment="Center"
                         Text="Dados de Login"
                         TextColor="#1fada6"
-                        FontAttributes="Bold"/>
+                        FontAttributes="Bold"
+                        FontSize="Medium"/>
                     <border:SfBorder
                         CornerRadius="15"
                         BackgroundColor="Transparent"
@@ -92,7 +106,8 @@
                         HorizontalTextAlignment="Center"
                         Text="Dados de Cadastro"
                         TextColor="#1fada6"
-                        FontAttributes="Bold"/>
+                        FontAttributes="Bold"
+                        FontSize="Medium"/>
                      <border:SfBorder
                         CornerRadius="15"
                         BackgroundColor="Transparent"
@@ -146,7 +161,8 @@
                         HorizontalTextAlignment="Center"
                         Text="Endereço"
                         TextColor="#1fada6"
-                        FontAttributes="Bold"/>
+                        FontAttributes="Bold"
+                        FontSize="Medium"/>
                     <border:SfBorder
                         CornerRadius="15"
                         BackgroundColor="Transparent"
@@ -250,10 +266,11 @@
                     </StackLayout>
 
                     <Label Margin="0,-1,0,-2"
-                            HorizontalTextAlignment="Center"
-                            Text="Contato"
-                            TextColor="#1fada6"
-                            FontAttributes="Bold"/>
+                           HorizontalTextAlignment="Center"
+                           Text="Contato"
+                           TextColor="#1fada6"
+                           FontAttributes="Bold"
+                           FontSize="Medium"/>
                     <StackLayout Orientation="Horizontal">
                         <border:SfBorder
                             CornerRadius="15"

@@ -2,6 +2,7 @@
 using FaceIT.Service;
 using FaceIT.ViewModels;
 using faceitapi.Models;
+using Plugin.FilePicker;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
@@ -23,6 +24,7 @@ namespace FaceIT.View
         SkillViewModel skills = new SkillViewModel();
         Cadastro_Pessoa_Fisica service = new Cadastro_Pessoa_Fisica();
         public static Imagem Imagem { get; set; } = new Imagem();
+        public static Anexo Anexo { get; set; } = new Anexo();
         public PessoaJuridicaCadastroPage()
         {
             InitializeComponent();
@@ -100,6 +102,18 @@ namespace FaceIT.View
                 await DisplayAlert("Permissão Negada", "Dê Permissão de camera para o Dispositivo.\nError:" + ex.Message, "OK");
             }
         }
+
+        private async void Btn_addAnexo(object sender, EventArgs e)
+        {
+            var file = await CrossFilePicker.Current.PickFile();
+
+            if (file != null)
+            {
+                Anexo.Bytes = file.DataArray;
+                Anexo.Nome = file.FileName;
+                lbl.Text = file.FileName;
+            }
+        }
         private async void Button_Clicked(object sender, EventArgs e)
         {
             Endereco endereco = new Endereco();
@@ -125,6 +139,7 @@ namespace FaceIT.View
             pessoa.Endereco = endereco;
             pessoa.Imagem = Imagem;
             pessoa.Role = "user";
+            pessoa.Anexo = Anexo;
             //pessoa.Imagem.IDPessoaNavigation = pessoa;
 
             pj.CNPJ = cnpj_entry.Text;

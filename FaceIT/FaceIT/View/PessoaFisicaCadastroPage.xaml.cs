@@ -2,6 +2,7 @@
 using FaceIT.Service;
 using FaceIT.ViewModels;
 using faceitapi.Models;
+using Plugin.FilePicker;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
@@ -22,9 +23,8 @@ namespace FaceIT.View
     {
         private SkillViewModel skill = new SkillViewModel();
         private Cadastro_Pessoa_Fisica service = new Cadastro_Pessoa_Fisica();
-
         public static Imagem Imagem { get; set; } = new Imagem();
-        
+        public static Anexo Anexo { get; set; } = new Anexo();        
 
         public PessoaFisicaCadastroPage()
         {
@@ -40,6 +40,25 @@ namespace FaceIT.View
             var vm = BindingContext as SkillViewModel;
         }
 
+        private async void AddAnexo_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var file = await CrossFilePicker.Current.PickFile();
+
+                if (file != null)
+                {
+                    Anexo.Bytes = file.DataArray;
+                    Anexo.Nome = file.FileName;
+                    lbl.Text = file.FileName;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         private async void btnFoto_Clicked(object sender, EventArgs e)
         {
             await CrossMedia.Current.Initialize();
@@ -133,6 +152,7 @@ namespace FaceIT.View
             pessoa.Endereco = endereco;
             pessoa.Imagem = Imagem;
             pessoa.Role = "user";
+            pessoa.Anexo = Anexo;
             //pessoa.Imagem.IDPessoaNavigation = pessoa;
 
             pf.Nome = nome_entry.Text;
@@ -231,7 +251,7 @@ namespace FaceIT.View
                 {
                     DisplayAlert("ERRO CRÍTICO", e.Message, "OK");
                 }
-            }            
+            }
         }
     }
 }

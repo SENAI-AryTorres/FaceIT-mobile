@@ -42,6 +42,19 @@
                             BackgroundColor="#1fada6"
                             FontSize="10">
                     </Button>
+
+                    <Button Text="Escolha seu Documento(Currículo ou Carta de Apresentação)"
+                            Clicked="AddAnexo_Clicked"
+                            HorizontalOptions="Center"  
+                            VerticalOptions="Center"
+                            BackgroundColor="#1fada6"
+                            FontSize="09"
+                            WidthRequest="150"
+                            HeightRequest="65"/>
+                    <Label Text="Arquivo: " x:Name="lbl"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#004080"/>
+
                     <Label
                         Margin="0,-1,0,-2"
                         HorizontalTextAlignment="Center"

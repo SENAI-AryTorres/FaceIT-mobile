@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.AddProposta"
+             Title="Adicionar Proposta...">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Padding="20" Spacing="20">
+                <Label Text="Descrição da Vaga"
+                       TextColor="#004080"
+                       FontSize="Medium"
+                       HorizontalTextAlignment="Center"/>
+                <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6"
+                        Padding="10">
+                    <Editor Placeholder="Vaga que..."
+                        HeightRequest="100">
+                    </Editor>
+                </border:SfBorder>
+                <StackLayout Orientation="Horizontal" Padding="30,0,30,0">
+                    <Label Text="Tipo de Contrato"
+                           TextColor="#004080"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6"
+                        Padding="10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="End">
+                        <Picker>
+                            <Picker.Items>
+                                <x:String>PF</x:String>
+                                <x:String>PJ</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </border:SfBorder>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="30,0,30,0">
+                    <Label Text="Cidade"
+                           TextColor="#004080"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6"
+                        Padding="10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="End">
+                        <Entry/>
+                    </border:SfBorder>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center">
+                    <Button Text="Criar Proposta"
+                            BackgroundColor="#1fada6"
+                            FontSize="12"/>
+                    <Button Text="Cancela"
+                            BackgroundColor="Gray"
+                            FontSize="12"/>
+                </StackLayout>
+            </StackLayout>            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

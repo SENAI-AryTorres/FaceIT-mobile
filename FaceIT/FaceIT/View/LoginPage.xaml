@@ -7,7 +7,8 @@
              x:Class="FaceIT.Page.LoginPage"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack" xmlns:ViewModels="clr-namespace:FaceIT.ViewModels"
-             BackgroundImageSource="blur.jpeg">
+             BackgroundImageSource="blur.jpeg"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>

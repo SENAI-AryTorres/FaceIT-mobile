@@ -179,6 +179,15 @@
                                x:Name="bairro_entry"/>
                     </border:SfBorder>
                 </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center">
+                    <Button Text="Salvar Alterações"
+                            BackgroundColor="#1fada6"
+                            FontSize="12"/>
+                    <Button Text="Cancela"
+                            BackgroundColor="Gray"
+                            FontSize="12"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

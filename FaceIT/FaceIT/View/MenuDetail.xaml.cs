@@ -28,9 +28,9 @@ namespace FaceIT.View
 
         public void CriarMapa()
         {
-            mapa = new Map(MapSpan.FromCenterAndRadius(new Position(-15.8260571, -48.060058), Distance.FromKilometers(10000)));
+            mapa = new Map(MapSpan.FromCenterAndRadius(new Position(30.0313007, 67.4692816), Distance.FromKilometers(100)));
 
-            mapa.MapType = MapType.Street;
+            mapa.MapType = MapType.Hybrid;
             MapContainer.Children.Add(mapa);
         }
 
@@ -92,7 +92,6 @@ namespace FaceIT.View
 
             }
         }
-
         private bool isOpen = false;
         private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
         {
@@ -111,8 +110,6 @@ namespace FaceIT.View
                 await FloatMenuItem1.TranslateTo(0, 0, 100);
                 await FloatMenuItem1.TranslateTo(0, -20, 100);
                 await FloatMenuItem1.TranslateTo(0, 0, 200);
-
-
             }
             else
             {
@@ -130,8 +127,10 @@ namespace FaceIT.View
                 await FloatMenuItem1.TranslateTo(0, 0, 200);
                 FloatMenuItem1.IsVisible = false;
             }
-
         }
-
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddProposta());
+        }
     }
 }

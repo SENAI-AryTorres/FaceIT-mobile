@@ -1,8 +1,10 @@
 ﻿using FaceIT.Page;
 using faceitapi.Models;
 using faceitapi.Models.ViewModel;
+using Plugin.FilePicker;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ namespace FaceIT.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Menu : MasterDetailPage
     {
-        
+        Pessoa _pessoa = new Pessoa();
         public Menu(Pessoa pessoa, Token token)
         {            
             InitializeComponent();
@@ -28,9 +30,29 @@ namespace FaceIT.View
             {
                 juridicanome_entry.IsVisible = true;
             }
+            if (pessoa.Imagem !=null)
+            {
+                image_entry.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(pessoa.Imagem.Bytes));
+            }
+            if(pessoa.Anexo != null)
+            {
+                _anexo.Text = pessoa.Anexo.Nome;
+            }
+            _pessoa.Imagem = pessoa.Imagem;
+            _pessoa.Anexo = pessoa.Anexo;
         }
         private async void GoToProfilePage(object sender, System.EventArgs e)
         {
+            var Imagem = new Imagem()
+            {
+                Bytes = _pessoa.Imagem.Bytes
+            };
+            var Anexo = new Anexo()
+            {
+                Bytes = _pessoa.Anexo.Bytes,
+                Nome = _pessoa.Anexo.Nome
+            };
+
             var Endereco = new Endereco
             {
                 CEP = _enderecocep.Text,
@@ -67,7 +89,9 @@ namespace FaceIT.View
                 Endereco = Endereco,
                 Telefone = _tel.Text,
                 Celular = _cel.Text,
-                Tipo = _tipo.Text
+                Tipo = _tipo.Text,
+                Imagem = Imagem,
+                Anexo = Anexo
             };
 
         var pagina = new TestePage(_Pessoa)

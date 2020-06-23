@@ -16,7 +16,9 @@
                         <Image Source="{Binding Imagem}"
                                HeightRequest="160"
                                WidthRequest="160"
-                               HorizontalOptions="CenterAndExpand"/>
+                               HorizontalOptions="CenterAndExpand"
+                               x:Name="img_entry"
+                               Aspect="AspectFill"/>
                     </Frame>                    
                 </StackLayout>
                 <Label Text="{Binding PessoaJuridica.NomeFantasia}" 
@@ -27,33 +29,38 @@
                        VerticalTextAlignment="Center"
                        BackgroundColor="Transparent"
                        x:Name="juridiconome_entry"/>
-                       <Label x:Name="_email" IsVisible ="False" Text="{Binding Email}"></Label>
-                       <Label x:Name="_senha" IsVisible="False" Text="{Binding Senha}"></Label>
-                       <Label x:Name="_pjrs" IsVisible="False" Text="{Binding PessoaJuridica.RazaoSocial}"></Label>
-                       <Label x:Name="_pjcnpj" IsVisible="False" Text="{Binding PessoaJuridica.CNPJ}"></Label>
-                       <Label x:Name="_pjIE" IsVisible="False" Text="{Binding PessoaJuridica.IE}"></Label>
-                       <Label x:Name="_pfCPF" IsVisible="False" Text="{Binding PessoaFisica.CPF}"></Label>
-                       <Label x:Name="_pfRG" IsVisible="False" Text="{Binding PessoaFisica.RG}"></Label>
-                       <Label x:Name="_excluido" IsVisible="False" Text="{Binding Excluido}"></Label>
-                       <Label x:Name="_enderecocep" IsVisible="False" Text="{Binding Endereco.CEP}"></Label>
-                       <Label x:Name="_enderecopais" IsVisible="False" Text="{Binding Endereco.Pais}"></Label>
-                       <Label x:Name="_enderecouf" IsVisible="False" Text="{Binding Endereco.UF}"></Label>
-                       <Label x:Name="_enderecomunicipio" IsVisible="False" Text="{Binding Endereco.Municipio}"></Label>
-                       <Label x:Name="_enderecologradouro" IsVisible="False" Text="{Binding Endereco.Logradouro}"></Label>
-                       <Label x:Name="_endereconumero" IsVisible="False" Text="{Binding Endereco.Numero}"></Label>
-                       <Label x:Name="_enderecocomplemento" IsVisible="False" Text="{Binding Endereco.Complemento}"></Label>
-                       <Label x:Name="_enderecobairro" IsVisible="False" Text="{Binding Endereco.Bairro}"></Label>
-                       <Label x:Name="_tel" IsVisible="False" Text="{Binding Telefone}"></Label>
-                        <Label x:Name="_tipo" IsVisible="False" Text="{Binding Tipo}"></Label>
-                       <Label x:Name="_cel" IsVisible="False" Text="{Binding Celular}"></Label>
-                       <Label Text="{Binding PessoaFisica.Nome}" 
-                              TextColor="Black"
-                              FontAttributes="Bold"
-                              FontSize="25"
-                              HorizontalTextAlignment="Center"
-                              VerticalTextAlignment="Center"
-                              BackgroundColor="Transparent"
-                              x:Name="fisicanome_entry"/>
+
+                <StackLayout x:Name="hide_Data" IsVisible="false">
+                       <Label x:Name="_anexo"/>
+                       <Label x:Name="_email" Text="{Binding Email}"></Label>
+                       <Label x:Name="_senha" Text="{Binding Senha}"></Label>
+                       <Label x:Name="_pjrs" Text="{Binding PessoaJuridica.RazaoSocial}"></Label>
+                       <Label x:Name="_pjcnpj" Text="{Binding PessoaJuridica.CNPJ}"></Label>
+                       <Label x:Name="_pjIE" Text="{Binding PessoaJuridica.IE}"></Label>
+                       <Label x:Name="_pfCPF" Text="{Binding PessoaFisica.CPF}"></Label>
+                       <Label x:Name="_pfRG" Text="{Binding PessoaFisica.RG}"></Label>
+                       <Label x:Name="_excluido" Text="{Binding Excluido}"></Label>
+                       <Label x:Name="_enderecocep" Text="{Binding Endereco.CEP}"></Label>
+                       <Label x:Name="_enderecopais" Text="{Binding Endereco.Pais}"></Label>
+                       <Label x:Name="_enderecouf" Text="{Binding Endereco.UF}"></Label>
+                       <Label x:Name="_enderecomunicipio" Text="{Binding Endereco.Municipio}"></Label>
+                       <Label x:Name="_enderecologradouro" Text="{Binding Endereco.Logradouro}"></Label>
+                       <Label x:Name="_endereconumero" Text="{Binding Endereco.Numero}"></Label>
+                       <Label x:Name="_enderecocomplemento" Text="{Binding Endereco.Complemento}"></Label>
+                       <Label x:Name="_enderecobairro" Text="{Binding Endereco.Bairro}"></Label>
+                       <Label x:Name="_tel" Text="{Binding Telefone}"></Label>
+                        <Label x:Name="_tipo" Text="{Binding Tipo}"></Label>
+                       <Label x:Name="_cel" Text="{Binding Celular}"></Label>
+                </StackLayout>
+                
+                <Label Text="{Binding PessoaFisica.Nome}" 
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="25"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       BackgroundColor="Transparent"
+                       x:Name="fisicanome_entry"/>
 
                 <StackLayout Orientation="Horizontal" Margin="20,25,20,0"
                              HeightRequest="150">
