@@ -9,21 +9,20 @@ using System.Threading.Tasks;
 
 namespace FaceIT.Service
 {
-    public class UpdatePessoa
+    public class PropostaService
     {
-        public async Task<bool> UpdatePessoaFisicaAsync(PessoaFisica pf)
+        public async Task<bool> AddProposta(Proposta proposta)
         {
             try
             {
                 HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("https://faceitapi.azurewebsites.net/api");
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
 
-                client.BaseAddress = new Uri("https://faceitapi.azurewebsites.net/api");
-
-                var json = JsonConvert.SerializeObject(pf);
+                var json = JsonConvert.SerializeObject(proposta);
                 var data = new StringContent(json, Encoding.UTF8, "application/json");
-                var httpresponse = await client.PutAsync(client.BaseAddress + "/PessoaFisica", data);
+                var httpresponse = await client.PostAsync(client.BaseAddress + "/Proposta", data);
 
                 if (httpresponse.IsSuccessStatusCode)
                 {
@@ -31,13 +30,13 @@ namespace FaceIT.Service
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 
-        public async Task<bool> UpdatePessoaJuridicaAsync(PessoaJuridica pj)
+        public async Task<bool> GetProposta(Action<IEnumerable<Proposta>> proposta)
         {
             try
             {
@@ -45,23 +44,19 @@ namespace FaceIT.Service
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
 
-                client.BaseAddress = new Uri("https://faceitapi.azurewebsites.net/api");
+                HttpResponseMessage response = await client.GetAsync("https://faceitapi.azurewebsites.net/api/Proposta");
 
-                var json = JsonConvert.SerializeObject(pj);
-                var data = new StringContent(json, Encoding.UTF8, "application/json");
-                var httpresponse = await client.PutAsync(client.BaseAddress + "/PessoaJuridica", data);
-
-                if (httpresponse.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
-                    return true;
+                    var lista = JsonConvert.DeserializeObject<Proposta>(await response.Content.ReadAsStringAsync());
+                    proposta(lista);
                 }
-                return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
-            }
 
+                throw;
+            }
         }
     }
 }

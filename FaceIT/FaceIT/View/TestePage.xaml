@@ -30,9 +30,8 @@
                        BackgroundColor="Transparent"
                        x:Name="juridiconome_entry"/>
 
-                <StackLayout x:Name="hide_Data" IsVisible="false">
-                       <Label x:Name="_anexo"/>
-                       <Label x:Name="_email" Text="{Binding Email}"></Label>
+                <StackLayout x:Name="hide_Data" IsVisible="False">
+                        <Label x:Name="_email" Text="{Binding Email}"></Label>
                        <Label x:Name="_senha" Text="{Binding Senha}"></Label>
                        <Label x:Name="_pjrs" Text="{Binding PessoaJuridica.RazaoSocial}"></Label>
                        <Label x:Name="_pjcnpj" Text="{Binding PessoaJuridica.CNPJ}"></Label>
@@ -49,8 +48,10 @@
                        <Label x:Name="_enderecocomplemento" Text="{Binding Endereco.Complemento}"></Label>
                        <Label x:Name="_enderecobairro" Text="{Binding Endereco.Bairro}"></Label>
                        <Label x:Name="_tel" Text="{Binding Telefone}"></Label>
-                        <Label x:Name="_tipo" Text="{Binding Tipo}"></Label>
+                       <Label x:Name="_tipo" Text="{Binding Tipo}"></Label>
                        <Label x:Name="_cel" Text="{Binding Celular}"></Label>
+                       <Label x:Name="_anexo_name" Text="{Binding Anexo.Nome}"></Label>
+                       <Label x:Name="_idpessoa" Text="{Binding IDPessoa}"></Label>
                 </StackLayout>
                 
                 <Label Text="{Binding PessoaFisica.Nome}" 

@@ -9,6 +9,24 @@
   <ContentPage.Content>
         <ScrollView>            
             <StackLayout Padding="5" Spacing="5">
+
+                <StackLayout HorizontalOptions="Center"
+                             Margin="0,30,0,0">
+                    <Frame CornerRadius="130"
+                           Padding="0">
+                        <Image Source="{Binding Imagem}"
+                               HeightRequest="160"
+                               WidthRequest="160"
+                               HorizontalOptions="CenterAndExpand"
+                               x:Name="img_entry"
+                               Aspect="AspectFill">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                </StackLayout>
+
                 <StackLayout x:Name="data_conta_contato" Padding="5">
                     <Label Text="Dados da sua Conta e Contato"
                            TextColor="#004080"
@@ -24,20 +42,21 @@
                         <Entry Placeholder="E-mail"
                                Text="{Binding Email}"
                                IsEnabled="False"
-                               TextColor="Black"/>
+                               TextColor="Black"
+                               x:Name="email_entry"/>
                     </border:SfBorder>
                     <border:SfBorder CornerRadius="5"
                                      BorderColor="#1fada6">
-                        <Entry Placeholder="Nova Senha"/>
+                        <Entry Text="{Binding Senha}"
+                               x:Name="nova_senha"
+                               IsPassword="True"/>
                     </border:SfBorder>
-                    <border:SfBorder CornerRadius="5"
-                                     BorderColor="#1fada6">
-                        <Entry Placeholder="Confirmar Nova Senha"/>
-                    </border:SfBorder>
+
                     <border:SfBorder CornerRadius="5"
                                      BorderColor="#1fada6">
                         <Entry Placeholder="Telefone"
-                               Text="{Binding Telefone}">
+                               Text="{Binding Telefone}"
+                               x:Name="telefone_entry">
                             <Entry.Behaviors>
                                 <behaviorPack:CEPValidationBehavior/>
                                 <behaviorPack:MaskedBehavior Mask="(XX)XXXX-XXXX"/>
@@ -47,7 +66,8 @@
                     <border:SfBorder CornerRadius="5"
                                      BorderColor="#1fada6">
                         <Entry Placeholder="Celular"
-                               Text="{Binding Celular}">
+                               Text="{Binding Celular}"
+                               x:Name="celular_entry">
                             <Entry.Behaviors>
                                 <behaviorPack:CEPValidationBehavior/>
                                 <behaviorPack:MaskedBehavior Mask="(XX)XXXXX-XXXX"/>
@@ -162,6 +182,12 @@
                     </border:SfBorder>
                     <border:SfBorder CornerRadius="5"
                                      BorderColor="#1fada6">
+                        <Entry Placeholder="Bairro"
+                               Text="{Binding Endereco.Bairro}"
+                               x:Name="bairro_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
                         <Entry Placeholder="Numero"
                                Text="{Binding Endereco.Numero}"
                                x:Name="numero_entry"/>
@@ -171,19 +197,39 @@
                         <Entry Placeholder="Complemento"
                                Text="{Binding Endereco.Complemento}"
                                x:Name="comp_entry"/>
-                    </border:SfBorder>
-                    <border:SfBorder CornerRadius="5"
-                                     BorderColor="#1fada6">
-                        <Entry Placeholder="Bairro"
-                               Text="{Binding Endereco.Bairro}"
-                               x:Name="bairro_entry"/>
-                    </border:SfBorder>
+                    </border:SfBorder>                    
+                </StackLayout>
+
+                <StackLayout Padding="5">
+                    <Label Text="- Seu Arquivo Atual -"
+                               TextColor="#004080"
+                               FontSize="20"/>
+                    <Label Text="Altere seus dados no campo abaixo"
+                               TextColor="#1fada6"
+                               FontSize="17"/>
+                    <Button Text="{Binding Anexo.Nome}"
+                            Clicked="Button_Clicked"
+                            HorizontalOptions="Center"  
+                            VerticalOptions="Center"
+                            BackgroundColor="#1fada6"
+                            FontSize="12"
+                            WidthRequest="250"
+                            HeightRequest="55"
+                            x:Name="_anexo_name_button"
+                            CornerRadius="10"/>
+                </StackLayout>
+
+                <StackLayout x:Name="hide_Data" IsVisible="False">
+                    <Label x:Name="_tipo" Text="{Binding Tipo}"></Label>
+                    <Label x:Name="_role" Text="{Binding Role}"></Label>
+                    <Label x:Name="_idpessoa" Text="{Binding IDPessoa}"></Label>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="Center">
                     <Button Text="Salvar Alterações"
                             BackgroundColor="#1fada6"
-                            FontSize="12"/>
+                            FontSize="12"
+                            Clicked="Editar_Pessoa"/>
                     <Button Text="Cancela"
                             BackgroundColor="Gray"
                             FontSize="12"/>

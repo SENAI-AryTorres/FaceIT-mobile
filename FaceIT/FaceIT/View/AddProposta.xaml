@@ -2,78 +2,129 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
              mc:Ignorable="d"
              x:Class="FaceIT.View.AddProposta"
              Title="Adicionar Proposta...">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center">
-            <StackLayout Padding="20" Spacing="20">
-                <Label Text="Descrição da Vaga"
-                       TextColor="#004080"
-                       FontSize="Medium"
-                       HorizontalTextAlignment="Center"/>
-                <border:SfBorder
-                        CornerRadius="15"
-                        BackgroundColor="Transparent"
-                        BorderColor="#1fada6"
-                        Padding="10">
-                    <Editor Placeholder="Vaga que..."
-                        HeightRequest="100">
-                    </Editor>
-                </border:SfBorder>
-                <StackLayout Orientation="Horizontal" Padding="30,0,30,0">
-                    <Label Text="Tipo de Contrato"
+        <ScrollView>  
+            <StackLayout VerticalOptions="Center">
+                <StackLayout Padding="20" Spacing="20">
+                    <Label Text="Descrição da Vaga"
                            TextColor="#004080"
                            FontSize="Medium"
                            HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Center"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"/>
+                           />
                     <border:SfBorder
-                        CornerRadius="15"
-                        BackgroundColor="Transparent"
-                        BorderColor="#1fada6"
-                        Padding="10"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="End">
-                        <Picker>
-                            <Picker.Items>
-                                <x:String>PF</x:String>
-                                <x:String>PJ</x:String>
-                            </Picker.Items>
-                        </Picker>
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6"
+                            Padding="10">
+                        <Editor Placeholder="Vaga que..."
+                                HeightRequest="100"
+                                x:Name="descricao">
+                        </Editor>
                     </border:SfBorder>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal" Padding="30,0,30,0">
-                    <Label Text="Cidade"
-                           TextColor="#004080"
-                           FontSize="Medium"
-                           HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Center"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"/>
-                    <border:SfBorder
-                        CornerRadius="15"
-                        BackgroundColor="Transparent"
-                        BorderColor="#1fada6"
-                        Padding="10"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="End">
-                        <Entry/>
-                    </border:SfBorder>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal"
-                             HorizontalOptions="Center">
-                    <Button Text="Criar Proposta"
-                            BackgroundColor="#1fada6"
-                            FontSize="12"/>
-                    <Button Text="Cancela"
-                            BackgroundColor="Gray"
-                            FontSize="12"/>
-                </StackLayout>
-            </StackLayout>            
-        </StackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="30,0,30,0">
+                        <Label Text="Tipo de Contrato"
+                               TextColor="#004080"
+                               FontSize="Medium"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"/>
+                        <border:SfBorder
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6"
+                            Padding="10"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="End">
+                            <Picker x:Name="tipo_contrato">
+                                <Picker.Items>
+                                    <x:String>PF</x:String>
+                                    <x:String>PJ</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <StackLayout x:Name="endereco_data" Padding="5" >
+                        <Label Text="Dados de Endereço"
+                               TextColor="#004080"
+                               FontSize="20"/>
+                        <Label Text="Altere seus dados no campo abaixo"
+                               TextColor="#1fada6"
+                               FontSize="17"/>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="CEP"
+                                   x:Name="cep_entry"
+                                   TextChanged="BuscarCEP">
+                                <Entry.Behaviors>
+                                    <behaviorPack:CEPValidationBehavior/>
+                                    <behaviorPack:MaskedBehavior Mask="XXXXX-XXX"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </border:SfBorder>
+                        <Label Text="" x:Name="resultado"
+                               IsVisible="False"/>
+                        <StackLayout Orientation="Horizontal">
+                            <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="StartAndExpand">
+                                <Entry Placeholder="Pais"
+                                       x:Name="pais_entry"/>
+                            </border:SfBorder>
+                            <border:SfBorder CornerRadius="5"
+                                             BorderColor="#1fada6"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="End">
+                                <Entry Placeholder="Uf"
+                                       x:Name="uf_entry"/>
+                            </border:SfBorder>
+                        </StackLayout>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Municipio"
+                                   x:Name="munic_entry"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Endereço"
+                                   x:Name="logradouro_entry"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Bairro"
+                                   x:Name="bairro_entry"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Numero"
+                                   x:Name="numero_entry"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6">
+                            <Entry Placeholder="Complemento"
+                                   x:Name="comp_entry"/>
+                        </border:SfBorder>
+                    </StackLayout>
+                    
+                    <Label x:Name="lblteste"/>
+                    <Button Clicked="Button_Clicked"></Button>
+                    
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <Button Text="Criar Proposta"
+                                BackgroundColor="#1fada6"
+                                FontSize="12"/>
+                        <Button Text="Cancela"
+                                BackgroundColor="Gray"
+                                FontSize="12"/>
+                    </StackLayout>
+                </StackLayout>            
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

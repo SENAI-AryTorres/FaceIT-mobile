@@ -90,20 +90,6 @@
                         </Entry>
 
                     </border:SfBorder>  
-                    <border:SfBorder
-                        CornerRadius="15"
-                        BackgroundColor="Transparent"
-                        BorderColor="#1fada6">
-                        <Entry
-                            Placeholder="Confirmar Senha"
-                            TextColor="#004080"
-                            IsPassword="True"
-                            x:Name="confirmarsenha_entry">
-                            <Entry.Behaviors>
-                                <behaviorPack:PasswordValidationBehavior/>
-                            </Entry.Behaviors>  
-                        </Entry>
-                    </border:SfBorder>
                     <Label
                         Margin="0,-1,0,-2"
                         HorizontalTextAlignment="Center"

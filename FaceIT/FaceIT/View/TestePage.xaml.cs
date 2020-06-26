@@ -34,7 +34,7 @@ namespace FaceIT.View
             }
             if (pessoa.Anexo != null)
             {
-                _anexo.Text = pessoa.Anexo.Nome;
+                _anexo_name.Text = pessoa.Anexo.Nome;
             }
             _pessoa.Imagem = pessoa.Imagem;
             _pessoa.Anexo = pessoa.Anexo;
@@ -51,6 +51,10 @@ namespace FaceIT.View
 
         private async void GoToEditProfile(object sender, System.EventArgs e)
         {
+            var Imagem = new Imagem()
+            {
+                Bytes = _pessoa.Imagem.Bytes
+            };
             var Anexo = new Anexo()
             {
                 Bytes = _pessoa.Anexo.Bytes,
@@ -94,6 +98,7 @@ namespace FaceIT.View
                 Telefone = _tel.Text,
                 Celular = _cel.Text,
                 Tipo = _tipo.Text,
+                Imagem = Imagem,
                 Anexo = Anexo
             };
 

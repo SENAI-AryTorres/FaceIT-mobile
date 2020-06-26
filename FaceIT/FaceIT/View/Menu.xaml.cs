@@ -21,7 +21,7 @@ namespace FaceIT.View
         public Menu(Pessoa pessoa, Token token)
         {            
             InitializeComponent();
-            Detail = new NavigationPage(new MenuDetail());
+            Detail = new NavigationPage(new MenuDetail(pessoa));
             if (pessoa.PessoaJuridica == null)
             {
                 fisicanome_entry.IsVisible = true;

@@ -47,9 +47,9 @@ namespace FaceIT.Page
             if (result != null)
             {
                 var pessoa = result.pessoa;
-                var token = result.token;
+                Security.Security.TokenValue = result.token.Value;
 
-          var pagina = new View.Menu(result.pessoa, token)
+          var pagina = new View.Menu(result.pessoa, result.token)
                 {
                     BindingContext = result.pessoa
                 };

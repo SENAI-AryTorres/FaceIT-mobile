@@ -1,4 +1,5 @@
 ﻿using FaceIT.Service;
+using faceitapi.Models;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System;
@@ -18,11 +19,14 @@ namespace FaceIT.View
     public partial class MenuDetail : ContentPage
     {
         Map mapa;
-        public MenuDetail()
+        Pessoa _pessoa = new Pessoa();
+        public MenuDetail(Pessoa pessoa)
         {
             InitializeComponent();
             CriarMapa();
             _ = PermissaoGPSAsync();
+            _pessoa = pessoa;
+
 
         }
 
@@ -67,6 +71,11 @@ namespace FaceIT.View
 
                         if (pos != null)
                         {
+                            var _pos = new Pin()
+                            {
+                                Position = new Position(-23.6567215, -46.7085306),
+                                Label = "Oii"
+                            };
                             var MyPos = new Pin()
                             {
                                 Position = new Position(pos.Latitude, pos.Longitude),
@@ -75,6 +84,7 @@ namespace FaceIT.View
 
                             mapa = new Map(MapSpan.FromCenterAndRadius(new Position(pos.Latitude, pos.Longitude), Distance.FromMeters(100)));
                             mapa.Pins.Add(MyPos);
+                            mapa.Pins.Add(_pos);
                             MapContainer.Children.Add(mapa);
                         }
 
@@ -130,7 +140,7 @@ namespace FaceIT.View
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddProposta());
+            Navigation.PushAsync(new AddProposta(_pessoa));
         }
     }
 }
