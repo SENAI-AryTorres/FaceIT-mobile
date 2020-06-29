@@ -20,8 +20,11 @@ namespace FaceIT.View
     {
         Map mapa;
         Pessoa _pessoa = new Pessoa();
+        PropostaService service = new PropostaService();
+        private Pin pin;
         public MenuDetail(Pessoa pessoa)
         {
+            service.GetPropostaAsync();
             InitializeComponent();
             CriarMapa();
             _ = PermissaoGPSAsync();
@@ -32,8 +35,7 @@ namespace FaceIT.View
 
         public void CriarMapa()
         {
-            mapa = new Map(MapSpan.FromCenterAndRadius(new Position(30.0313007, 67.4692816), Distance.FromKilometers(100)));
-
+            mapa = new Map(MapSpan.FromCenterAndRadius(new Position(-26.0313007, -52.4692816), Distance.FromKilometers(100)));
             mapa.MapType = MapType.Hybrid;
             MapContainer.Children.Add(mapa);
         }
@@ -69,29 +71,25 @@ namespace FaceIT.View
                     {
                         Plugin.Geolocator.Abstractions.Position pos = gps.GetCurrentPosition().GetAwaiter().GetResult();
 
-                        if (pos != null)
+
+                        mapa = new Map(MapSpan.FromCenterAndRadius(new Position(pos.Latitude, pos.Longitude), Distance.FromMeters(100)));
+                        MapContainer.Children.Add(mapa);
+
+                        var propostas = await service.GetPropostaAsync();
+                        foreach (var item in propostas)
                         {
-                            var _pos = new Pin()
+                            mapa.Pins.Add(pin = new Pin
                             {
-                                Position = new Position(-23.6567215, -46.7085306),
-                                Label = "Oii"
-                            };
-                            var MyPos = new Pin()
-                            {
-                                Position = new Position(pos.Latitude, pos.Longitude),
-                                Label = "Minha Posição."
-                            };
-
-                            mapa = new Map(MapSpan.FromCenterAndRadius(new Position(pos.Latitude, pos.Longitude), Distance.FromMeters(100)));
-                            mapa.Pins.Add(MyPos);
-                            mapa.Pins.Add(_pos);
-                            MapContainer.Children.Add(mapa);
-                        }
-
+                                Position = new Position(Convert.ToDouble(item.Latitude), Convert.ToDouble(item.Longitude)),
+                                Label = item.Descricao,
+                                Type = PinType.SearchResult
+                            });
+                            pin.Clicked += Pin_Clicked;
+                        }    
                     }
                 }                
 
-                //Não aceita
+                //Não aceitaa
                 else if (status != PermissionStatus.Unknown)
                 {
                     await DisplayAlert("Location Denied", "Can not continue, try again.", "OK");
@@ -140,7 +138,64 @@ namespace FaceIT.View
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddProposta(_pessoa));
+            if(_pessoa.Tipo == "PF")
+            {
+                DisplayAlert("Erro", "Uma Pessoa Fisica não pode administrar propostas", "Ok");
+            }
+            else
+            {
+                Navigation.PushAsync(new AddProposta(_pessoa));
+            }            
+        }
+
+        private async void Atualizar_Mapa_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (status == PermissionStatus.Granted)
+                {
+                    MapContainer.Children.RemoveAt(0);
+                    GPS gps = new GPS();
+                    if (gps.IsLocationAvailable())
+                    {
+                        Plugin.Geolocator.Abstractions.Position pos = gps.GetCurrentPosition().GetAwaiter().GetResult();
+
+
+                        mapa = new Map(MapSpan.FromCenterAndRadius(new Position(pos.Latitude, pos.Longitude), Distance.FromMeters(100)));
+                        MapContainer.Children.Add(mapa);
+
+                        var propostas = await service.GetPropostaAsync();
+                        foreach (var item in propostas)
+                        {
+                            mapa.Pins.Add(pin = new Pin
+                            {
+                                Position = new Position(Convert.ToDouble(item.Latitude), Convert.ToDouble(item.Longitude)),
+                                Label = item.Descricao,
+                                Type = PinType.SearchResult,
+                            });
+                            pin.Clicked += Pin_Clicked;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }            
+        }
+
+        private async void Pin_Clicked(object sender, EventArgs e)
+        {
+            var action = await DisplayActionSheet("Deseja se Candidatar a Vaga?", "Ok", null, "Sim", "Não");
+            if (action == "Sim")
+            {
+                await DisplayAlert("Parabéns", "Cadastrado com Sucesso", "Boa Sorte");
+            }
+            else
+            {
+                await DisplayAlert("Poxa, que Pena", "Você encontrará outras Vagas ;)", "Fechar");
+            }
         }
     }
 }

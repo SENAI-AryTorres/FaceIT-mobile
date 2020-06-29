@@ -38,6 +38,11 @@ namespace FaceIT.View
             {
                 _anexo.Text = pessoa.Anexo.Nome;
             }
+            if (pessoa.Tipo == "PF")
+            {
+                tsPessoa.IsVisible = false;
+            }
+            _pessoa = pessoa;
             _pessoa.Imagem = pessoa.Imagem;
             _pessoa.Anexo = pessoa.Anexo;
         }
@@ -117,7 +122,7 @@ namespace FaceIT.View
 
         private void GoToMatchPopUp(object sender, System.EventArgs e)
         {
-            //Detail.Navigation.PushAsync(new Match());
+            Detail.Navigation.PushAsync(new PropostaLista(_pessoa));
             IsPresented = false;
         }
 

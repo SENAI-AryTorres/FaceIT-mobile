@@ -1,4 +1,5 @@
 ﻿using FaceIT.Service;
+using FaceIT.ViewModels;
 using faceitapi.Models;
 using GoogleMaps.LocationServices;
 using System;
@@ -45,6 +46,7 @@ namespace FaceIT.View
             prop.TipoContrato = Convert.ToString(tipo_contrato.SelectedItem);
             prop.Encerrada = false;
             prop.IDEmpresa = _pessoa.IDPessoa;
+            //prop.IDEmpresaNavigation = _pessoa;
             
             var result = service.AddProposta(prop);
             if (await result)

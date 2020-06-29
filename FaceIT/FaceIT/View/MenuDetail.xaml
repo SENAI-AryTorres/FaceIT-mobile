@@ -5,6 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="FaceIT.View.MenuDetail">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Atualizar_Mapa" Clicked="Atualizar_Mapa_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout>
             <StackLayout x:Name="MapContainer"

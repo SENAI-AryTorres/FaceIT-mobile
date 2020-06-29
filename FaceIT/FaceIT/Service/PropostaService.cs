@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -11,6 +12,7 @@ namespace FaceIT.Service
 {
     public class PropostaService
     {
+        private List<Proposta> _proposta;
         public async Task<bool> AddProposta(Proposta proposta)
         {
             try
@@ -36,27 +38,56 @@ namespace FaceIT.Service
             }
         }
 
-        public async Task<bool> GetProposta(Action<IEnumerable<Proposta>> proposta)
+        public async Task<List<Proposta>> GetPropostaAsync()
         {
             try
             {
                 HttpClient client = new HttpClient();
-
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
-
                 HttpResponseMessage response = await client.GetAsync("https://faceitapi.azurewebsites.net/api/Proposta");
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var lista = JsonConvert.DeserializeObject<Proposta>(await response.Content.ReadAsStringAsync());
-                    proposta(lista);
+                    var lista = JsonConvert.DeserializeObject<List<Proposta>>(await response.Content.ReadAsStringAsync());
+                    return lista;
                 }
+                else
+                {
+                    return null;
+                }
+
             }
             catch (Exception)
             {
-
                 throw;
             }
+
+        }
+
+        public async Task<List<Proposta>> GetPropostabyID(int ID)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
+                HttpResponseMessage response = await client.GetAsync("https://faceitapi.azurewebsites.net/api/Proposta/PropostasEmpresa/" + ID);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var lista = JsonConvert.DeserializeObject<List<Proposta>>(await response.Content.ReadAsStringAsync());
+                    return lista;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }

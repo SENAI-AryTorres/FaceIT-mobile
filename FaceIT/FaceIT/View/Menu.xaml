@@ -75,8 +75,9 @@
                             <TableSection>
                                 <ViewCell Tapped="GoToMatchPopUp">
                                     <StackLayout Padding="15,10">
-                                        <Label Text="Match" VerticalTextAlignment="Center"
-                                               TextColor="White"/>
+                                        <Label Text="Suas Propostas" VerticalTextAlignment="Center"
+                                               TextColor="White"
+                                               x:Name="tsPessoa"/>
                                     </StackLayout>
                                 </ViewCell>
                             </TableSection>

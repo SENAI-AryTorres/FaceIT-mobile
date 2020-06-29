@@ -10,22 +10,25 @@ namespace FaceIT.ViewModels
 {
     public class CadastroSkillViewModel
     {
-        private ObservableCollection<Skill> skills;
-        public ObservableCollection<Skill> Skill
-        {
-            get { return Skill; }
-            set
-            {
-                skills = value;
-            }
-        }
+        //private ObservableCollection<Proposta> propostas;
+        //public ObservableCollection<Proposta> Proposta
+        //{
+        //    get { return Proposta; }
+        //    set
+        //    {
+        //        propostas= value;
+        //    }
+        //}
 
-        public CadastroSkillViewModel()
-        {
-            _ = SkillService.GetSkillAsync(lista =>
-              {
-                  foreach (Skill item in lista) Skill.Add(item);
-              });
-        }
+        //public CadastroSkillViewModel()
+        //{
+        //    _ = PropostaService.GetProposta(lista =>
+        //    {
+        //        foreach (Proposta item in lista) 
+        //        {
+        //            Proposta.Add(item);
+        //        }
+        //    });
+        //}
     }
 }
