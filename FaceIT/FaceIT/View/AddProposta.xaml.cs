@@ -38,7 +38,6 @@ namespace FaceIT.View
             }
 
             Proposta prop = new Proposta();
-
             prop.Descricao = descricao.Text;
             prop.Latitude = Convert.ToString(location.Latitude);
             prop.Longitude = Convert.ToString(location.Longitude);
@@ -55,7 +54,7 @@ namespace FaceIT.View
             }
             else
             {
-                await DisplayAlert("", "Erro", "OK");
+                await DisplayAlert("", "Erro ao Adicionar Proposta", "OK");
             }
         }
         private void BuscarCEP(object sender, TextChangedEventArgs args)

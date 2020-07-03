@@ -26,6 +26,7 @@ namespace FaceIT.Page
             SetValue(NavigationPage.HasNavigationBarProperty, false);
         }
 
+        protected override bool OnBackButtonPressed() => true;
         private async void NavegarRegisterPage(object sender, EventArgs e)
         {
            await PopupNavigation.Instance.PushAsync(new RegisterPage());
@@ -49,7 +50,7 @@ namespace FaceIT.Page
                 var pessoa = result.pessoa;
                 Security.Security.TokenValue = result.token.Value;
 
-          var pagina = new View.Menu(result.pessoa, result.token)
+                var pagina = new View.Menu(result.pessoa, result.token)
                 {
                     BindingContext = result.pessoa
                 };

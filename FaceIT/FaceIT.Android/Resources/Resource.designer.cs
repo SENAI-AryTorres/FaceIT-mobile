@@ -14670,16 +14670,19 @@ namespace FaceIT.Droid
 			public const int pergunta = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int tooltip_frame_dark = 2131165380;
+			public const int refresh = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int tooltip_frame_light = 2131165381;
+			public const int tooltip_frame_dark = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
-			public const int trabalhos = 2131165382;
+			public const int tooltip_frame_light = 2131165382;
 			
 			// aapt resource value: 0x7F0700C7
-			public const int trava = 2131165383;
+			public const int trabalhos = 2131165383;
+			
+			// aapt resource value: 0x7F0700C8
+			public const int trava = 2131165384;
 			
 			static Drawable()
 			{

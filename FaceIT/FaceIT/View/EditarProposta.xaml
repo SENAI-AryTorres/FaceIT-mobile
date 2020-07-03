@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:SfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.EditarProposta">
+    <ContentPage.Content>
+        <StackLayout>
+            <SfListView:SfListView x:Name="CV"
+                                   VerticalOptions="Fill">
+                <SfListView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="AssetId"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding IDProposta}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Description"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding Descricao}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </SfListView:SfListView.ItemTemplate>
+            </SfListView:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

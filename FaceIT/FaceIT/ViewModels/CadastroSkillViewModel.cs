@@ -16,15 +16,15 @@ namespace FaceIT.ViewModels
         //    get { return Proposta; }
         //    set
         //    {
-        //        propostas= value;
+        //        propostas = value;
         //    }
         //}
 
         //public CadastroSkillViewModel()
         //{
-        //    _ = PropostaService.GetProposta(lista =>
+        //    _ = PropostaService.GetPropostaAsync(lista =>
         //    {
-        //        foreach (Proposta item in lista) 
+        //        foreach (Proposta item in lista)
         //        {
         //            Proposta.Add(item);
         //        }

@@ -12,7 +12,6 @@ namespace FaceIT.Service
 {
     public class PropostaService
     {
-        private List<Proposta> _proposta;
         public async Task<bool> AddProposta(Proposta proposta)
         {
             try
@@ -37,7 +36,6 @@ namespace FaceIT.Service
                 throw;
             }
         }
-
         public async Task<List<Proposta>> GetPropostaAsync()
         {
             try
@@ -61,9 +59,7 @@ namespace FaceIT.Service
             {
                 throw;
             }
-
         }
-
         public async Task<List<Proposta>> GetPropostabyID(int ID)
         {
             try
@@ -87,7 +83,54 @@ namespace FaceIT.Service
             {
                 throw;
             }
+        }
+        public async Task<List<Proposta>> GetPropostabyIDProp(int ID)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
+                HttpResponseMessage response = await client.GetAsync("https://faceitapi.azurewebsites.net/api/Proposta/" + ID);
 
+                if (response.IsSuccessStatusCode)
+                {
+                    var lista = JsonConvert.DeserializeObject<List<Proposta>>(await response.Content.ReadAsStringAsync());
+                    return lista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task<bool> UpdateProposta(Proposta proposta)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
+
+                client.BaseAddress = new Uri("https://faceitapi.azurewebsites.net/api");
+
+                var json = JsonConvert.SerializeObject(proposta);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+                var httpresponse = await client.PutAsync(client.BaseAddress + "/Proposta", data);
+
+                if (httpresponse.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

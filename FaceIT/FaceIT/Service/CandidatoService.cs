@@ -16,7 +16,7 @@ namespace FaceIT.Service
 			try
 			{
 				HttpClient client = new HttpClient();
-				client.BaseAddress = new Uri("http://faceitapi.azurewebsites.net/api");
+				client.BaseAddress = new Uri("https://faceitapi.azurewebsites.net/api");
 
 				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
 

@@ -43,5 +43,10 @@ namespace faceitapi.Models
 
         [InverseProperty("IDPropostaNavigation")]
         public virtual ICollection<PropostaSkill> PropostaSkill { get; set; }
+
+        public class PropostaReturn
+        {
+            public Proposta proposta { get; set; }
+        }
     }
 }

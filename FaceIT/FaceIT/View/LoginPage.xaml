@@ -42,7 +42,6 @@
                                        IsPassword="True"
                                        x:Name="entry_senha">
                                 </Entry>
-                                <Label x:Name="teste"></Label>
                                 <Button BackgroundColor="Transparent"
                                         Text="Esqueceu a Senha?"
                                         TextColor="#004080"

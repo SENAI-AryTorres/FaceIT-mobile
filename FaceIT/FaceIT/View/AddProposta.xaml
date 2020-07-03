@@ -112,9 +112,10 @@
                     </StackLayout>
                     
                     <Label x:Name="lblteste"/>
-                    <Button Clicked="Button_Clicked"></Button>
-                    
-                    <StackLayout Orientation="Horizontal"
+                    <Button Clicked="Button_Clicked"
+                            BackgroundColor="#1fada6"/>
+
+                    <!--<StackLayout Orientation="Horizontal"
                                  HorizontalOptions="Center">
                         <Button Text="Criar Proposta"
                                 BackgroundColor="#1fada6"
@@ -122,7 +123,7 @@
                         <Button Text="Cancela"
                                 BackgroundColor="Gray"
                                 FontSize="12"/>
-                    </StackLayout>
+                    </StackLayout>-->
                 </StackLayout>            
             </StackLayout>
         </ScrollView>

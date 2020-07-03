@@ -22,6 +22,16 @@ namespace FaceIT.View
         Pessoa _pessoa = new Pessoa();
         PropostaService service = new PropostaService();
         private Pin pin;
+        private string _IdProposta;
+        private string _descricao;
+        private string[] strnomes;
+        private string[] _idprop;
+        private string[] _idemp;
+        private string[] _desc;
+        private string[] _tipocontrato;
+        private string[] _cidade;
+        private string[] _posicao;
+        private string posicao;
         public MenuDetail(Pessoa pessoa)
         {
             service.GetPropostaAsync();
@@ -29,8 +39,6 @@ namespace FaceIT.View
             CriarMapa();
             _ = PermissaoGPSAsync();
             _pessoa = pessoa;
-
-
         }
 
         public void CriarMapa()
@@ -71,24 +79,47 @@ namespace FaceIT.View
                     {
                         Plugin.Geolocator.Abstractions.Position pos = gps.GetCurrentPosition().GetAwaiter().GetResult();
 
-
                         mapa = new Map(MapSpan.FromCenterAndRadius(new Position(pos.Latitude, pos.Longitude), Distance.FromMeters(100)));
                         MapContainer.Children.Add(mapa);
 
                         var propostas = await service.GetPropostaAsync();
+
                         foreach (var item in propostas)
-                        {
+                        {                            
                             mapa.Pins.Add(pin = new Pin
                             {
                                 Position = new Position(Convert.ToDouble(item.Latitude), Convert.ToDouble(item.Longitude)),
-                                Label = item.Descricao,
-                                Type = PinType.SearchResult
+                                Label = "ID da Vaga:" + item.IDProposta + "," +"\nID da Empresa:"+ item.IDEmpresa + "," + "\nDescricao da Vaga:" + item.Descricao + "," +
+                                        "\nTipo de Contrato:" + item.TipoContrato + "," + "\nCidade:" + item.Cidade,
+                                Address = item.Latitude + "," + item.Longitude,
+                                Type = PinType.Place,
                             });
+                            
+                            pin.InfoWindowClicked += async (s, args) =>
+                            {
+                                try
+                                {
+                                    _descricao = ((Pin)s).Label;
+                                    posicao = ((Pin)s).Address;
+                                    _posicao = posicao.Split(',');
+                                    strnomes = _descricao.Split(',');
+                                    _idprop = strnomes[0].Split(':');
+                                    _idemp = strnomes[1].Split(':');
+                                    _desc = strnomes[2].Split(':');
+                                    _tipocontrato = strnomes[3].Split(':');
+                                    _cidade = strnomes[4].Split(':');
+                                    await DisplayAlert("Informações da Vaga", $"{_descricao}", "OK");
+                                    _IdProposta = _idprop[1];
+                                }
+                                catch (Exception)
+                                {
+                                    throw;
+                                }                                
+                            };
                             pin.Clicked += Pin_Clicked;
                         }    
                     }
-                }                
-
+                }
                 //Não aceitaa
                 else if (status != PermissionStatus.Unknown)
                 {
@@ -150,39 +181,7 @@ namespace FaceIT.View
 
         private async void Atualizar_Mapa_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-                if (status == PermissionStatus.Granted)
-                {
-                    MapContainer.Children.RemoveAt(0);
-                    GPS gps = new GPS();
-                    if (gps.IsLocationAvailable())
-                    {
-                        Plugin.Geolocator.Abstractions.Position pos = gps.GetCurrentPosition().GetAwaiter().GetResult();
-
-
-                        mapa = new Map(MapSpan.FromCenterAndRadius(new Position(pos.Latitude, pos.Longitude), Distance.FromMeters(100)));
-                        MapContainer.Children.Add(mapa);
-
-                        var propostas = await service.GetPropostaAsync();
-                        foreach (var item in propostas)
-                        {
-                            mapa.Pins.Add(pin = new Pin
-                            {
-                                Position = new Position(Convert.ToDouble(item.Latitude), Convert.ToDouble(item.Longitude)),
-                                Label = item.Descricao,
-                                Type = PinType.SearchResult,
-                            });
-                            pin.Clicked += Pin_Clicked;
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }            
+            PermissaoGPSAsync();
         }
 
         private async void Pin_Clicked(object sender, EventArgs e)
@@ -190,7 +189,42 @@ namespace FaceIT.View
             var action = await DisplayActionSheet("Deseja se Candidatar a Vaga?", "Ok", null, "Sim", "Não");
             if (action == "Sim")
             {
-                await DisplayAlert("Parabéns", "Cadastrado com Sucesso", "Boa Sorte");
+                CandidatoService service = new CandidatoService();
+                Candidato candidato;
+                Proposta proposta;
+                proposta = new Proposta()
+                {
+                    IDProposta = Convert.ToInt32(_idprop[1]),
+                    IDEmpresa = Convert.ToInt32(_idemp[1]),
+                    Descricao = _desc[1],
+                    TipoContrato = _tipocontrato[1],
+                    Cidade = _cidade[1],
+                    Encerrada = false,
+                    Latitude = _posicao[0],
+                    Longitude = _posicao[1],                     
+                };
+
+                candidato = new Candidato()
+                {
+                    IDPessoa = _pessoa.IDPessoa,
+                    IDProposta = Convert.ToInt32(_idprop[1]),
+                };
+                if (_pessoa.Tipo == "PJ")
+                {
+                    await DisplayAlert("Erro", "Desculpe, Pessoas Juridicas não podem cadastrar a Vagas", "Ok");
+                }
+                else
+                {
+                    var result = service.AddCandidato(candidato);
+                    if (await result)
+                    {
+                        await DisplayAlert("Parabéns", "Cadastrado com Sucesso", "Boa Sorte");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Erro", "Houve erro no seu Cadastro", "Ok");
+                    }
+                }                
             }
             else
             {

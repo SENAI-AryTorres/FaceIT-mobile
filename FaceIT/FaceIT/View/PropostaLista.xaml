@@ -2,39 +2,114 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:SfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
-             x:Class="FaceIT.View.PropostaLista">
+             x:Class="FaceIT.View.PropostaLista"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Atualizar" IconImageSource="refresh.png" Clicked="Atualizar_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Clique aqui para Carregar suas Propostas"
-                   VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <CollectionView ItemsSource="{Binding teste}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="8">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="1" 
-                               Text="{Binding Descricao}" 
-                               FontSize="Large"
-                               TextColor="Blue"
-                               FontAttributes="Bold" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout HorizontalOptions="Center" Padding="15">                    
+                    <Label Text="Atualize a página para atualizar suas Propostas criadas" 
+                           x:Name="lbl_Att"
+                           TextColor="#1fada6"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Center"
+                           FontSize="18"/>
+                    <Label Text="Clique em alguma Proposta para poder editar..."
+                           IsVisible="False"
+                           TextColor="#004080"
+                           x:Name="lbl_edit"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Center"
+                           FontSize="15"/>
+                </StackLayout>
+                <SfListView:SfListView x:Name="CV"
+                                       SelectionMode="Single"
+                                       SelectionChanged="CV_SelectionChanged_1"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"
+                                       IsScrollingEnabled="False"
+                                       SelectionBackgroundColor="#1fada6">
+                    <SfListView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Vertical">
+                                <border:SfBorder BorderColor="#1fada6">
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding IDProposta}" 
+                                               FontSize="16"
+                                               TextColor="#004080"
+                                               FontAttributes="Bold"
+                                               HeightRequest="50"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding Descricao}" 
+                                               FontSize="13"
+                                               TextColor="#004080"
+                                               FontAttributes="Bold"
+                                               HeightRequest="50"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center">
+                                        </Label>
+                                    </StackLayout>
+                                </border:SfBorder>
+                            </StackLayout>
+                        </DataTemplate>
+                    </SfListView:SfListView.ItemTemplate>
+                </SfListView:SfListView>
+                <StackLayout Padding="10"
+                             Spacing="5"
+                             x:Name="SL_Prop"
+                             IsVisible="False">
+                    <Label x:Name="currentSelectedItemLabel"
+                           IsVisible="False"/>
+                    <!--<Label x:Name="_idprop"/>
+                <Label x:Name="_idemp"/>-->
+                    <border:SfBorder BorderColor="#1fada6"
+                                     CornerRadius="5">
+                        <Editor x:Name="_desc"
+                                HeightRequest="100"/>
+                    </border:SfBorder>
+                    <border:SfBorder BorderColor="#1fada6"
+                                     CornerRadius="5">
+                        <Picker x:Name="_TipoContrato">
+                            <Picker.Items>
+                                <x:String></x:String>
+                                <x:String>PF</x:String>
+                                <x:String>PJ</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </border:SfBorder>
+                    <border:SfBorder BorderColor="#1fada6"
+                                     CornerRadius="5">
+                        <Entry x:Name="_Cidade"/>
+                    </border:SfBorder>                    
+                </StackLayout>
+                <Button BackgroundColor="#1fada6"
+                        Clicked="Button_Clicked"
+                        CornerRadius="5"
+                        Padding="40,0,40,0"/>
+                <StackLayout x:Name="hide" IsVisible="False">
+                    <border:SfBorder BorderColor="#1fada6"
+                                     CornerRadius="5">
+                        <Entry x:Name="_Latitude"
+                               IsVisible="False"/>
+                    </border:SfBorder>
+                    <border:SfBorder BorderColor="#1fada6"
+                                     CornerRadius="5">
+                        <Entry x:Name="_Longitude"
+                               IsVisible="False"/>
+                    </border:SfBorder>
+                    <border:SfBorder BorderColor="#1fada6"
+                                     CornerRadius="5">
+                        <Entry x:Name="_IdEmp"
+                               IsVisible="False"/>
+                    </border:SfBorder>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
