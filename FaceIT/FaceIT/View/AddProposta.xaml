@@ -13,10 +13,10 @@
                     <Label Text="Descrição da Vaga"
                            TextColor="#004080"
                            FontSize="Medium"
-                           HorizontalTextAlignment="Center"
+                           HorizontalTextAlignment="Start"
                            />
                     <border:SfBorder
-                            CornerRadius="15"
+                            CornerRadius="5"
                             BackgroundColor="Transparent"
                             BorderColor="#1fada6"
                             Padding="10">
@@ -34,7 +34,7 @@
                                HorizontalOptions="Start"
                                VerticalOptions="Center"/>
                         <border:SfBorder
-                            CornerRadius="15"
+                            CornerRadius="5"
                             BackgroundColor="Transparent"
                             BorderColor="#1fada6"
                             Padding="10"
@@ -52,9 +52,6 @@
                         <Label Text="Dados de Endereço"
                                TextColor="#004080"
                                FontSize="20"/>
-                        <Label Text="Altere seus dados no campo abaixo"
-                               TextColor="#1fada6"
-                               FontSize="17"/>
                         <border:SfBorder CornerRadius="5"
                                          BorderColor="#1fada6">
                             <Entry Placeholder="CEP"
@@ -113,7 +110,8 @@
                     
                     <Label x:Name="lblteste"/>
                     <Button Clicked="Button_Clicked"
-                            BackgroundColor="#1fada6"/>
+                            BackgroundColor="#1fada6"
+                            Text="Enviar"/>
 
                     <!--<StackLayout Orientation="Horizontal"
                                  HorizontalOptions="Center">

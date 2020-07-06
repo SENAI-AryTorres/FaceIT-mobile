@@ -2,32 +2,114 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:SfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:SfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
              mc:Ignorable="d"
              x:Class="FaceIT.View.EditarProposta">
     <ContentPage.Content>
-        <StackLayout>
-            <SfListView:SfListView x:Name="CV"
-                                   VerticalOptions="Fill">
-                <SfListView:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="AssetId"
-                                           FontAttributes="Bold"/>
-                                    <Label Text="{Binding IDProposta}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Description"
-                                           FontAttributes="Bold"/>
-                                    <Label Text="{Binding Descricao}"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </SfListView:SfListView.ItemTemplate>
-            </SfListView:SfListView>
-        </StackLayout>
+        <ScrollView>    
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         Padding="15">
+                <Entry Text="{Binding IDProposta}"
+                       x:Name="IdProposta"
+                       IsVisible="false"></Entry>
+                <Entry Text="{Binding IDEmpresa}"
+                       x:Name="IdEmpresa"
+                       IsVisible="false"></Entry>
+                <Label Text="Descrição da Proposta"
+                       TextColor="#004080"
+                       HorizontalOptions="Start"
+                       FontSize="20"/>
+                <Button Text="Excluir Proposta"
+                        Clicked="Button_Clicked_1"/>
+                <Label Text="Altere seus dados nos campos abaixo"
+                       TextColor="#1fada6"
+                       FontSize="17"/>
+                <border:SfBorder CornerRadius="5"
+                                 BorderColor="#1fada6">
+                    <Editor HeightRequest="100"
+                            x:Name="Descricao"
+                            Text="{Binding Descricao}">
+                    </Editor>
+                </border:SfBorder>
+                <Label Text="Tipo de Contrato"
+                       TextColor="#004080"
+                       HorizontalOptions="Start"
+                       FontSize="20"/>
+                <border:SfBorder CornerRadius="5"
+                                 BorderColor="#1fada6">
+                    <Picker x:Name="picker_tipo">
+                        <Picker.Items>
+                            <x:String>PF</x:String>
+                            <x:String>PJ</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </border:SfBorder>
+                <Label x:Name="lblteste"
+                       IsVisible="False"/>
+                
+                <StackLayout x:Name="endereco_data" >
+                    <Label Text="Dados de Endereço"
+                           TextColor="#004080"
+                           FontSize="20"/>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="CEP"
+                               x:Name="cep_entry"
+                               TextChanged="BuscarCEP">
+                            <Entry.Behaviors>
+                                <behaviorPack:CEPValidationBehavior/>
+                                <behaviorPack:MaskedBehavior Mask="XXXXX-XXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </border:SfBorder>
+                    <Label Text="" x:Name="resultado"
+                           IsVisible="False"/>
+                    <StackLayout Orientation="Horizontal">
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="StartAndExpand">
+                            <Entry Placeholder="Pais"
+                                   x:Name="pais_entry"/>
+                        </border:SfBorder>
+                        <border:SfBorder CornerRadius="5"
+                                         BorderColor="#1fada6"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="End">
+                            <Entry Placeholder="Uf"
+                                   x:Name="uf_entry"/>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Municipio"
+                               x:Name="munic_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Endereço"
+                               x:Name="logradouro_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Bairro"
+                               x:Name="bairro_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Numero"
+                               x:Name="numero_entry"/>
+                    </border:SfBorder>
+                    <border:SfBorder CornerRadius="5"
+                                     BorderColor="#1fada6">
+                        <Entry Placeholder="Complemento"
+                               x:Name="comp_entry"/>
+                    </border:SfBorder>
+                </StackLayout>
+                <Button Clicked="Button_Clicked"
+                        Text="Confirmar Edições"
+                        BackgroundColor="#1fada6"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
