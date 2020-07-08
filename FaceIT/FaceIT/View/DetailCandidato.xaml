@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sfborder="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.DetailCandidato">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="20">
+                <sfborder:SfBorder HorizontalOptions="Center"
+                                   CornerRadius="130">
+                    <Image x:Name="pessoafoto"
+                           HeightRequest="150"
+                           WidthRequest="150"
+                           Aspect="Fill"/>
+                </sfborder:SfBorder>
+                <Label Text="Detalhes do Candidato"
+                           FontSize="Large"
+                           TextColor="#1fada6"
+                           HorizontalTextAlignment="Center"/>
+                <StackLayout HorizontalOptions="Center">
+                    <Label x:Name="pessoaNome"
+                           FontSize="Medium"
+                           TextColor="#004080"
+                           HorizontalTextAlignment="Center"/>
+                    <Label x:Name="pessoacpf"
+                           FontSize="Medium"
+                           TextColor="#004080"
+                           HorizontalTextAlignment="Center"/>
+                    <Label x:Name="pessoarg"
+                           FontSize="Medium"
+                           TextColor="#004080"
+                           HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="Contatos do Candidato"
+                           FontSize="Large"
+                           TextColor="#1fada6"
+                           HorizontalTextAlignment="Center"/>
+                    <Label x:Name="pessoaemail"
+                           FontSize="Medium"
+                           TextColor="#004080"
+                           HorizontalTextAlignment="Center"/>
+                    <Label x:Name="pessoacelular"
+                           FontSize="Medium"
+                           TextColor="#004080"
+                           HorizontalTextAlignment="Center"/>
+                    <Label x:Name="pessoatelefone"
+                           FontSize="Medium"
+                           TextColor="#004080"
+                           HorizontalTextAlignment="Center"/>                    
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="Anexo"
+                           FontSize="Large"
+                           TextColor="#1fada6"
+                           HorizontalTextAlignment="Center"/>
+                    <Label x:Name="pessoaanexo"
+                           FontSize="Medium"
+                           TextColor="#004080"
+                           HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

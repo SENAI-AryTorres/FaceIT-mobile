@@ -35,5 +35,30 @@ namespace FaceIT.Service
 				throw ex;
 			}
         }
-    }
+
+		public async Task<List<Candidato>> GetCandidato(int ID)
+		{
+			try
+			{
+				HttpClient client = new HttpClient();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
+				HttpResponseMessage response = await client.GetAsync("https://faceitapi.azurewebsites.net/api/Candidato/" + ID);
+
+				if (response.IsSuccessStatusCode)
+				{
+					var lista = JsonConvert.DeserializeObject<List<Candidato>>(await response.Content.ReadAsStringAsync());
+					return lista;
+				}
+				else
+				{
+					return null;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw ex;
+			}
+		}
+	}
 }

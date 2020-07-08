@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:SfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"              
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.CandidatoLista">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" 
+                     HorizontalOptions="CenterAndExpand">
+            <Label Text="Selecione o Candidato para obter informações do Mesmo"
+                   TextColor="#1fada6"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   FontSize="18"
+                   Padding="30,20,30,0"/>
+            <SfListView:SfListView x:Name="CV"
+                                   SelectionBackgroundColor="#1fada6"
+                                   Padding="20,40,20,0"
+                                   SelectionChanged="CV_SelectionChanged"
+                                   ItemHolding="CV_ItemHolding">
+                <SfListView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Vertical">
+                            <border:SfBorder BorderColor="#1fada6">
+                                <StackLayout>
+                                    <Label Text="{Binding IDPessoa}" 
+                                           FontSize="16"
+                                           TextColor="#004080"
+                                           FontAttributes="Bold"
+                                           HeightRequest="50"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                            </border:SfBorder>
+                        </StackLayout>
+                    </DataTemplate>
+                </SfListView:SfListView.ItemTemplate>
+            </SfListView:SfListView>
+            <Label x:Name="currentSelectedItemLabel"
+                   IsVisible="False"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

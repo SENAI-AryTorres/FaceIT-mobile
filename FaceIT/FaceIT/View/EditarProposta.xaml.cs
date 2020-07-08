@@ -24,7 +24,7 @@ namespace FaceIT.View
             _proposta = proposta;
         }
 
-        private void BuscarCEP(object sender, TextChangedEventArgs args)
+        private async void BuscarCEP(object sender, TextChangedEventArgs args)
         {
             string cep = cep_entry.Text.Trim();
             if (cep.Length == 9)
@@ -38,7 +38,7 @@ namespace FaceIT.View
                     }
                     else
                     {
-                        DisplayAlert("ERRO", "O endereço não foi encontrado para o CEP informado: " + cep, "OK");
+                        await DisplayAlert("ERRO", "O endereço não foi encontrado para o CEP informado: " + cep, "OK");
                     }
                     pais_entry.Text = "Brasil";
                     uf_entry.Text = end.UF;
@@ -50,7 +50,7 @@ namespace FaceIT.View
                 }
                 catch (Exception e)
                 {
-                    DisplayAlert("ERRO CRÍTICO", e.Message, "OK");
+                    await DisplayAlert("ERRO CRÍTICO", e.Message, "OK");
                 }
             }
         }
@@ -78,6 +78,7 @@ namespace FaceIT.View
             if (await result)
             {
                 await DisplayAlert("", "Proposta Atualizada com Sucesso", "OK");
+                await Navigation.PopAsync();
             }
             else
             {
@@ -100,6 +101,7 @@ namespace FaceIT.View
             if (await result)
             {
                 await DisplayAlert("", "Proposta Excluida com Sucesso", "OK");
+                await Navigation.PopAsync();
             }
             else
             {

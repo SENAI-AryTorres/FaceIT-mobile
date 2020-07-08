@@ -18,11 +18,11 @@ namespace FaceIT.View
     {
         PropostaService service = new PropostaService();
         Pessoa _pessoa = new Pessoa();
-        List<Proposta> teste = new List<Proposta>();
         public PropostaLista(Pessoa pessoa)
         {
             InitializeComponent();
-            _pessoa = pessoa;            
+            _pessoa = pessoa;
+            GetPropostas();
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -57,7 +57,11 @@ namespace FaceIT.View
             _Longitude.Text = string.IsNullOrWhiteSpace(Longitude) ? "" : Longitude;
 
         }
-        private async void Atualizar_Clicked(object sender, EventArgs e)
+        private async void GetPropostas()
+        {
+            Atualizar_Clicked();
+        }
+        private async void Atualizar_Clicked()
         {            
             var propostascridas = await service.GetPropostabyID(_pessoa.IDPessoa);
             var lista = new List<Proposta>();
@@ -75,21 +79,33 @@ namespace FaceIT.View
         }
         private async void CV_ItemHolding(object sender, Syncfusion.ListView.XForms.ItemHoldingEventArgs e)
         {
-            Proposta prop = new Proposta();
-            prop.Descricao = _desc.Text;
-            prop.Latitude = Convert.ToString(_Latitude.Text);
-            prop.Longitude = Convert.ToString(_Longitude.Text);
-            prop.Cidade = _Cidade.Text;
-            prop.TipoContrato = Convert.ToString(_TipoContrato.Text);
-            prop.Encerrada = false;
-            prop.IDEmpresa = _pessoa.IDPessoa;
-            prop.IDProposta = Convert.ToInt32(currentSelectedItemLabel.Text);
-
-            var pagina = new EditarProposta(prop)
+            var action = await DisplayActionSheet($"Proposta {currentSelectedItemLabel.Text}  Selecionada", "Cancelar", null, "Editar Proposta", "Ver Candidatos");
+            if(action == "Editar Proposta")
             {
-                BindingContext = prop,
-            };
-            await Navigation.PushAsync(pagina);
+                Proposta prop = new Proposta();
+                prop.Descricao = _desc.Text;
+                prop.Latitude = Convert.ToString(_Latitude.Text);
+                prop.Longitude = Convert.ToString(_Longitude.Text);
+                prop.Cidade = _Cidade.Text;
+                prop.TipoContrato = Convert.ToString(_TipoContrato.Text);
+                prop.Encerrada = false;
+                prop.IDEmpresa = _pessoa.IDPessoa;
+                prop.IDProposta = Convert.ToInt32(currentSelectedItemLabel.Text);
+
+                var pagina = new EditarProposta(prop)
+                {
+                    BindingContext = prop,
+                };
+                await Navigation.PushAsync(pagina);
+            }
+            else if(action == "Ver Candidatos")
+            {
+                await Navigation.PushAsync(new CandidatoLista(Convert.ToInt32(currentSelectedItemLabel.Text)));
+            }
+        }
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Atualizar_Clicked();
         }
     }
 }

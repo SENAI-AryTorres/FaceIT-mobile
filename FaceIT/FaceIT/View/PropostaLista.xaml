@@ -6,9 +6,9 @@
              mc:Ignorable="d"
              x:Class="FaceIT.View.PropostaLista"
              NavigationPage.HasBackButton="False">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Name="Atualizar" IconImageSource="refresh.png" Clicked="Atualizar_Clicked"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
@@ -19,7 +19,7 @@
                            VerticalTextAlignment="Center"
                            HorizontalOptions="Center"
                            FontSize="18"/>
-                    <Label Text="Clique em alguma Proposta para poder editar..."
+                    <Label Text="Pressione alguma Proposta para ter acesso ao Menu"
                            IsVisible="False"
                            TextColor="#004080"
                            x:Name="lbl_edit"
@@ -75,6 +75,14 @@
                     <Entry x:Name="_Longitude"/>
                     <Entry x:Name="_IdEmp"/>
                 </StackLayout>
+                <Button BackgroundColor="#1fada6"
+                        CornerRadius="5"
+                        HorizontalOptions="Center"
+                        VerticalOptions="EndAndExpand"
+                        Text="Atualizar a Lista de Proposta"
+                        WidthRequest="250"
+                        TextColor="#004080"
+                        Clicked="Button_Clicked"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

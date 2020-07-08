@@ -47,5 +47,10 @@ namespace faceitapi.Models
         public virtual ICollection<PessoaSkill> PessoaSkill { get; set; }
         [InverseProperty("IDEmpresaNavigation")]
         public virtual ICollection<Proposta> Proposta { get; set; }
+
+        public class PessoaReturn
+        {
+            public Pessoa pessoa { get; set; }
+        }
     }
 }

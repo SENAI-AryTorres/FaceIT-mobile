@@ -4,23 +4,23 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:SfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
              mc:Ignorable="d"
-             x:Class="FaceIT.View.EditarProposta">
+             x:Class="FaceIT.View.EditarProposta"
+             Title="Detalhes da Proposta">
     <ContentPage.Content>
         <ScrollView>    
             <StackLayout VerticalOptions="CenterAndExpand"
                          Padding="15">
                 <Entry Text="{Binding IDProposta}"
                        x:Name="IdProposta"
-                       IsVisible="false"></Entry>
+                       IsVisible="false"></Entry>      
+                
                 <Entry Text="{Binding IDEmpresa}"
                        x:Name="IdEmpresa"
                        IsVisible="false"></Entry>
                 <Label Text="Descrição da Proposta"
                        TextColor="#004080"
                        HorizontalOptions="Start"
-                       FontSize="20"/>
-                <Button Text="Excluir Proposta"
-                        Clicked="Button_Clicked_1"/>
+                       FontSize="20"/>                
                 <Label Text="Altere seus dados nos campos abaixo"
                        TextColor="#1fada6"
                        FontSize="17"/>
@@ -106,6 +106,10 @@
                                x:Name="comp_entry"/>
                     </border:SfBorder>
                 </StackLayout>
+
+                <Button Text="Excluir Proposta"
+                        Clicked="Button_Clicked_1"
+                        BackgroundColor="DarkRed"/>
                 <Button Clicked="Button_Clicked"
                         Text="Confirmar Edições"
                         BackgroundColor="#1fada6"/>
