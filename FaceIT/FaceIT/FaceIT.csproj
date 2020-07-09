@@ -26,14 +26,15 @@
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.36-beta" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.55" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0-preview.1.20120.5" />
-    <PackageReference Include="Xam.Plugin.FilePicker" Version="1.0.0" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.6.2-beta" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.494-pre2" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="Xamarin.Forms.BehaviorValidationPack" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.6.0.494-pre2" />
     <PackageReference Include="Xamarin.Forms.MultiSelectListView" Version="2.1.0" />
+    <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.43-beta" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +69,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PessoaFisicaCadastroGoogle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\PessoaFisicaCadastroPage.xaml">

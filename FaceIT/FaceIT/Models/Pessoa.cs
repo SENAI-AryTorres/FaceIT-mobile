@@ -23,7 +23,8 @@ namespace faceitapi.Models
         [StringLength(150)]
         public string Senha { get; set; }
         public bool Excluido { get; set; }
-            
+        public int? googleID { get; set; }
+
         [StringLength(15)]
         public string Celular { get; set; }
         [StringLength(14)]

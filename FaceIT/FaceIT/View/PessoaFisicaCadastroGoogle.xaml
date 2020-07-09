@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
+             xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:FaceIT.ViewModels" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.PessoaFisicaCadastroGoogle">
+
+    <ContentPage.BindingContext>
+        <local1:SkillViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout
+                    Spacing="18"
+                    Margin="20,0"
+                    VerticalOptions="Center">
+                    <Label
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Cadastro de Pessoa Física"
+                        TextColor="#004080" />
+
+                    <Button Text="Escolha seu Documento(Currículo ou Carta de Apresentação)"
+                            Clicked="AddAnexo_Clicked"
+                            HorizontalOptions="Center"  
+                            VerticalOptions="Center"
+                            BackgroundColor="#1fada6"
+                            FontSize="09"
+                            WidthRequest="150"
+                            HeightRequest="65"/>
+
+                    <Label Text="Arquivo: " x:Name="lbl"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#004080"/>
+
+
+                    <Label
+                        Margin="0,-1,0,-2"
+                        HorizontalTextAlignment="Center"
+                        Text="Dados de Cadastro"
+                        TextColor="#1fada6"
+                        FontAttributes="Bold"
+                        FontSize="Medium"/>
+
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6">
+                        <Entry
+                            Placeholder="CPF"
+                            TextColor="#004080"
+                            x:Name="cpf_entry">
+                            <Entry.Behaviors>
+                                <behaviorPack:CPFValidationBehavior/>
+                                <behaviorPack:MaskedBehavior Mask="XXX.XXX.XXX-XX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </border:SfBorder>
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6">
+                        <Entry
+                            Placeholder="RG"
+                            TextColor="#004080"
+                            x:Name="rg_entry">
+                            <Entry.Behaviors>
+                                <behaviorPack:MaskedBehavior Mask="XX.XXX.XXX-X"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </border:SfBorder>
+                    <Label
+                        Margin="0,-1,0,-2"
+                        HorizontalTextAlignment="Center"
+                        Text="Endereço"
+                        TextColor="#1fada6"
+                        FontAttributes="Bold"
+                        FontSize="Medium"/>
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6">
+                        <Entry
+                            Placeholder="CEP"
+                            TextColor="#004080"
+                            x:Name="cep_entry"
+                            TextChanged="BuscarCEP">
+                            <Entry.Behaviors>
+                                <behaviorPack:CEPValidationBehavior/>
+                                <behaviorPack:MaskedBehavior Mask="XXXXX-XXX"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </border:SfBorder>
+                    <Label Text="" x:Name="resultado"
+                           IsVisible="False"/>
+                    <StackLayout Orientation="Horizontal">
+                        <border:SfBorder
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
+                            <Entry
+                                Placeholder="País"
+                                TextColor="#004080"
+                                x:Name="pais_entry">
+                            </Entry>
+                        </border:SfBorder>
+                        <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6"
+                        HorizontalOptions="End"
+                        VerticalOptions="End">
+                            <Entry
+                                Placeholder="UF"
+                                TextColor="#004080"
+                                x:Name="uf_entry">
+                                <Entry.Behaviors>
+                                    <behaviorPack:MaskedBehavior Mask="XX"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6">
+                        <Entry
+                            Placeholder="Munícipio"
+                            TextColor="#004080"
+                            x:Name="municipio_entry">
+                        </Entry>
+                    </border:SfBorder>
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6">
+                        <Entry
+                            Placeholder="Logradouro"
+                            TextColor="#004080"
+                            x:Name="logradouro_entry">
+                        </Entry>
+                    </border:SfBorder>
+                    <border:SfBorder
+                        CornerRadius="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="#1fada6">
+                        <Entry
+                            Placeholder="Bairro"
+                            TextColor="#004080"
+                            x:Name="bairro_entry">
+                        </Entry>
+                    </border:SfBorder>
+                    <StackLayout Orientation="Horizontal">
+                        <border:SfBorder
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6">
+                            <Entry
+                                Placeholder="Número"
+                                TextColor="#004080"
+                                x:Name="numero_entry">
+                            </Entry>
+                        </border:SfBorder>
+                        <border:SfBorder
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Entry
+                                Placeholder="Complemento"
+                                TextColor="#004080"
+                                x:Name="complemento_entry">
+                            </Entry>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <Label  Margin="0,-1,0,-2"
+                            HorizontalTextAlignment="Center"
+                            Text="Contato"
+                            TextColor="#1fada6"
+                            FontAttributes="Bold"
+                            FontSize="Medium"/>
+                    <StackLayout Orientation="Horizontal">
+                        <border:SfBorder
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6">
+                            <Entry
+                                Placeholder="DDD"
+                                TextColor="#004080"
+                                x:Name="dddtel_entry">
+                                <Entry.Behaviors>
+                                    <behaviorPack:MaskedBehavior Mask="XX"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </border:SfBorder>
+                        <border:SfBorder
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Entry
+                                Placeholder="Telefone"
+                                TextColor="#004080"
+                                x:Name="telefone_entry">
+                                <Entry.Behaviors>
+                                    <behaviorPack:MaskedBehavior Mask="XXXXX-XXXX"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <border:SfBorder
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6">
+                            <Entry
+                                Placeholder="DDD"
+                                TextColor="#004080"
+                                x:Name="dddcel_entry">
+                                <Entry.Behaviors>
+                                    <behaviorPack:MaskedBehavior Mask="XX"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </border:SfBorder>
+                        <border:SfBorder
+                            CornerRadius="15"
+                            BackgroundColor="Transparent"
+                            BorderColor="#1fada6"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Entry
+                                Placeholder="Celular"
+                                TextColor="#004080"
+                                x:Name="celular_entry">
+                                <Entry.Behaviors>
+                                    <behaviorPack:MaskedBehavior Mask="XXXXX-XXXX"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </border:SfBorder>
+                    </StackLayout>
+                    <Label Text="Selecione suas Habilidades : " 
+                           TextColor="#1fada6" 
+                           FontSize="Medium"
+                           Margin="0,-1,0,-2"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"/>
+                    <Label x:Name="currentSelectedItemLabel"/>
+                    <SearchBar x:Name="SkillsSearchBar"
+                               TextChanged="SkillsSearchBar_TextChanged"/>
+                    <Button Text="Limpar suas Habilidades"
+                            x:Name="button_limpar"
+                            Clicked="button_limpar_Clicked"/>
+                </StackLayout>
+                <Label Text="Seleção anterior : "  TextColor="Red" FontSize="Medium" IsVisible="False"/>
+                <Label x:Name="previousSelectedItemLabel" IsVisible="False"/>
+                <CollectionView ItemsSource="{Binding SkillsLP}"
+                                SelectionMode="Multiple" 
+                                SelectionChanged="OnCollectionViewSelectionChanged"
+                                x:Name="ListaSkills"
+                                IsVisible="False">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Descricao}" 
+                                   WidthRequest="60"
+                                   HeightRequest="30"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="20"/>
+                                <Label Text="{Binding IDTipoSkill}" 
+                                   WidthRequest="60"
+                                   HeightRequest="30"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="20"/>
+                                <Label Text="{Binding IDSkill}" 
+                                   WidthRequest="60"
+                                   HeightRequest="30"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="20"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout Padding="20" Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                    <Button Text="Próximo"
+                                BackgroundColor="#1fada6"
+                                Clicked="Button_Clicked"
+                                FontSize="12"/>
+                    <Button Text="Cancela"
+                                BackgroundColor="Gray"
+                                FontSize="12"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

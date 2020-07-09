@@ -61,12 +61,14 @@
                                        TextColor="#004080"
                                        FontSize="11"
                                        FontAttributes="Bold"/>
-                                <Button BackgroundColor="Red"
+                                <Button x:Name="btnLoginGoogle"
+                                        BackgroundColor="Red"
                                         CornerRadius="7"
                                         Text="Login com Google"
                                         TextColor="White"
                                         FontSize="14"
-                                        FontAttributes="Bold"/>
+                                        FontAttributes="Bold"
+                                        Clicked="btnLoginGoogle_Clicked"/>
                                 <Button BackgroundColor="Transparent"
                                         Text="Cadastre-se"
                                         TextColor="#004080"
