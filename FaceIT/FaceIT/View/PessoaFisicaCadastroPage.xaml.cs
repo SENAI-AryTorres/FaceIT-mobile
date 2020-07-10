@@ -24,7 +24,9 @@ namespace FaceIT.View
         private SkillViewModel skill = new SkillViewModel();
         private Cadastro_Pessoa_Fisica service = new Cadastro_Pessoa_Fisica();
         public static Imagem Imagem { get; set; } = new Imagem();
-        public static Anexo Anexo { get; set; } = new Anexo();        
+        public static Anexo Anexo { get; set; } = new Anexo();
+
+        public static List<Skill> SkillsSelecionadas { get; set; } = new List<Skill>();
 
         public PessoaFisicaCadastroPage()
         {
@@ -55,10 +57,10 @@ namespace FaceIT.View
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
         private async void btnFoto_Clicked(object sender, EventArgs e)
         {
             await CrossMedia.Current.Initialize();
@@ -88,7 +90,7 @@ namespace FaceIT.View
                         imgAux.GetStream().CopyTo(memoryStream);
                         imgAux.Dispose();
                         Imagem.Bytes = memoryStream.ToArray();
-                    }                    
+                    }
                 }
                 else if (action == "Tirar Photo")
                 {
@@ -135,6 +137,18 @@ namespace FaceIT.View
             string telefone = dddtel_entry.Text + telefone_entry.Text;
             string celular = dddcel_entry.Text + celular_entry.Text;
 
+            var pessoaSkillAux = new List<PessoaSkill>();
+            foreach (var item in SkillsSelecionadas)
+            {
+                pessoaSkillAux.Add(new PessoaSkill
+                {
+                    IDSkill = item.IDSkill,
+                    IDTipoSkill = item.IDTipoSkill
+                });
+            }
+
+            pessoa.PessoaSkill = pessoaSkillAux;
+
             endereco.CEP = cep_entry.Text;
             endereco.Pais = pais_entry.Text;
             endereco.UF = uf_entry.Text;
@@ -142,7 +156,7 @@ namespace FaceIT.View
             endereco.Logradouro = logradouro_entry.Text;
             endereco.Bairro = bairro_entry.Text;
             endereco.Numero = numero_entry.Text;
-            endereco.Complemento = complemento_entry.Text;            
+            endereco.Complemento = complemento_entry.Text;
 
             pessoa.Tipo = "PF";
             pessoa.Email = email_entry.Text;
@@ -160,7 +174,7 @@ namespace FaceIT.View
             pf.RG = rg_entry.Text;
             pf.IDPessoaNavigation = pessoa;
 
-            //endereco.IDPessoaNavigation = pessoa;            
+            //endereco.IDPessoaNavigation = pessoa;
 
             var result = service.AddPessoaFisica(pf);
             if (await result)
@@ -190,6 +204,7 @@ namespace FaceIT.View
         {
             var anterior = ToList(previousSelectedItems);
             var atual = ToList(currentSelectedItems);
+            SkillsSelecionadas = currentSelectedItems.Cast<Skill>().ToList();
             previousSelectedItemLabel.Text = string.IsNullOrWhiteSpace(anterior) ? "[-]" : anterior;
             currentSelectedItemLabel.Text = string.IsNullOrWhiteSpace(atual) ? "[-]" : atual;
         }
@@ -224,7 +239,6 @@ namespace FaceIT.View
             currentSelectedItemLabel.Text = "";
             ListaSkills.SelectedItems = null;
         }
-
 
         private void BuscarCEP(object sender, TextChangedEventArgs args)
         {
