@@ -42,14 +42,32 @@
                            FontSize="Medium"
                            TextColor="#004080"
                            HorizontalTextAlignment="Center"/>
-                    <Label x:Name="pessoacelular"
-                           FontSize="Medium"
-                           TextColor="#004080"
-                           HorizontalTextAlignment="Center"/>
-                    <Label x:Name="pessoatelefone"
-                           FontSize="Medium"
-                           TextColor="#004080"
-                           HorizontalTextAlignment="Center"/>                    
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label x:Name="pessoacelular"
+                               FontSize="Medium"
+                               TextColor="#004080"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="Center"
+                               VerticalTextAlignment="Center"/>
+                        <ImageButton Clicked="Button_Clicked"
+                                     Source="ligar.png"
+                                     CornerRadius="5"
+                                     HeightRequest="30"
+                                     WidthRequest="30"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label x:Name="pessoatelefone"
+                               FontSize="Medium"
+                               TextColor="#004080"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="Center"
+                               VerticalTextAlignment="Center"/>
+                        <ImageButton Clicked="Button_Clicked_1"
+                                     Source="ligar.png"
+                                     CornerRadius="5"
+                                     HeightRequest="30"
+                                     WidthRequest="30"/>
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout HorizontalOptions="Center">
                     <Label Text="Anexo"

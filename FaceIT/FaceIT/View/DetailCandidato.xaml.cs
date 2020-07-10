@@ -38,5 +38,28 @@ namespace FaceIT.View
             pessoaanexo.Text = result.IDPessoaNavigation.Anexo.Nome;
             pessoafoto.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(result.IDPessoaNavigation.Imagem.Bytes)); 
         }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Essentials.PhoneDialer.Open(pessoacelular.Text);
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("", "Indisponivel para Ligação Telefônica", "OK");
+            }
+        }
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Essentials.PhoneDialer.Open(pessoatelefone.Text);
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("", "Indisponivel para Ligação Telefônica", "OK");
+            }
+        }
     }
 }

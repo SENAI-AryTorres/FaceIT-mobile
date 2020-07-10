@@ -23,7 +23,7 @@ namespace FaceIT.View
             GetCandidato();
         }
 
-        private async void GetCandidato()
+        private void GetCandidato()
         {
             Atualizar_Clicked();
         }

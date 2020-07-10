@@ -140,7 +140,7 @@
                                HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout Padding="0,10,0,0">
+                <!--<StackLayout Padding="0,10,0,0">
                     <Label Margin="{OnPlatform Default='16,0,0,4',
                                                UWP='0,0,0,4'}"
                            FontSize="16"
@@ -213,7 +213,7 @@
                             HorizontalTextAlignment="Start"
                             Text="SQL Server"
                             TextColor="Gray" />
-                </StackLayout>
+                </StackLayout>-->
 
                 <Button x:Name="ToClose"
                         Text="Sair"
