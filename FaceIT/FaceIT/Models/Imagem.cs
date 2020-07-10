@@ -9,14 +9,14 @@ namespace faceitapi.Models
     {
         [Key]
         public int IDPessoa { get; set; }
+
         [StringLength(150)]
         public string Nome { get; set; }
-        [Required]
+
         public byte[] Bytes { get; set; }
 
         [ForeignKey(nameof(IDPessoa))]
         [InverseProperty(nameof(Pessoa.Imagem))]
         public virtual Pessoa IDPessoaNavigation { get; set; }
-
     }
 }

@@ -17,24 +17,25 @@ namespace FaceIT.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Menu : MasterDetailPage
     {
-        Pessoa _pessoa = new Pessoa();
+        private Pessoa _pessoa = new Pessoa();
+
         public Menu(Pessoa pessoa, Token token)
-        {            
+        {
             InitializeComponent();
             Detail = new NavigationPage(new MenuDetail(pessoa));
             if (pessoa.PessoaJuridica == null)
             {
                 fisicanome_entry.IsVisible = true;
             }
-            else if (pessoa.PessoaFisica== null)
+            else if (pessoa.PessoaFisica == null)
             {
                 juridicanome_entry.IsVisible = true;
             }
-            if (pessoa.Imagem !=null)
+            if (pessoa.Imagem != null)
             {
                 image_entry.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(pessoa.Imagem.Bytes));
             }
-            if(pessoa.Anexo != null)
+            if (pessoa.Anexo != null)
             {
                 _anexo.Text = pessoa.Anexo.Nome;
             }
@@ -46,17 +47,20 @@ namespace FaceIT.View
             _pessoa.Imagem = pessoa.Imagem;
             _pessoa.Anexo = pessoa.Anexo;
         }
+
         private async void GoToProfilePage(object sender, System.EventArgs e)
         {
-            var Imagem = new Imagem()
+            var Imagem = new Imagem();
+            var Anexo = new Anexo();
+            if (_pessoa.Imagem != null)
             {
-                Bytes = _pessoa.Imagem.Bytes
-            };
-            var Anexo = new Anexo()
+                Imagem.Bytes = _pessoa.Imagem.Bytes;
+            }
+            if (_pessoa.Anexo != null)
             {
-                Bytes = _pessoa.Anexo.Bytes,
-                Nome = _pessoa.Anexo.Nome
-            };
+                Anexo.Bytes = _pessoa.Anexo.Bytes;
+                Anexo.Nome = _pessoa.Anexo.Nome;
+            }
 
             var Endereco = new Endereco
             {
@@ -99,12 +103,12 @@ namespace FaceIT.View
                 Anexo = Anexo
             };
 
-        var pagina = new TestePage(_Pessoa)
-        {
-            BindingContext = _Pessoa,
-        };
+            var pagina = new TestePage(_Pessoa)
+            {
+                BindingContext = _Pessoa,
+            };
 
-        await Detail.Navigation.PushAsync(new TestePage(_Pessoa));
+            await Detail.Navigation.PushAsync(new TestePage(_Pessoa));
             IsPresented = false;
         }
 
@@ -131,6 +135,5 @@ namespace FaceIT.View
             await Detail.Navigation.PushAsync(new FaqPage());
             IsPresented = false;
         }
-
     }
 }
