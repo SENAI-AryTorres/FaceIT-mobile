@@ -339,11 +339,13 @@
                                 IsVisible="False">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding Descricao}" 
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Descricao}"
                                    WidthRequest="60"
                                    HeightRequest="30"
                                    HorizontalTextAlignment="Center"
-                                   FontSize="20"/>
+                                   FontSize="20" />
+                            </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

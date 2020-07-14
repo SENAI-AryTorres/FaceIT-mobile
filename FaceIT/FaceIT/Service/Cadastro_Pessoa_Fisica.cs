@@ -25,7 +25,10 @@ namespace FaceIT.Service
                 {
                     return true;
                 }
-                return false;
+                else
+                {
+                    return false;
+                }               
             }
             catch (Exception)
             {
@@ -48,7 +51,10 @@ namespace FaceIT.Service
                 {
                     return true;
                 }
-                return false;
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {

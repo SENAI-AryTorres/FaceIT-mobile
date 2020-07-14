@@ -29,14 +29,40 @@ namespace FaceIT.View
         {
             PessoaService service = new PessoaService();
             var result = await service.GetPessoaAsync(_id);
-            pessoaNome.Text = result.Nome;
-            pessoacpf.Text = result.CPF;
-            pessoarg.Text = result.RG;
-            pessoaemail.Text = result.IDPessoaNavigation.Email;
-            pessoacelular.Text = result.IDPessoaNavigation.Celular;
-            pessoatelefone.Text = result.IDPessoaNavigation.Telefone;
-            pessoaanexo.Text = result.IDPessoaNavigation.Anexo.Nome;
-            pessoafoto.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(result.IDPessoaNavigation.Imagem.Bytes)); 
+            if (result.Nome != null)
+            {
+                pessoaNome.Text = result.Nome;
+            }
+            if (result.CPF != null)
+            {
+                pessoacpf.Text = result.CPF;
+            }
+            if (result.RG != null)
+            {
+                pessoarg.Text = result.RG;
+            }
+            if (result.IDPessoaNavigation.Email != null)
+            {
+                pessoaemail.Text = result.IDPessoaNavigation.Email;
+            }
+            if (result.IDPessoaNavigation.Celular != null)
+            {
+                pessoacelular.Text = result.IDPessoaNavigation.Celular;
+            }
+            if (result.IDPessoaNavigation.Telefone != null)
+            {
+                pessoatelefone.Text = result.IDPessoaNavigation.Telefone;
+            }            
+            if (result.IDPessoaNavigation.Anexo != null)
+            {
+                pessoaanexo.Text = result.IDPessoaNavigation.Anexo.Nome;
+            }
+            else { }
+            if (result.IDPessoaNavigation.Imagem != null)
+            {
+                pessoafoto.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(result.IDPessoaNavigation.Imagem.Bytes));
+            }
+            else { }
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

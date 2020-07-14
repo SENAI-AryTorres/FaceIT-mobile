@@ -35,7 +35,6 @@ namespace FaceIT.Service
 				throw ex;
 			}
         }
-
 		public async Task<List<Candidato>> GetCandidato(int ID)
 		{
 			try
@@ -47,6 +46,31 @@ namespace FaceIT.Service
 				if (response.IsSuccessStatusCode)
 				{
 					var lista = JsonConvert.DeserializeObject<List<Candidato>>(await response.Content.ReadAsStringAsync());
+					return lista;
+				}
+				else
+				{
+					return null;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw ex;
+			}
+		}
+
+		public async Task<List<Proposta>> GetCandidatobyProposta(int pessoa)
+		{
+			try
+			{
+				HttpClient client = new HttpClient();
+				client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Security.Security.TokenValue);
+				HttpResponseMessage response = await client.GetAsync("https://faceitapi.azurewebsites.net/api/Candidato/Propostas/" + pessoa);
+
+				if (response.IsSuccessStatusCode)
+				{
+					var lista = JsonConvert.DeserializeObject<List<Proposta>>(await response.Content.ReadAsStringAsync());
 					return lista;
 				}
 				else

@@ -1,5 +1,6 @@
 ﻿using FaceIT.Page;
 using FaceIT.Service;
+using FaceIT.ViewModels;
 using faceitapi.Models;
 using Plugin.FilePicker;
 using Plugin.Media;
@@ -19,9 +20,11 @@ namespace FaceIT.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditProfile : ContentPage
     {
+        SkillViewModel skill = new SkillViewModel();
         Pessoa _pessoa = new Pessoa();
         public static Anexo Anexo { get; set; } = new Anexo();
         private UpdatePessoa service = new UpdatePessoa();
+        public static List<Skill> SkillsSelecionadas { get; set; } = new List<Skill>();
         public static Imagem Imagem { get; set; } = new Imagem();
         public EditProfile(Pessoa pessoa)
         {                       
@@ -38,8 +41,7 @@ namespace FaceIT.View
             {
                 img_entry.Source = ImageSource.FromStream(() => new MemoryStream(pessoa.Imagem.Bytes));
             }
-            _pessoa.Imagem = pessoa.Imagem;
-            _pessoa.Anexo = pessoa.Anexo;
+            _pessoa = pessoa;
         }
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
@@ -169,6 +171,16 @@ namespace FaceIT.View
             string celular = celular_entry.Text;
             string telefone = telefone_entry.Text;
 
+            var pessoaSkillAux = new List<PessoaSkill>();
+            foreach (var item in SkillsSelecionadas)
+            {
+                pessoaSkillAux.Add(new PessoaSkill
+                {
+                    IDSkill = item.IDSkill,
+                    IDTipoSkill = item.IDTipoSkill
+                });
+            }
+
             endereco.CEP = cep_entry.Text;
             endereco.Pais = pais_entry.Text;
             endereco.UF = uf_entry.Text;
@@ -178,6 +190,7 @@ namespace FaceIT.View
             endereco.Numero = numero_entry.Text;
             endereco.Complemento = comp_entry.Text;
 
+            pessoa.PessoaSkill = pessoaSkillAux;
             pessoa.Tipo = _tipo.Text;
             pessoa.Email = email_entry.Text;
             pessoa.Senha = nova_senha.Text;
@@ -233,6 +246,45 @@ namespace FaceIT.View
                 else
                     await DisplayAlert("Erro", "Erro ao alterar seus Dados", "OK"); 
             }
-        }        
+        }
+
+        private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateSelectionData(e.PreviousSelection, e.CurrentSelection);
+        }
+
+        private void UpdateSelectionData(IEnumerable<object> previousSelectedItems, IEnumerable<object> currentSelectedItems)
+        {
+            var anterior = ToList(previousSelectedItems);
+            var atual = ToList(currentSelectedItems);
+            SkillsSelecionadas = currentSelectedItems.Cast<Skill>().ToList();
+            previousSelectedItemLabel.Text = string.IsNullOrWhiteSpace(anterior) ? "[-]" : anterior;
+            currentSelectedItemLabel.Text = string.IsNullOrWhiteSpace(atual) ? "[-]" : atual;
+        }
+
+        private static string ToList(IEnumerable<object> items)
+        {
+            if (items == null)
+            {
+                return string.Empty;
+            }
+
+            return items.Aggregate(string.Empty,
+                (sender, obj) => sender + (sender.Length == 0 ? "" : ", ")
+                + ((Skill)obj).Descricao);
+        }
+
+        private void SkillsSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SkillsSearchBar.Text != "")
+            {
+                ListaSkills.IsVisible = true;
+                var texto = SkillsSearchBar.Text;
+                ListaSkills.ItemsSource = this.skill.SkillsLP.Where(
+                    s => s.Descricao.ToLower().Contains(texto.ToLower()));
+            }
+            else
+                ListaSkills.IsVisible = false;
+        }
     }
 }

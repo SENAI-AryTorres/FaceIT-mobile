@@ -219,6 +219,38 @@
                             CornerRadius="10"/>
                 </StackLayout>
 
+                <Label Text="Selecione suas Habilidades : " 
+                           TextColor="#1fada6" 
+                           FontSize="Medium"
+                           Margin="0,-1,0,-2"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"/>
+                <Label x:Name="currentSelectedItemLabel"/>
+                <SearchBar x:Name="SkillsSearchBar"
+                               TextChanged="SkillsSearchBar_TextChanged"/>
+                <Label Text="Seleção anterior : "  TextColor="Red" FontSize="Medium" IsVisible="False"/>
+                <Label x:Name="previousSelectedItemLabel" IsVisible="False"/>
+
+                <CollectionView ItemsSource="{Binding SkillsLP}"
+                                SelectionMode="Multiple" 
+                                SelectionChanged="OnCollectionViewSelectionChanged"
+                                x:Name="ListaSkills"
+                                IsVisible="False"
+                                HorizontalOptions="Center">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Center">
+                                <Label Text="{Binding Descricao}" 
+                                       WidthRequest="60"
+                                       HeightRequest="30"
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="20"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
                 <StackLayout x:Name="hide_Data" IsVisible="False">
                     <Label x:Name="_tipo" Text="{Binding Tipo}"></Label>
                     <Label x:Name="_role" Text="{Binding Role}"></Label>

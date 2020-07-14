@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:SfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="FaceIT.View.TestePage">
 
@@ -30,29 +30,6 @@
                        BackgroundColor="Transparent"
                        x:Name="juridiconome_entry"/>
 
-                <StackLayout x:Name="hide_Data" IsVisible="False">
-                        <Label x:Name="_email" Text="{Binding Email}"></Label>
-                       <Label x:Name="_senha" Text="{Binding Senha}"></Label>
-                       <Label x:Name="_pjrs" Text="{Binding PessoaJuridica.RazaoSocial}"></Label>
-                       <Label x:Name="_pjcnpj" Text="{Binding PessoaJuridica.CNPJ}"></Label>
-                       <Label x:Name="_pjIE" Text="{Binding PessoaJuridica.IE}"></Label>
-                       <Label x:Name="_pfCPF" Text="{Binding PessoaFisica.CPF}"></Label>
-                       <Label x:Name="_pfRG" Text="{Binding PessoaFisica.RG}"></Label>
-                       <Label x:Name="_excluido" Text="{Binding Excluido}"></Label>
-                       <Label x:Name="_enderecocep" Text="{Binding Endereco.CEP}"></Label>
-                       <Label x:Name="_enderecopais" Text="{Binding Endereco.Pais}"></Label>
-                       <Label x:Name="_enderecouf" Text="{Binding Endereco.UF}"></Label>
-                       <Label x:Name="_enderecomunicipio" Text="{Binding Endereco.Municipio}"></Label>
-                       <Label x:Name="_enderecologradouro" Text="{Binding Endereco.Logradouro}"></Label>
-                       <Label x:Name="_endereconumero" Text="{Binding Endereco.Numero}"></Label>
-                       <Label x:Name="_enderecocomplemento" Text="{Binding Endereco.Complemento}"></Label>
-                       <Label x:Name="_enderecobairro" Text="{Binding Endereco.Bairro}"></Label>
-                       <Label x:Name="_tel" Text="{Binding Telefone}"></Label>
-                       <Label x:Name="_tipo" Text="{Binding Tipo}"></Label>
-                       <Label x:Name="_cel" Text="{Binding Celular}"></Label>
-                       <Label x:Name="_anexo_name" Text="{Binding Anexo.Nome}"></Label>
-                       <Label x:Name="_idpessoa" Text="{Binding IDPessoa}"></Label>
-                </StackLayout>
                 
                 <Label Text="{Binding PessoaFisica.Nome}" 
                        TextColor="Black"
@@ -214,7 +191,6 @@
                             Text="SQL Server"
                             TextColor="Gray" />
                 </StackLayout>-->
-
                 <Button x:Name="ToClose"
                         Text="Sair"
                         Clicked="Sair"

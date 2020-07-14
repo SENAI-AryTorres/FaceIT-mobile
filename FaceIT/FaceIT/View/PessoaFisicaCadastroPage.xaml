@@ -333,16 +333,6 @@
                                    HeightRequest="30"
                                    HorizontalTextAlignment="Center"
                                    FontSize="20" />
-                                <Label Text="{Binding IDTipoSkill}"
-                                   WidthRequest="60"
-                                   HeightRequest="30"
-                                   HorizontalTextAlignment="Center"
-                                   FontSize="20" />
-                                <Label Text="{Binding IDSkill}"
-                                   WidthRequest="60"
-                                   HeightRequest="30"
-                                   HorizontalTextAlignment="Center"
-                                   FontSize="20" />
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

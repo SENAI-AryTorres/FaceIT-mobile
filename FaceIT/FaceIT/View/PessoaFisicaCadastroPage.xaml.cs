@@ -25,9 +25,7 @@ namespace FaceIT.View
         private Cadastro_Pessoa_Fisica service = new Cadastro_Pessoa_Fisica();
         public static Imagem Imagem { get; set; } = new Imagem();
         public static Anexo Anexo { get; set; } = new Anexo();
-
         public static List<Skill> SkillsSelecionadas { get; set; } = new List<Skill>();
-
         public PessoaFisicaCadastroPage()
         {
             InitializeComponent();
@@ -145,10 +143,7 @@ namespace FaceIT.View
                     IDSkill = item.IDSkill,
                     IDTipoSkill = item.IDTipoSkill
                 });
-            }
-
-            pessoa.PessoaSkill = pessoaSkillAux;
-
+            }            
             endereco.CEP = cep_entry.Text;
             endereco.Pais = pais_entry.Text;
             endereco.UF = uf_entry.Text;
@@ -158,6 +153,7 @@ namespace FaceIT.View
             endereco.Numero = numero_entry.Text;
             endereco.Complemento = complemento_entry.Text;
 
+            pessoa.PessoaSkill = pessoaSkillAux;
             pessoa.Tipo = "PF";
             pessoa.Email = email_entry.Text;
             pessoa.Senha = senha_entry.Text;
@@ -167,14 +163,12 @@ namespace FaceIT.View
             pessoa.Imagem = Imagem;
             pessoa.Role = "user";
             pessoa.Anexo = Anexo;
-            //pessoa.Imagem.IDPessoaNavigation = pessoa;
 
             pf.Nome = nome_entry.Text;
             pf.CPF = cpf_entry.Text;
             pf.RG = rg_entry.Text;
             pf.IDPessoaNavigation = pessoa;
-
-            //endereco.IDPessoaNavigation = pessoa;
+;
 
             var result = service.AddPessoaFisica(pf);
             if (await result)

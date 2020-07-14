@@ -55,9 +55,8 @@ namespace FaceIT.View
 
             string Longitude = (currentSelectedItems.FirstOrDefault() as Proposta)?.Longitude;
             _Longitude.Text = string.IsNullOrWhiteSpace(Longitude) ? "" : Longitude;
-
         }
-        private async void GetPropostas()
+        private void GetPropostas()
         {
             Atualizar_Clicked();
         }

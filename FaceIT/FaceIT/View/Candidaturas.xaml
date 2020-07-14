@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:SfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="FaceIT.View.Candidaturas">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <StackLayout HorizontalOptions="Center" Padding="15">
+                <Label Text="Atualize a página para atualizar suas Candidaturas" 
+                           x:Name="lbl_Att"
+                           TextColor="#1fada6"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Center"
+                           FontSize="18"/>
+            </StackLayout>
+            <SfListView:SfListView x:Name="CV"
+                                   SelectionMode="Single"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsScrollingEnabled="False"
+                                   SelectionBackgroundColor="#1fada6">
+                <SfListView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Vertical">
+                            <border:SfBorder BorderColor="#1fada6">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                    <Label Text="{Binding IDProposta}" 
+                                               FontSize="16"
+                                               TextColor="#004080"
+                                               FontAttributes="Bold"
+                                               HeightRequest="50"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding Descricao}" 
+                                               FontSize="13"
+                                               TextColor="#004080"
+                                               FontAttributes="Bold"
+                                               HeightRequest="50"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center">
+                                    </Label>
+                                </StackLayout>
+                            </border:SfBorder>
+                        </StackLayout>
+                    </DataTemplate>
+                </SfListView:SfListView.ItemTemplate>
+            </SfListView:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

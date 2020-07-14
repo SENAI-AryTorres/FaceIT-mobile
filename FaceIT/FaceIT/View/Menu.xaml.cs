@@ -41,11 +41,15 @@ namespace FaceIT.View
             }
             if (pessoa.Tipo == "PF")
             {
-                tsPessoa.IsVisible = false;
+                MenuPessoaFisica.IsVisible = true;
+                MenuPessoaJuridica.IsVisible = false;
+            }
+            else
+            {
+                MenuPessoaFisica.IsVisible = false;
+                MenuPessoaJuridica.IsVisible = true;
             }
             _pessoa = pessoa;
-            _pessoa.Imagem = pessoa.Imagem;
-            _pessoa.Anexo = pessoa.Anexo;
         }
 
         private async void GoToProfilePage(object sender, System.EventArgs e)
@@ -62,53 +66,12 @@ namespace FaceIT.View
                 Anexo.Nome = _pessoa.Anexo.Nome;
             }
 
-            var Endereco = new Endereco
+            var pagina = new TestePage(_pessoa)
             {
-                CEP = _enderecocep.Text,
-                Pais = _enderecopais.Text,
-                UF = _enderecouf.Text,
-                Municipio = _enderecomunicipio.Text,
-                Logradouro = _enderecologradouro.Text,
-                Numero = _endereconumero.Text,
-                Complemento = _enderecocomplemento.Text,
-                Bairro = _enderecobairro.Text
+                BindingContext = _pessoa,
             };
 
-            var pf = new PessoaFisica()
-            {
-                CPF = _pfCPF.Text,
-                RG = _pfRG.Text,
-                Nome = fisicanome_entry.Text
-            };
-
-            var pj = new PessoaJuridica()
-            {
-                RazaoSocial = _pjrs.Text,
-                CNPJ = _pjcnpj.Text,
-                IE = _pjIE.Text,
-                NomeFantasia = juridicanome_entry.Text
-            };
-            var _Pessoa = new Pessoa()
-            {
-                Email = _email.Text,
-                Senha = _senha.Text,
-                PessoaJuridica = pj,
-                PessoaFisica = pf,
-                Excluido = false,
-                Endereco = Endereco,
-                Telefone = _tel.Text,
-                Celular = _cel.Text,
-                Tipo = _tipo.Text,
-                Imagem = Imagem,
-                Anexo = Anexo
-            };
-
-            var pagina = new TestePage(_Pessoa)
-            {
-                BindingContext = _Pessoa,
-            };
-
-            await Detail.Navigation.PushAsync(new TestePage(_Pessoa));
+            await Detail.Navigation.PushAsync(new TestePage(_pessoa));
             IsPresented = false;
         }
 
@@ -134,6 +97,11 @@ namespace FaceIT.View
         {
             await Detail.Navigation.PushAsync(new FaqPage());
             IsPresented = false;
+        }
+
+        private async void ViewCell_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Candidaturas(_pessoa));
         }
     }
 }

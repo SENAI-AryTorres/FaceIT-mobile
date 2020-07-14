@@ -6,9 +6,6 @@
              mc:Ignorable="d"
              x:Class="FaceIT.View.PropostaLista"
              NavigationPage.HasBackButton="False">
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Name="Atualizar" IconImageSource="refresh.png" Clicked="Atualizar_Clicked"/>
-    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>

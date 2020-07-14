@@ -25,6 +25,7 @@ namespace FaceIT.View
         Cadastro_Pessoa_Fisica service = new Cadastro_Pessoa_Fisica();
         public static Imagem Imagem { get; set; } = new Imagem();
         public static Anexo Anexo { get; set; } = new Anexo();
+        public static List<Skill> SkillsSelecionadas { get; set; } = new List<Skill>();
         public PessoaJuridicaCadastroPage()
         {
             InitializeComponent();
@@ -122,6 +123,15 @@ namespace FaceIT.View
             string telefone = dddtel_entry.Text + telefone_entry.Text;
             string celular = dddcel_entry.Text + celular_entry.Text;
 
+            var pessoaskill = new List<PessoaSkill>();
+            foreach (var item in SkillsSelecionadas)
+            {
+                pessoaskill.Add(new PessoaSkill
+                {
+                    IDSkill = item.IDSkill,
+                    IDTipoSkill = item.IDTipoSkill
+                });
+            }
             endereco.CEP = cep_entry.Text;
             endereco.Pais = pais_entry.Text;
             endereco.UF = uf_entry.Text;
@@ -131,6 +141,7 @@ namespace FaceIT.View
             endereco.Numero = numero_entry.Text;
             endereco.Complemento = complemento_entry.Text;
 
+            pessoa.PessoaSkill = pessoaskill;
             pessoa.Tipo = "PJ";
             pessoa.Email = email_entry.Text;
             pessoa.Senha = senha_entry.Text;
@@ -174,6 +185,7 @@ namespace FaceIT.View
         {
             var anterior = ToList(previousSelectedItems);
             var atual = ToList(currentSelectedItems);
+            SkillsSelecionadas = currentSelectedItems.Cast<Skill>().ToList();
             previousSelectedItemLabel.Text = string.IsNullOrWhiteSpace(anterior) ? "[-]" : anterior;
             currentSelectedItemLabel.Text = string.IsNullOrWhiteSpace(atual) ? "[-]" : atual;
         }

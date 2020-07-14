@@ -48,34 +48,18 @@
                         </Label>
                         <StackLayout x:Name="hide_data" IsVisible="False">
                             <Label x:Name="_anexo"/>
-                            <Label x:Name="_email" Text="{Binding Email}"></Label>
-                            <Label x:Name="_senha" Text="{Binding Senha}"></Label>
-                            <Label x:Name="_pjrs" Text="{Binding PessoaJuridica.RazaoSocial}"></Label>
-                            <Label x:Name="_pjcnpj" Text="{Binding PessoaJuridica.CNPJ}"></Label>
-                            <Label x:Name="_pjIE"  Text="{Binding PessoaJuridica.IE}"></Label>
-                            <Label x:Name="_pfCPF" Text="{Binding PessoaFisica.CPF}"></Label>
-                            <Label x:Name="_pfRG" Text="{Binding PessoaFisica.RG}"></Label>
-                            <Label x:Name="_excluido" Text="{Binding Excluido}"></Label>
-                            <Label x:Name="_enderecocep" Text="{Binding Endereco.CEP}"></Label>
-                            <Label x:Name="_enderecopais" Text="{Binding Endereco.Pais}"></Label>
-                            <Label x:Name="_enderecouf" Text="{Binding Endereco.UF}"></Label>
-                            <Label x:Name="_enderecomunicipio" Text="{Binding Endereco.Municipio}"></Label>
-                            <Label x:Name="_enderecologradouro" Text="{Binding Endereco.Logradouro}"></Label>
-                            <Label x:Name="_endereconumero" Text="{Binding Endereco.Numero}"></Label>
-                            <Label x:Name="_enderecocomplemento" Text="{Binding Endereco.Complemento}"></Label>
-                            <Label x:Name="_enderecobairro" Text="{Binding Endereco.Bairro}"></Label>
-                            <Label x:Name="_tel" Text="{Binding Telefone}"></Label>
-                            <Label x:Name="_tipo" Text="{Binding Tipo}"></Label>
-                            <Label x:Name="_cel" Text="{Binding Celular}"></Label>
                         </StackLayout>
                         
                         <TableView Intent="Menu" 
                                    HorizontalOptions="FillAndExpand"
-                                   HasUnevenRows="True">
+                                   HasUnevenRows="True"
+                                   IsVisible="false"
+                                   x:Name="MenuPessoaJuridica">
                             <TableSection>
                                 <ViewCell Tapped="GoToMatchPopUp">
                                     <StackLayout Padding="15,10">
-                                        <Label Text="Suas Propostas" VerticalTextAlignment="Center"
+                                        <Label Text="Suas Propostas" 
+                                               VerticalTextAlignment="Center"
                                                TextColor="White"
                                                x:Name="tsPessoa"/>
                                     </StackLayout>
@@ -84,12 +68,38 @@
                             <TableSection>
                                 <ViewCell Tapped="GoToRankingPopUp">
                                     <StackLayout Padding="15,10">
-                                        <Label Text="Ranking" VerticalTextAlignment="Center"
+                                        <Label Text="Ranking" 
+                                               VerticalTextAlignment="Center"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>                            
+                        </TableView>
+
+                        <TableView Intent="Menu" 
+                                   HorizontalOptions="FillAndExpand"
+                                   HasUnevenRows="True"
+                                   IsVisible="false"
+                                   x:Name="MenuPessoaFisica">
+                            <TableSection>
+                                <ViewCell Tapped="ViewCell_Tapped">
+                                    <StackLayout Padding="15,10">
+                                        <Label Text="Suas Candidaturas" 
+                                               VerticalTextAlignment="Center"
                                                TextColor="White"/>
                                     </StackLayout>
                                 </ViewCell>
                             </TableSection>
-                        </TableView>                    
+                            <TableSection>
+                                <ViewCell Tapped="GoToRankingPopUp">
+                                    <StackLayout Padding="15,10">
+                                        <Label Text="Ranking" 
+                                               VerticalTextAlignment="Center"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                        </TableView>
                     </StackLayout> 
                 </StackLayout>
             </ContentPage.Content>

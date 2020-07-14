@@ -18,12 +18,12 @@ namespace FaceIT.View
         public TestePage(Pessoa pessoa)
         {
             InitializeComponent();
-            if (pessoa.PessoaFisica.Nome == null)
+            if (pessoa.PessoaFisica == null)
             {
                 juridiconome_entry.IsVisible = true;
                 fisicanome_entry.IsVisible = false;
             }
-            else if (pessoa.PessoaJuridica.NomeFantasia == null)
+            else if (pessoa.PessoaJuridica == null)
             {
                 fisicanome_entry.IsVisible = true;
                 juridiconome_entry.IsVisible = false;
@@ -32,12 +32,8 @@ namespace FaceIT.View
             {
                 img_entry.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(pessoa.Imagem.Bytes));
             }
-            if (pessoa.Anexo != null)
-            {
-                _anexo_name.Text = pessoa.Anexo.Nome;
-            }
-            _pessoa.Imagem = pessoa.Imagem;
-            _pessoa.Anexo = pessoa.Anexo;
+            _pessoa = pessoa;
+            
         }
         private async void GoToSettingsPage(object sender, System.EventArgs e)
         {
@@ -51,62 +47,11 @@ namespace FaceIT.View
 
         private async void GoToEditProfile(object sender, System.EventArgs e)
         {
-            var Imagem = new Imagem()
+            var pagina = new EditProfile(_pessoa)
             {
-                Bytes = _pessoa.Imagem.Bytes
+                BindingContext = _pessoa
             };
-            var Anexo = new Anexo()
-            {
-                Bytes = _pessoa.Anexo.Bytes,
-                Nome = _pessoa.Anexo.Nome
-            };
-
-            var Endereco = new Endereco
-            {
-                CEP = _enderecocep.Text,
-                Pais = _enderecopais.Text,
-                UF = _enderecouf.Text,
-                Municipio = _enderecomunicipio.Text,
-                Logradouro = _enderecologradouro.Text,
-                Numero = _endereconumero.Text,
-                Complemento = _enderecocomplemento.Text,
-                Bairro = _enderecobairro.Text
-            };
-
-            var pf = new PessoaFisica()
-            {
-                CPF = _pfCPF.Text,
-                RG = _pfRG.Text,
-                Nome = fisicanome_entry.Text
-            };
-
-            var pj = new PessoaJuridica()
-            {
-                RazaoSocial = _pjrs.Text,
-                CNPJ = _pjcnpj.Text,
-                IE = _pjIE.Text,
-                NomeFantasia = juridiconome_entry.Text
-            };
-            var _Pessoa = new Pessoa()
-            {
-                Email = _email.Text,
-                Senha = _senha.Text,
-                PessoaJuridica = pj,
-                PessoaFisica = pf,
-                Excluido = false,
-                Endereco = Endereco,
-                Telefone = _tel.Text,
-                Celular = _cel.Text,
-                Tipo = _tipo.Text,
-                Imagem = Imagem,
-                Anexo = Anexo
-            };
-
-            var pagina = new EditProfile(_Pessoa)
-            {
-                BindingContext = _Pessoa
-            };
-            await Navigation.PushAsync(new EditProfile(_Pessoa));
+            await Navigation.PushAsync(new EditProfile(_pessoa));
         }
 
         private async void Sair(object sender, EventArgs e)
