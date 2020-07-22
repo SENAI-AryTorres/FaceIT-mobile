@@ -16,37 +16,23 @@ namespace FaceIT.ViewModels
             {
                 new FaqModel
                 {
-                    Pergunta = "Pergunta 01",
+                    Pergunta = "Como Funciona? ",
                     IsVisible = false,
-                    Resposta = "Resposta 01",
+                    Resposta = "O FaceIT é uma plataforma que uma empresa ou pessoa física pode utilizar para benefício próprio. É um lugar onde você pode ser empregado ou contratar alguém para sua empresa.",
                 },
 
                 new FaqModel
                 {
-                    Pergunta = "Pergunta 02",
+                    Pergunta = "Qual a intenção do App?",
                     IsVisible = false,
-                    Resposta = "Resposta 02",
+                    Resposta = "O principal objetivo é facilitar o contato entre as empresas e os interessados, para que assim seja mais fácil o fechamento de projetos ou oportunidades.",
                 },
 
                 new FaqModel
                 {
-                    Pergunta = "Pergunta 03",
+                    Pergunta = "O App tem mais alguma funcionalidade?",
                     IsVisible = false,
-                    Resposta = "Resposta 03",
-                },
-
-                new FaqModel
-                {
-                    Pergunta = "Pergunta 04",
-                    IsVisible = false,
-                    Resposta = "Resposta 04",
-                },
-
-                new FaqModel
-                {
-                    Pergunta = "Pergunta 05",
-                    IsVisible = false,
-                    Resposta = "Resposta 05",
+                    Resposta = "Por ser a primeira versão, o app foca nessa possibilidade do contato entre empresas e pessoas, mas em versões futuras, pretendemos possibilitar o contato entre pessoas, permitir o vínculo com outros sistemas (github e linkedin), além de permitir a elaboração de grupos de estudo e uma comunidade para sanar dúvidas e/ou disponibilizar cursos.",
                 },
             };
         }
@@ -57,7 +43,6 @@ namespace FaceIT.ViewModels
         {
             if (_oldProduct == faq)
             {
-                // click twice on the same item will hide it
                 faq.IsVisible = !faq.IsVisible;
                 UpdateProducts(faq);
             }
@@ -65,11 +50,9 @@ namespace FaceIT.ViewModels
             {
                 if (_oldProduct != null)
                 {
-                    // hide previous selected item
                     _oldProduct.IsVisible = false;
                     UpdateProducts(_oldProduct);
                 }
-                // show selected item
                 faq.IsVisible = true;
                 UpdateProducts(faq);
             }
